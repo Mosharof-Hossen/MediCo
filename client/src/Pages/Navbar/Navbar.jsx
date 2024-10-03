@@ -1,14 +1,21 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import "./Navbar.css"
+import { FaRegUser } from "react-icons/fa";
 import logo from "../../assets/logo.png"
-const Navbar = () => {
 
+
+const Navbar = () => {
+    const user = true;
     const links = <>
         <NavLink to={"/"} className={"lg:px-2  lg:mx-1 w-fit py-1 rounded  text-xl font-semibold "}><li>Home</li></NavLink>
         <NavLink to={"/shop"} className={"lg:px-2  lg:mx-1 w-fit py-1 rounded  text-xl font-semibold "}><li>Shop</li></NavLink>
         <NavLink to={"/cart"} className={"lg:px-2  lg:mx-1 w-fit py-1 rounded  text-xl font-semibold "}><li>Cart</li></NavLink>
     </>
-
+    const profile = <>
+        <NavLink to={"/dashboard/user"} className={"lg:px-2  lg:mx-1 w-fit py-1 rounded  text-xl font-semibold "}><li>Dashboard</li></NavLink>
+        <NavLink to={"/dashboard/user/update-profile"} className={"lg:px-2  lg:mx-1 w-fit py-1 rounded  text-xl font-semibold "}><li>Update Profile</li></NavLink>
+        <Link  className={"lg:px-2  lg:mx-1 w-fit py-1 rounded  text-xl font-semibold "}><li>Logout</li></Link>
+    </>
     return (
         <div>
             <div className="navbar bg-primary-c text-white">
@@ -48,7 +55,25 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <a className="btn">Button</a>
+                    {
+                        user ?
+                            <div className="dropdown dropdown-end bg-primary-c">
+                                <div tabIndex={0} className="avatar flex items-center" >
+                                    <div className="w-10 rounded-full " >
+                                        <img className="drawer-button " src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+                                    </div>
+                                </div>
+                                <ul tabIndex={0} className="dropdown-content menu mt-5 text-xl bg-primary-c rounded-box z-[1] w-52 p-2 shadow">
+                                    {
+                                        profile
+                                    }
+                                </ul>
+                            </div>
+
+
+                            :
+                            <button className="flex items-center gap-1 text-xl"><FaRegUser /> Join Us</button>
+                    }
                 </div>
             </div>
         </div>
