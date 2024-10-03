@@ -1,11 +1,12 @@
 import { NavLink } from "react-router-dom";
 import "./Navbar.css"
+import logo from "../../assets/logo.png"
 const Navbar = () => {
 
     const links = <>
-        <NavLink to={"/"} className={"px-2  mx-1 py-1 rounded-md hover:shadow-md text-xl font-semibold "}><li>Home</li></NavLink>
-        <NavLink to={"/shop"} className={"px-2  mx-1 py-1 rounded-md hover:shadow-md text-xl font-semibold "}><li>Shop</li></NavLink>
-        <NavLink to={"/cart"} className={"px-2  mx-1 py-1 rounded-md hover:shadow-md text-xl font-semibold "}><li>Cart</li></NavLink>
+        <NavLink to={"/"} className={"lg:px-2  lg:mx-1 w-fit py-1 rounded  text-xl font-semibold "}><li>Home</li></NavLink>
+        <NavLink to={"/shop"} className={"lg:px-2  lg:mx-1 w-fit py-1 rounded  text-xl font-semibold "}><li>Shop</li></NavLink>
+        <NavLink to={"/cart"} className={"lg:px-2  lg:mx-1 w-fit py-1 rounded  text-xl font-semibold "}><li>Cart</li></NavLink>
     </>
 
     return (
@@ -29,13 +30,15 @@ const Navbar = () => {
                         </div>
                         <ul
                             tabIndex={0}
-                            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
+                            className="menu menu-sm dropdown-content bg-primary-c rounded-box z-[1] mt-3 w-32 p-2 shadow">
                             {
                                 links
                             }
                         </ul>
                     </div>
-                    <a className="btn btn-ghost text-xl">daisyUI</a>
+                    <div className="flex items-center">
+                        <img src={logo} alt="" className="w-28 h-fit" />
+                    </div>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
