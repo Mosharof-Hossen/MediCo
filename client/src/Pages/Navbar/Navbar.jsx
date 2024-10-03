@@ -5,7 +5,7 @@ import logo from "../../assets/logo.png"
 
 
 const Navbar = () => {
-    const user = true;
+    const user = false;
     const links = <>
         <NavLink to={"/"} className={"lg:px-2  lg:mx-1 w-fit py-1 rounded  text-xl font-semibold "}><li>Home</li></NavLink>
         <NavLink to={"/shop"} className={"lg:px-2  lg:mx-1 w-fit py-1 rounded  text-xl font-semibold "}><li>Shop</li></NavLink>
@@ -14,7 +14,7 @@ const Navbar = () => {
     const profile = <>
         <NavLink to={"/dashboard/user"} className={"lg:px-2  lg:mx-1 w-fit py-1 rounded  text-xl font-semibold "}><li>Dashboard</li></NavLink>
         <NavLink to={"/dashboard/user/update-profile"} className={"lg:px-2  lg:mx-1 w-fit py-1 rounded  text-xl font-semibold "}><li>Update Profile</li></NavLink>
-        <Link  className={"lg:px-2  lg:mx-1 w-fit py-1 rounded  text-xl font-semibold "}><li>Logout</li></Link>
+        <Link className={"lg:px-2  lg:mx-1 w-fit py-1 rounded  text-xl font-semibold "}><li>Logout</li></Link>
     </>
     return (
         <div>
@@ -72,7 +72,7 @@ const Navbar = () => {
 
 
                             :
-                            <button className="flex items-center gap-1 text-xl"><FaRegUser /> Join Us</button>
+                            <Link to={"/sign-up"}><button className="flex items-center gap-1 text-xl"><FaRegUser /> Join Us</button></Link>
                     }
                 </div>
             </div>
