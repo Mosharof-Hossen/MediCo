@@ -15,7 +15,7 @@ const SignUp = () => {
         >
             <div className=" bg-opacity-80">
                 <div className="hero  min-h-screen">
-                    <div className="hero-content flex-col lg:flex-row-reverse  gap-20 lg:px-20">
+                    <div className="hero-content flex-col lg:flex-row  gap-20 lg:px-20">
                         <div className="text-center  flex-1 w-full">
                             <img src={sideImage} alt="" className="w-full" />
                         </div>
