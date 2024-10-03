@@ -2,19 +2,25 @@ import { Link, NavLink } from "react-router-dom";
 import "./Navbar.css"
 import { FaRegUser } from "react-icons/fa";
 import logo from "../../assets/logo.png"
+import useAuthContext from "../../Hooks/useAuthContext";
 
 
 const Navbar = () => {
-    const user = false;
+    const { user, logout } = useAuthContext();
+
+    const handleLogout = () => {
+        logout()
+    }
+
     const links = <>
         <NavLink to={"/"} className={"lg:px-2  lg:mx-1 w-fit py-1 rounded  text-xl font-semibold "}><li>Home</li></NavLink>
         <NavLink to={"/shop"} className={"lg:px-2  lg:mx-1 w-fit py-1 rounded  text-xl font-semibold "}><li>Shop</li></NavLink>
-        <NavLink to={"/cart"} className={"lg:px-2  lg:mx-1 w-fit py-1 rounded  text-xl font-semibold "}><li>Cart</li></NavLink>
+        <NavLink to={"/cart"}  className={"lg:px-2  lg:mx-1 w-fit py-1 rounded  text-xl font-semibold "}><li>Cart</li></NavLink>
     </>
     const profile = <>
         <NavLink to={"/dashboard/user"} className={"lg:px-2  lg:mx-1 w-fit py-1 rounded  text-xl font-semibold "}><li>Dashboard</li></NavLink>
         <NavLink to={"/dashboard/user/update-profile"} className={"lg:px-2  lg:mx-1 w-fit py-1 rounded  text-xl font-semibold "}><li>Update Profile</li></NavLink>
-        <Link className={"lg:px-2  lg:mx-1 w-fit py-1 rounded  text-xl font-semibold "}><li>Logout</li></Link>
+        <Link onClick={handleLogout} className={"lg:px-2  lg:mx-1 w-fit py-1 rounded  text-xl font-semibold "}><li>Logout</li></Link>
     </>
     return (
         <div>
