@@ -1,12 +1,9 @@
-import { Link } from "react-router-dom";
-import bg from "../../assets/login/loginBg.jpg"
 import sideImage from "../../assets/login/sideImage.png"
-import { useForm } from 'react-hook-form';
-import { FaGithub, FaGoogle } from "react-icons/fa";
+import bg from "../../assets/login/loginBg.jpg"
+import { useForm } from "react-hook-form";
 import SocialLinks from "../../Components/SocialLinks";
 
-
-const SignUp = () => {
+const Login = () => {
     const { register, handleSubmit, } = useForm();
     const onSubmit = data => console.log(data);
     return (
@@ -23,13 +20,8 @@ const SignUp = () => {
                         </div>
                         <div className="card   w-full flex-1 shrink-0 rounded shadow-2xl border border-gray-300">
                             <form onSubmit={handleSubmit(onSubmit)} className="card-body">
-                                <h1 className="text-4xl font-bold text-center mb-5">Sign Up</h1>
-                                <div className="form-control">
-                                    <label className="label">
-                                        <span className="label-text text-xl font-semibold">Your Name</span>
-                                    </label>
-                                    <input type="text" placeholder="Enter Your Name" className="input input-bordered"  {...register("name", { required: true })} required />
-                                </div>
+                                <h1 className="text-4xl font-bold text-center mb-5">Sign In</h1>
+                                
                                 <div className="form-control">
                                     <label className="label">
                                         <span className="label-text text-xl font-semibold">Email</span>
@@ -42,27 +34,13 @@ const SignUp = () => {
                                     </label>
                                     <input type="password" placeholder="password" className="input input-bordered" {...register("password", { required: true })} required />
                                 </div>
-                                <div className="form-control">
-                                    <label className="label">
-                                        <span className="label-text text-xl font-semibold" >Upload Your Image</span>
-                                    </label>
-                                    <input type="file" className="file-input w-full max-w-xs " required {...register("image", { required: true })} />
-                                </div>
-                                <div className="form-control">
-                                    <label className="label">
-                                        <span className="label-text text-xl font-semibold">Select Role</span>
-                                    </label>
-                                    <select className="select select-bordered w-full max-w-xs" {...register("role", { required: true })}>
-                                        <option value={"user"}>User</option>
-                                        <option value={"seller"} >Seller</option>
-                                    </select>
-                                </div>
-
+                              
+                       
                                 <div className="form-control mt-6">
-                                    <button className="btn bg-primary-c border-none text-white text-xl hover:bg-teal-500">Sign Up</button>
+                                    <button className="btn bg-primary-c border-none text-white text-xl hover:bg-teal-500">Login</button>
                                 </div>
                             </form>
-                            <SocialLinks value="/login"></SocialLinks>
+                            <SocialLinks value="/sign-up"></SocialLinks>
                         </div>
                     </div>
                 </div>
@@ -71,4 +49,4 @@ const SignUp = () => {
     );
 };
 
-export default SignUp;
+export default Login;
