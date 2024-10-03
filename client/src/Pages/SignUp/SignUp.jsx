@@ -1,8 +1,6 @@
-import { Link } from "react-router-dom";
 import bg from "../../assets/login/loginBg.jpg"
 import sideImage from "../../assets/login/sideImage.png"
 import { useForm } from 'react-hook-form';
-import { FaGithub, FaGoogle } from "react-icons/fa";
 import SocialLinks from "../../Components/SocialLinks";
 
 

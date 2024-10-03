@@ -3,7 +3,6 @@ import { FaGithub, FaGoogle } from "react-icons/fa";
 import PropTypes from 'prop-types';
 
 const SocialLinks = (link) => {
-    console.log(link);
     return (
         <div className="mb-5">
             <p className="text-center font-semibold">Already Sign Up? <Link to={ link.value}> <span className="underline">{link.value == "/sign-up"?"Sign Up":"Login"}</span></Link></p>
