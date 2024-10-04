@@ -3,7 +3,7 @@ import "./Navbar.css"
 import { FaRegUser } from "react-icons/fa";
 import logo from "../../assets/logo.png"
 import useAuthContext from "../../Hooks/useAuthContext";
-
+import defaultUser from "../../assets/login/user.png"
 
 const Navbar = () => {
     const { user, logout } = useAuthContext();
@@ -15,7 +15,7 @@ const Navbar = () => {
     const links = <>
         <NavLink to={"/"} className={"lg:px-2  lg:mx-1 w-fit py-1 rounded  text-xl font-semibold "}><li>Home</li></NavLink>
         <NavLink to={"/shop"} className={"lg:px-2  lg:mx-1 w-fit py-1 rounded  text-xl font-semibold "}><li>Shop</li></NavLink>
-        <NavLink to={"/cart"}  className={"lg:px-2  lg:mx-1 w-fit py-1 rounded  text-xl font-semibold "}><li>Cart</li></NavLink>
+        <NavLink to={"/cart"} className={"lg:px-2  lg:mx-1 w-fit py-1 rounded  text-xl font-semibold "}><li>Cart</li></NavLink>
     </>
     const profile = <>
         <NavLink to={"/dashboard/user"} className={"lg:px-2  lg:mx-1 w-fit py-1 rounded  text-xl font-semibold "}><li>Dashboard</li></NavLink>
@@ -66,7 +66,7 @@ const Navbar = () => {
                             <div className="dropdown dropdown-end bg-primary-c">
                                 <div tabIndex={0} className="avatar flex items-center" >
                                     <div className="w-10 rounded-full " >
-                                        <img className="drawer-button " src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+                                        <img className="drawer-button " src={user?.photoURL ? user?.photoURL : defaultUser} />
                                     </div>
                                 </div>
                                 <ul tabIndex={0} className="dropdown-content menu mt-5 text-xl bg-primary-c rounded-box z-[1] w-52 p-2 shadow">
@@ -75,8 +75,6 @@ const Navbar = () => {
                                     }
                                 </ul>
                             </div>
-
-
                             :
                             <Link to={"/sign-up"}><button className="flex items-center gap-1 text-xl"><FaRegUser /> Join Us</button></Link>
                     }

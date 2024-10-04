@@ -4,12 +4,13 @@ import PropTypes from 'prop-types';
 import useAuthContext from "../Hooks/useAuthContext";
 
 const SocialLinks = (link) => {
-    const { googleLogin } = useAuthContext();
+    const { googleLogin, githubLogin } = useAuthContext();
 
     const handleGoogleLogin = () => {
         googleLogin();
     }
     const handleGithubLogin = () => {
+        githubLogin();
     }
     return (
         <div className="mb-5">

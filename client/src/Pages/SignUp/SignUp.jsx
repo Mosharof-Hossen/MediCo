@@ -2,11 +2,15 @@ import bg from "../../assets/login/loginBg.jpg"
 import sideImage from "../../assets/login/sideImage.png"
 import { useForm } from 'react-hook-form';
 import SocialLinks from "../../Components/SocialLinks";
+import useAuthContext from "../../Hooks/useAuthContext";
 
 
 const SignUp = () => {
+    const { loginInByEmailPass } = useAuthContext();
     const { register, handleSubmit, } = useForm();
-    const onSubmit = data => console.log(data);
+    const onSubmit = data => {
+        console.log(data)
+    };
     return (
         <div className="bg-cover  min-h-screen bg-no-repeat "
             style={{
