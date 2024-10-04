@@ -3,14 +3,51 @@ import sideImage from "../../assets/login/sideImage.png"
 import { useForm } from 'react-hook-form';
 import SocialLinks from "../../Components/SocialLinks";
 import useAuthContext from "../../Hooks/useAuthContext";
+import axios from "axios";
+import { updateProfile } from "firebase/auth";
+import useUserPost from "../../API/useUserPost";
+import { useState } from "react";
 
 
 const SignUp = () => {
+    const userMutation = useUserPost();
     const { loginInByEmailPass } = useAuthContext();
-    const { register, handleSubmit, } = useForm();
-    const onSubmit = data => {
-        console.log(data)
+    const { register, handleSubmit, formState: { errors } } = useForm();
+    const [err, setError] = useState("");
+    const [disable, setDisable] = useState(false)
+
+    const onSubmit = async (data) => {
+        setDisable(true)
+        loginInByEmailPass(data.email, data.password)
+            .then(async (currentUser) => {
+                const imageFile = { image: data.image[0] };
+                const res = await axios.post(`https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_Imgbb}`,
+                    imageFile, {
+                    headers: {
+                        'Content-Type': "multipart/form-data"
+                    }
+                })
+                if (res.data.data.display_url) {
+                    updateProfile(currentUser.user, {
+                        photoURL: res.data.data.display_url
+                    })
+                        .then(() => {
+                            userMutation.mutate({
+                                email: data.email,
+                                userId: currentUser.user.uid,
+                                role: data.role
+                            })
+                            setError("")
+                            setDisable(false)
+                        })
+                }
+            })
+            .catch(() => {
+                setError("Email already in use.")
+                setDisable(false)
+            })
     };
+
     return (
         <div className="bg-cover  min-h-screen bg-no-repeat "
             style={{
@@ -42,7 +79,10 @@ const SignUp = () => {
                                     <label className="label">
                                         <span className="label-text text-xl font-semibold">Password</span>
                                     </label>
-                                    <input type="password" placeholder="password" className="input input-bordered" {...register("password", { required: true })} required />
+                                    <input type="password" placeholder="password" className="input input-bordered" {...register("password", { required: true, minLength: 6 })} required />
+                                    {
+                                        errors?.password?.type == "minLength" && <p className="text-sm text-red-500 p-1">Password must be at least 6 character.</p>
+                                    }
                                 </div>
                                 <div className="form-control">
                                     <label className="label">
@@ -61,7 +101,10 @@ const SignUp = () => {
                                 </div>
 
                                 <div className="form-control mt-6">
-                                    <button className="btn bg-primary-c border-none text-white text-xl hover:bg-teal-500">Sign Up</button>
+                                    <button disabled={disable} className="btn bg-primary-c border-none text-white text-xl hover:bg-teal-500">Sign Up</button>
+                                    {
+                                        err && <p className="text-red-500 font-semibold text-center mt-2">{err}</p>
+                                    }
                                 </div>
                             </form>
                             <SocialLinks value="/login"></SocialLinks>

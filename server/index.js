@@ -8,8 +8,13 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 app.use(express.json());
-app.use(cors());
-
+app.use(cors({
+    origin: [
+        "http://localhost:5173",
+        'https://taste-haven-app.web.app'
+    ],
+    credentials: true
+}));
 
 const uri = `mongodb+srv://${process.env.MD_USER}:${process.env.MD_PASS}@cluster0.6kxgx.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
 
@@ -26,12 +31,30 @@ async function run() {
     try {
         // Connect the client to the server	(optional starting in v4.7)
         await client.connect();
+
+        const usersCollection = client.db("medicoDB").collection("users");
+
+        app.post("/users", async (req, res) => {
+            const data = req.body;
+            const filter = { email: data.email };
+            const option = { upsert: true };
+            const updateUser = {
+                $set: {
+                    email: data.email,
+                    userId: data.userId,
+                    role: data.role
+                }
+            }
+            const result = await usersCollection.updateOne(filter, updateUser, option);
+            res.send(result)
+        })
+
         // Send a ping to confirm a successful connection
         await client.db("admin").command({ ping: 1 });
         console.log("Pinged your deployment. You successfully connected to MongoDB!");
     } finally {
         // Ensures that the client will close when you finish/error
-        await client.close();
+        // await client.close();
     }
 }
 run().catch(console.dir);
