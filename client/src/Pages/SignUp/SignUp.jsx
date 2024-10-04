@@ -11,14 +11,14 @@ import { useState } from "react";
 
 const SignUp = () => {
     const userMutation = useUserPost();
-    const { loginInByEmailPass } = useAuthContext();
+    const { createAccountByEmailPass } = useAuthContext();
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [err, setError] = useState("");
     const [disable, setDisable] = useState(false)
 
     const onSubmit = async (data) => {
         setDisable(true)
-        loginInByEmailPass(data.email, data.password)
+        createAccountByEmailPass(data.email, data.password)
             .then(async (currentUser) => {
                 const imageFile = { image: data.image[0] };
                 const res = await axios.post(`https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_Imgbb}`,

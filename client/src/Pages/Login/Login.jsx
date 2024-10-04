@@ -2,10 +2,31 @@ import sideImage from "../../assets/login/sideImage.png"
 import bg from "../../assets/login/loginBg.jpg"
 import { useForm } from "react-hook-form";
 import SocialLinks from "../../Components/SocialLinks";
+import useAuthContext from "../../Hooks/useAuthContext";
+import { useState } from "react";
+import Swal from "sweetalert2";
 
 const Login = () => {
     const { register, handleSubmit, } = useForm();
-    const onSubmit = data => console.log(data);
+    const { loginByEmailAndPassword } = useAuthContext()
+    const [err, setErr] = useState("")
+    const onSubmit = data => {
+        console.log(data)
+        loginByEmailAndPassword(data.email, data.password)
+            .then(() => {
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Successfully Login",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+                setErr("")
+            })
+            .catch(() => {
+                setErr("Invalid Email or Password")
+            })
+    };
     return (
         <div className="bg-cover  min-h-screen bg-no-repeat "
             style={{
@@ -21,7 +42,7 @@ const Login = () => {
                         <div className="card   w-full flex-1 shrink-0 rounded shadow-2xl border border-gray-300">
                             <form onSubmit={handleSubmit(onSubmit)} className="card-body">
                                 <h1 className="text-4xl font-bold text-center mb-5">Sign In</h1>
-                                
+
                                 <div className="form-control">
                                     <label className="label">
                                         <span className="label-text text-xl font-semibold">Email</span>
@@ -34,10 +55,13 @@ const Login = () => {
                                     </label>
                                     <input type="password" placeholder="password" className="input input-bordered" {...register("password", { required: true })} required />
                                 </div>
-                              
-                       
+
+
                                 <div className="form-control mt-6">
                                     <button className="btn bg-primary-c border-none text-white text-xl hover:bg-teal-500">Login</button>
+                                    {
+                                        err && <p className="text-red-500 font-semibold text-center mt-2">{err}</p>
+                                    }
                                 </div>
                             </form>
                             <SocialLinks value="/sign-up"></SocialLinks>
