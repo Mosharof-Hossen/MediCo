@@ -1,11 +1,12 @@
+import AllCategories from "../../Components/AllCategories/AllCategories";
 import useAuthContext from "../../Hooks/useAuthContext";
 
 const Home = () => {
-    const {user} = useAuthContext();
+    const { user } = useAuthContext();
     console.log(user);
     return (
         <div>
-            Home
+            <AllCategories></AllCategories>
         </div>
     );
 };

@@ -33,6 +33,12 @@ async function run() {
         await client.connect();
 
         const usersCollection = client.db("medicoDB").collection("users");
+        const categoriesCollection = client.db("medicoDB").collection("categories");
+
+        app.get("/all-category", async (req, res) => {
+            const result = await categoriesCollection.find().toArray();
+            res.send(result)
+        })
 
         app.post("/users", async (req, res) => {
             const data = req.body;
