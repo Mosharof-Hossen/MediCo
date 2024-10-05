@@ -1,0 +1,722 @@
+[
+    {
+        "itemName": "Stethoscope",
+        "itemGenericName": "Stethoscope",
+        "shortDescription": "A medical device used for listening to internal sounds of a patient’s body.",
+        "image": "https://i.ibb.co.com/C88X7Ty/Stethoscope.jpg",
+        "category": "medical-equipment",
+        "company": "MediGear",
+        "itemMassUnit": 300,
+        "application": "Cardiology",
+        "perUnitPrice": 50,
+        "discountPercentage": 0,
+        "user": {
+            "email": "test@test.com",
+            "userId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
+        }
+    },
+    {
+        "itemName": "Blood Pressure Monitor",
+        "itemGenericName": "Sphygmomanometer",
+        "shortDescription": "A device used to measure blood pressure.",
+        "image": "https://i.ibb.co.com/k1FhHNN/Sphygmomanometer.jpg",
+        "category": "medical-equipment",
+        "company": "HealthTrack",
+        "itemMassUnit": 400,
+        "application": "Cardiovascular Monitoring",
+        "perUnitPrice": 70,
+        "discountPercentage": 10,
+        "user": {
+            "email": "test@test.com",
+            "userId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
+        }
+    },
+    {
+        "itemName": "Thermometer",
+        "itemGenericName": "Digital Thermometer",
+        "shortDescription": "A digital thermometer for quick and accurate temperature measurement.",
+        "image": "https://i.ibb.co.com/hZmb9MB/Thermometer.jpg",
+        "category": "medical-equipment",
+        "company": "MediTemp",
+        "itemMassUnit": 100,
+        "application": "Temperature Measurement",
+        "perUnitPrice": 15,
+        "discountPercentage": 0,
+        "user": {
+            "email": "test@test.com",
+            "userId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
+        }
+    },
+    {
+        "itemName": "Pulse Oximeter",
+        "itemGenericName": "Oximeter",
+        "shortDescription": "A non-invasive device to measure blood oxygen saturation.",
+        "image": "https://i.ibb.co.com/y0sLDn6/Pulse-Oximeter.jpg",
+        "category": "medical-equipment",
+        "company": "OxyHealth",
+        "itemMassUnit": 200,
+        "application": "Respiratory Monitoring",
+        "perUnitPrice": 25,
+        "discountPercentage": 5,
+        "user": {
+            "email": "test@test.com",
+            "userId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
+        }
+    },
+    {
+        "itemName": "Glucose Meter",
+        "itemGenericName": "Blood Glucose Monitor",
+        "shortDescription": "A device to monitor blood sugar levels in diabetes patients.",
+        "image": "https://i.ibb.co.com/JFnyXLj/Glucose-Meter.jpg",
+        "category": "medical-equipment",
+        "company": "DiabetesCare",
+        "itemMassUnit": 150,
+        "application": "Diabetes Management",
+        "perUnitPrice": 30,
+        "discountPercentage": 0,
+        "user": {
+            "email": "mosharofhossen1998@gmail.com",
+            "userId": "0eHxy6cp8bRXGg1oJniXDjyjwFj2"
+        }
+    },
+    {
+        "itemName": "Nebulizer",
+        "itemGenericName": "Portable Nebulizer",
+        "shortDescription": "A device that turns liquid medicine into mist for inhalation.",
+        "image": "https://i.ibb.co.com/xSf18Jr/Nebulizer.jpg",
+        "category": "medical-equipment",
+        "company": "RespiraTech",
+        "itemMassUnit": 800,
+        "application": "Respiratory Treatment",
+        "perUnitPrice": 90,
+        "discountPercentage": 15,
+        "user": {
+            "email": "test@test.com",
+            "userId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
+        }
+    },
+    {
+        "itemName": "First Aid Kit",
+        "itemGenericName": "Comprehensive First Aid Kit",
+        "shortDescription": "Essential items for immediate medical care in emergencies.",
+        "image": "https://i.ibb.co.com/zSyRf7T/First-Aid-Kit.jpg",
+        "category": "medical-equipment",
+        "company": "SafetyFirst",
+        "itemMassUnit": 1000,
+        "application": "Emergency Care",
+        "perUnitPrice": 35,
+        "discountPercentage": 10,
+        "user": {
+            "email": "test@test.com",
+            "userId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
+        }
+    },
+    {
+        "itemName": "Wheelchair",
+        "itemGenericName": "Manual Wheelchair",
+        "shortDescription": "A mobility device for individuals who have difficulty walking.",
+        "image": "https://i.ibb.co.com/FHwBbGj/Wheelchair.jpg",
+        "category": "medical-equipment",
+        "company": "MobilityPlus",
+        "itemMassUnit": 12000,
+        "application": "Mobility Assistance",
+        "perUnitPrice": 300,
+        "discountPercentage": 0,
+        "user": {
+            "email": "test@test.com",
+            "userId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
+        }
+    },
+    {
+        "itemName": "Blood Glucose Strips",
+        "itemGenericName": "Test Strips",
+        "shortDescription": "Test strips for measuring blood glucose levels.",
+        "image": "https://i.ibb.co.com/ZgTZcKZ/Blood-Glucose-Strips.jpg",
+        "category": "medical-equipment",
+        "company": "DiabetesCare",
+        "itemMassUnit": 50,
+        "application": "Diabetes Management",
+        "perUnitPrice": 20,
+        "discountPercentage": 0,
+        "user": {
+            "email": "test@test.com",
+            "userId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
+        }
+    },
+    {
+        "itemName": "Defibrillator",
+        "itemGenericName": "Automated External Defibrillator",
+        "shortDescription": "A device used to treat life-threatening cardiac arrhythmias.",
+        "image": "https://i.ibb.co.com/s5GSctc/Defibrillator.jpg",
+        "category": "medical-equipment",
+        "company": "CardioAid",
+        "itemMassUnit": 5000,
+        "application": "Cardiac Emergency",
+        "perUnitPrice": 1200,
+        "discountPercentage": 20,
+        "user": {
+            "email": "test@test.com",
+            "userId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
+        }
+    },
+    {
+        "itemName": "Surgical Scissors",
+        "itemGenericName": "Scissors",
+        "shortDescription": "Used in surgical procedures to cut tissue and other materials.",
+        "image": "https://i.ibb.co.com/qCXkZSw/Surgical-Scissors.jpg",
+        "category": "medical-equipment",
+        "company": "SurgiTools",
+        "itemMassUnit": 100,
+        "application": "Surgery",
+        "perUnitPrice": 10,
+        "discountPercentage": 0,
+        "user": {
+            "email": "mosharofhossen1998@gmail.com",
+            "userId": "0eHxy6cp8bRXGg1oJniXDjyjwFj2"
+        }
+    },
+    {
+        "itemName": "Cotton Swabs",
+        "itemGenericName": "Cotton Buds",
+        "shortDescription": "Soft cotton swabs for cleaning and applying ointments.",
+        "image": "https://i.ibb.co.com/VMpdYrM/Cotton-Swabs.jpg",
+        "category": "medical-equipment",
+        "company": "CleanCare",
+        "itemMassUnit": 100,
+        "application": "Hygiene",
+        "perUnitPrice": 5,
+        "discountPercentage": 0,
+        "user": {
+            "email": "test@test.com",
+            "userId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
+        }
+    },
+    {
+        "itemName": "Electrocardiogram (ECG) Machine",
+        "itemGenericName": "ECG Monitor",
+        "shortDescription": "A device that records the electrical activity of the heart.",
+        "image": "https://i.ibb.co.com/mG0WT1L/Electrocardiogram-ECG-Machine.jpg",
+        "category": "medical-equipment",
+        "company": "CardioMonitor",
+        "itemMassUnit": 1500,
+        "application": "Cardiac Monitoring",
+        "perUnitPrice": 800,
+        "discountPercentage": 15,
+        "user": {
+            "email": "test@test.com",
+            "userId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
+        }
+    },
+    {
+        "itemName": "Inhaler",
+        "itemGenericName": "Asthma Inhaler",
+        "shortDescription": "A device used to deliver medication directly into the lungs.",
+        "image": "https://i.ibb.co.com/WfQNYTM/Inhaler.jpg",
+        "category": "medical-equipment",
+        "company": "RespiraCare",
+        "itemMassUnit": 50,
+        "application": "Respiratory Care",
+        "perUnitPrice": 20,
+        "discountPercentage": 0,
+        "user": {
+            "email": "test@test.com",
+            "userId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
+        }
+    },
+    {
+        "itemName": "Otoscope",
+        "itemGenericName": "Ear Examination Device",
+        "shortDescription": "An instrument used to look into the ears of a patient.",
+        "image": "https://i.ibb.co.com/N6H90f6/Otoscope.jpg",
+        "category": "medical-equipment",
+        "company": "ExamTools",
+        "itemMassUnit": 200,
+        "application": "ENT Examination",
+        "perUnitPrice": 75,
+        "discountPercentage": 5,
+        "user": {
+            "email": "mosharofhossen1998@gmail.com",
+            "userId": "0eHxy6cp8bRXGg1oJniXDjyjwFj2"
+        }
+    },
+    {
+        "itemName": "Paracetamol 500mg",
+        "itemGenericName": "Paracetamol",
+        "shortDescription": "Paracetamol 500mg is a common pain reliever and fever reducer.",
+        "image": "https://i.ibb.co.com/YhH1WpM/Paracetamol-500mg.jpg",
+        "category": "medicines",
+        "company": "MediPharma",
+        "itemMassUnit": 500,
+        "application": "Pain Relief",
+        "perUnitPrice": 10,
+        "discountPercentage": 0,
+        "user": {
+            "email": "test@test.com",
+            "userId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
+        }
+    },
+    {
+        "itemName": "Ibuprofen 200mg",
+        "itemGenericName": "Ibuprofen",
+        "shortDescription": "Ibuprofen 200mg is a non-steroidal anti-inflammatory drug (NSAID) used to relieve pain and reduce inflammation.",
+        "image": "https://i.ibb.co.com/GMYRZ2h/Ibuprofen-200mg.jpg",
+        "category": "medicines",
+        "company": "MediPharma",
+        "itemMassUnit": 500,
+        "application": "Pain Relief",
+        "perUnitPrice": 12,
+        "discountPercentage": 5,
+        "user": {
+            "email": "test@test.com",
+            "userId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
+        }
+    },
+    {
+        "itemName": "Aspirin 300mg",
+        "itemGenericName": "Aspirin",
+        "shortDescription": "Aspirin 300mg is used for pain relief, fever reduction, and anti-inflammatory effects.",
+        "image": "https://i.ibb.co.com/27m8DC9/Aspirin-300mg.jpg",
+        "category": "medicines",
+        "company": "PharmaCare",
+        "itemMassUnit": 300,
+        "application": "Pain Relief",
+        "perUnitPrice": 8,
+        "discountPercentage": 0,
+        "user": {
+            "email": "test@test.com",
+            "userId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
+        }
+    },
+    {
+        "itemName": "Amoxicillin 500mg",
+        "itemGenericName": "Amoxicillin",
+        "shortDescription": "Amoxicillin 500mg is a penicillin antibiotic used to treat various bacterial infections.",
+        "image": "https://i.ibb.co.com/V9x2khS/Amoxicillin-500mg.jpg",
+        "category": "medicines",
+        "company": "MediPharma",
+        "itemMassUnit": 500,
+        "application": "Antibiotic",
+        "perUnitPrice": 15,
+        "discountPercentage": 10,
+        "user": {
+            "email": "test@test.com",
+            "userId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
+        }
+    },
+    {
+        "itemName": "Loratadine 10mg",
+        "itemGenericName": "Loratadine",
+        "shortDescription": "Loratadine 10mg is an antihistamine used to relieve allergy symptoms.",
+        "image": "https://i.ibb.co.com/3YXbK6q/Loratadine-10mg.jpg",
+        "category": "medicines",
+        "company": "AllergyRelief",
+        "itemMassUnit": 30,
+        "application": "Allergy Relief",
+        "perUnitPrice": 5,
+        "discountPercentage": 0,
+        "user": {
+            "email": "mosharofhossen1998@gmail.com",
+            "userId": "0eHxy6cp8bRXGg1oJniXDjyjwFj2"
+        }
+    },
+    {
+        "itemName": "Vitamin C 1000mg",
+        "itemGenericName": "Ascorbic Acid",
+        "shortDescription": "Vitamin C 1000mg is an essential vitamin for immune support.",
+        "image": "https://i.ibb.co.com/d7xkfRt/Vitamin-C-1000mg.jpg",
+        "category": "supplements",
+        "company": "NutriLife",
+        "itemMassUnit": 60,
+        "application": "Immune Support",
+        "perUnitPrice": 25,
+        "discountPercentage": 0,
+        "user": {
+            "email": "test@test.com",
+            "userId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
+        }
+    },
+    {
+        "itemName": "Omega-3 Fish Oil",
+        "itemGenericName": "Fish Oil Supplement",
+        "shortDescription": "Omega-3 Fish Oil is beneficial for heart health and joint function.",
+        "image": "https://i.ibb.co.com/r4sD3Zs/Omega-3-Fish-Oil.jpg",
+        "category": "supplements",
+        "company": "NutriHealth",
+        "itemMassUnit": 90,
+        "application": "Heart Health",
+        "perUnitPrice": 30,
+        "discountPercentage": 10,
+        "user": {
+            "email": "test@test.com",
+            "userId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
+        }
+    },
+    {
+        "itemName": "Calcium 600mg",
+        "itemGenericName": "Calcium Supplement",
+        "shortDescription": "Calcium 600mg is essential for bone health and density.",
+        "image": "https://i.ibb.co.com/vhzwVw6/Calcium-600mg.jpg",
+        "category": "supplements",
+        "company": "BoneCare",
+        "itemMassUnit": 120,
+        "application": "Bone Health",
+        "perUnitPrice": 18,
+        "discountPercentage": 0,
+        "user": {
+            "email": "test@test.com",
+            "userId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
+        }
+    },
+    {
+        "itemName": "Magnesium 400mg",
+        "itemGenericName": "Magnesium Supplement",
+        "shortDescription": "Magnesium 400mg helps with muscle function and relaxation.",
+        "image": "https://i.ibb.co.com/SnyVsjT/Magnesium-400mg.jpg",
+        "category": "supplements",
+        "company": "NutriSupport",
+        "itemMassUnit": 100,
+        "application": "Muscle Support",
+        "perUnitPrice": 22,
+        "discountPercentage": 5,
+        "user": {
+            "email": "test@test.com",
+            "userId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
+        }
+    },
+    {
+        "itemName": "Zinc 25mg",
+        "itemGenericName": "Zinc Supplement",
+        "shortDescription": "Zinc 25mg supports immune function and skin health.",
+        "image": "https://i.ibb.co.com/Nj4rnDF/Zinc-25mg.jpg",
+        "category": "supplements",
+        "company": "ImmunePlus",
+        "itemMassUnit": 90,
+        "application": "Immune Support",
+        "perUnitPrice": 15,
+        "discountPercentage": 0,
+        "user": {
+            "email": "mosharofhossen1998@gmail.com",
+            "userId": "0eHxy6cp8bRXGg1oJniXDjyjwFj2"
+        }
+    },
+    {
+        "itemName": "Baby Diapers (Pack of 50)",
+        "itemGenericName": "Disposable Diapers",
+        "shortDescription": "Super absorbent diapers for babies.",
+        "image": "https://i.ibb.co.com/PztsdxW/Baby-Diapers-Pack-of-50.jpg",
+        "category": "baby-care",
+        "company": "BabySoft",
+        "itemMassUnit": 1000,
+        "application": "Baby Care",
+        "perUnitPrice": 25,
+        "discountPercentage": 0,
+        "user": {
+            "email": "test@test.com",
+            "userId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
+        }
+    },
+    {
+        "itemName": "Baby Wipes (Pack of 100)",
+        "itemGenericName": "Wet Wipes",
+        "shortDescription": "Gentle and soft wipes for cleaning babies.",
+        "image": "https://i.ibb.co.com/NmfHf0V/Baby-Wipes-Pack-of-100.jpg",
+        "category": "baby-care",
+        "company": "SoftCare",
+        "itemMassUnit": 500,
+        "application": "Baby Hygiene",
+        "perUnitPrice": 10,
+        "discountPercentage": 5,
+        "user": {
+            "email": "test@test.com",
+            "userId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
+        }
+    },
+    {
+        "itemName": "Baby Lotion",
+        "itemGenericName": "Moisturizing Lotion",
+        "shortDescription": "Gentle lotion for baby’s sensitive skin.",
+        "image": "https://i.ibb.co.com/kBsS0mL/be-Baby-Lotion.jpg",
+        "category": "baby-care",
+        "company": "GentleTouch",
+        "itemMassUnit": 200,
+        "application": "Skin Moisturization",
+        "perUnitPrice": 15,
+        "discountPercentage": 0,
+        "user": {
+            "email": "test@test.com",
+            "userId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
+        }
+    },
+    {
+        "itemName": "Baby Shampoo",
+        "itemGenericName": "Gentle Shampoo",
+        "shortDescription": "Tear-free shampoo for babies.",
+        "image": "https://i.ibb.co.com/JB5mPDs/Baby-Shampoo.jpg",
+        "category": "baby-care",
+        "company": "BabyCare",
+        "itemMassUnit": 200,
+        "application": "Hair Care",
+        "perUnitPrice": 12,
+        "discountPercentage": 0,
+        "user": {
+            "email": "test@test.com",
+            "userId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
+        }
+    },
+    {
+        "itemName": "Baby Powder",
+        "itemGenericName": "Cornstarch Powder",
+        "shortDescription": "Soothing powder to keep baby dry.",
+        "image": "https://i.ibb.co.com/PNT5WVQ/Baby-Powder.jpg",
+        "category": "baby-care",
+        "company": "SoftSkin",
+        "itemMassUnit": 200,
+        "application": "Skin Care",
+        "perUnitPrice": 8,
+        "discountPercentage": 5,
+        "user": {
+            "email": "mosharofhossen1998@gmail.com",
+            "userId": "0eHxy6cp8bRXGg1oJniXDjyjwFj2"
+        }
+    },
+    {
+        "itemName": "Antiseptic Wipes (Pack of 50)",
+        "itemGenericName": "Antiseptic Wipes",
+        "shortDescription": "Antiseptic wipes for cleaning wounds and preventing infection.",
+        "image": "https://i.ibb.co.com/pnP2sv0/Antiseptic-Wipes.jpg",
+        "category": "first-aid",
+        "company": "CleanHands",
+        "itemMassUnit": 50,
+        "application": "Infection Prevention",
+        "perUnitPrice": 10,
+        "discountPercentage": 0,
+        "user": {
+            "email": "test@test.com",
+            "userId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
+        }
+    },
+    {
+        "itemName": "Adhesive Bandages (Pack of 100)",
+        "itemGenericName": "Band-aids",
+        "shortDescription": "Assorted adhesive bandages for minor cuts and scrapes.",
+        "image": "https://i.ibb.co.com/P9QRfCd/Adhesive-Bandages.jpg",
+        "category": "first-aid",
+        "company": "WoundCare",
+        "itemMassUnit": 100,
+        "application": "Wound Protection",
+        "perUnitPrice": 8,
+        "discountPercentage": 5,
+        "user": {
+            "email": "test@test.com",
+            "userId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
+        }
+    },
+    {
+        "itemName": "Elastic Bandage 10cm",
+        "itemGenericName": "Compression Bandage",
+        "shortDescription": "Elastic bandage for support and compression of injuries.",
+        "image": "https://i.ibb.co.com/f409nrh/Elastic-Bandage-10cm.jpg",
+        "category": "first-aid",
+        "company": "FlexiCare",
+        "itemMassUnit": 100,
+        "application": "Injury Support",
+        "perUnitPrice": 6,
+        "discountPercentage": 0,
+        "user": {
+            "email": "test@test.com",
+            "userId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
+        }
+    },
+    {
+        "itemName": "Instant Cold Pack",
+        "itemGenericName": "Cold Compress",
+        "shortDescription": "Instant cold pack for reducing swelling and pain.",
+        "image": "https://i.ibb.co.com/7VWygL1/Instant-Cold-Pack.jpg",
+        "category": "first-aid",
+        "company": "QuickRelief",
+        "itemMassUnit": 150,
+        "application": "Pain Relief",
+        "perUnitPrice": 4,
+        "discountPercentage": 0,
+        "user": {
+            "email": "test@test.com",
+            "userId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
+        }
+    },
+    {
+        "itemName": "Burn Cream",
+        "itemGenericName": "Burn Relief Ointment",
+        "shortDescription": "Soothing cream for minor burns and skin irritations.",
+        "image": "https://i.ibb.co.com/m9W6gdC/Burn-Cream.jpg",
+        "category": "first-aid",
+        "company": "ReliefCare",
+        "itemMassUnit": 100,
+        "application": "Burn Treatment",
+        "perUnitPrice": 12,
+        "discountPercentage": 0,
+        "user": {
+            "email": "mosharofhossen1998@gmail.com",
+            "userId": "0eHxy6cp8bRXGg1oJniXDjyjwFj2"
+        }
+    },
+    {
+        "itemName": "Arnica Montana 30C",
+        "itemGenericName": "Homeopathic Remedy",
+        "shortDescription": "Arnica Montana is used for bruises and muscle soreness.",
+        "image": "https://i.ibb.co.com/dBNn9Yd/Arnica-Montana-30-C.jpg",
+        "category": "homeopathy",
+        "company": "HomeoCare",
+        "itemMassUnit": 30,
+        "application": "Pain Relief",
+        "perUnitPrice": 15,
+        "discountPercentage": 0,
+        "user": {
+            "email": "test@test.com",
+            "userId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
+        }
+    },
+    {
+        "itemName": "Nux Vomica 30C",
+        "itemGenericName": "Homeopathic Remedy",
+        "shortDescription": "Nux Vomica is used for digestive issues and nausea.",
+        "image": "https://i.ibb.co.com/2NL7kjR/Nux-Vomica-30-C.jpg",
+        "category": "homeopathy",
+        "company": "HomeoHealth",
+        "itemMassUnit": 30,
+        "application": "Digestive Health",
+        "perUnitPrice": 12,
+        "discountPercentage": 5,
+        "user": {
+            "email": "test@test.com",
+            "userId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
+        }
+    },
+    {
+        "itemName": "Chamomilla 30C",
+        "itemGenericName": "Homeopathic Remedy",
+        "shortDescription": "Chamomilla is used for teething pain and irritability in children.",
+        "image": "https://i.ibb.co.com/DKzPpL4/Chamomilla-30-C.jpg",
+        "category": "homeopathy",
+        "company": "BabyHomeo",
+        "itemMassUnit": 30,
+        "application": "Teething Relief",
+        "perUnitPrice": 10,
+        "discountPercentage": 0,
+        "user": {
+            "email": "test@test.com",
+            "userId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
+        }
+    },
+    {
+        "itemName": "Aconite 30C",
+        "itemGenericName": "Homeopathic Remedy",
+        "shortDescription": "Aconite is used for anxiety and panic attacks.",
+        "image": "https://i.ibb.co.com/SwHwy0W/Aconite-30-C.jpg",
+        "category": "homeopathy",
+        "company": "HomeoAid",
+        "itemMassUnit": 30,
+        "application": "Anxiety Relief",
+        "perUnitPrice": 8,
+        "discountPercentage": 0,
+        "user": {
+            "email": "test@test.com",
+            "userId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
+        }
+    },
+    {
+        "itemName": "Rhus Tox 30C",
+        "itemGenericName": "Homeopathic Remedy",
+        "shortDescription": "Rhus Tox is used for joint pain and stiffness.",
+        "image": "https://i.ibb.co.com/hCf7rmP/Rhus-Tox-30-C.jpg",
+        "category": "homeopathy",
+        "company": "JointCare",
+        "itemMassUnit": 30,
+        "application": "Joint Health",
+        "perUnitPrice": 12,
+        "discountPercentage": 0,
+        "user": {
+            "email": "mosharofhossen1998@gmail.com",
+            "userId": "0eHxy6cp8bRXGg1oJniXDjyjwFj2"
+        }
+    },
+    {
+        "itemName": "Belladonna 30C",
+        "itemGenericName": "Homeopathic Remedy",
+        "shortDescription": "Belladonna is used for fever and inflammation.",
+        "image": "https://i.ibb.co.com/yPShf7M/Belladonna-30-C.jpg",
+        "category": "homeopathy",
+        "company": "HomeoRelief",
+        "itemMassUnit": 30,
+        "application": "Fever Reduction",
+        "perUnitPrice": 10,
+        "discountPercentage": 0,
+        "user": {
+            "email": "test@test.com",
+            "userId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
+        }
+    },
+    {
+        "itemName": "Ignatia 30C",
+        "itemGenericName": "Homeopathic Remedy",
+        "shortDescription": "Ignatia is used for emotional stress and grief.",
+        "image": "https://i.ibb.co.com/yF0Zhw8/Ignatia-30-C.jpg",
+        "category": "homeopathy",
+        "company": "EmotionalHealth",
+        "itemMassUnit": 30,
+        "application": "Emotional Well-being",
+        "perUnitPrice": 15,
+        "discountPercentage": 5,
+        "user": {
+            "email": "test@test.com",
+            "userId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
+        }
+    },
+    {
+        "itemName": "Hypericum 30C",
+        "itemGenericName": "Homeopathic Remedy",
+        "shortDescription": "Hypericum is used for nerve pain and injuries.",
+        "image": "https://i.ibb.co.com/FYkvtBQ/Hypericum-30-C.jpg",
+        "category": "homeopathy",
+        "company": "NerveCare",
+        "itemMassUnit": 30,
+        "application": "Nerve Health",
+        "perUnitPrice": 12,
+        "discountPercentage": 0,
+        "user": {
+            "email": "test@test.com",
+            "userId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
+        }
+    },
+    {
+        "itemName": "Sepia 30C",
+        "itemGenericName": "Homeopathic Remedy",
+        "shortDescription": "Sepia is used for hormonal imbalances and mood swings.",
+        "image": "https://i.ibb.co.com/tCN9MzH/Sepia-30-C.jpg",
+        "category": "homeopathy",
+        "company": "HormoneBalance",
+        "itemMassUnit": 30,
+        "application": "Hormonal Health",
+        "perUnitPrice": 14,
+        "discountPercentage": 0,
+        "user": {
+            "email": "test@test.com",
+            "userId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
+        }
+    },
+    {
+        "itemName": "Sulphur 30C",
+        "itemGenericName": "Homeopathic Remedy",
+        "shortDescription": "Sulphur is used for skin conditions and allergies.",
+        "image": "https://i.ibb.co.com/2g7wKfj/Sulphur-30-C.jpg",
+        "category": "homeopathy",
+        "company": "SkinCare",
+        "itemMassUnit": 30,
+        "application": "Skin Health",
+        "perUnitPrice": 10,
+        "discountPercentage": 5,
+        "user": {
+            "email": "test@test.com",
+            "userId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
+        }
+    }
+]
