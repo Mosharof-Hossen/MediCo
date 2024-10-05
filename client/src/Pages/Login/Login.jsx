@@ -5,11 +5,14 @@ import SocialLinks from "../../Components/SocialLinks";
 import useAuthContext from "../../Hooks/useAuthContext";
 import { useState } from "react";
 import Swal from "sweetalert2";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Login = () => {
     const { register, handleSubmit, } = useForm();
     const { loginByEmailAndPassword } = useAuthContext()
     const [err, setErr] = useState("")
+    const location = useLocation();
+    const navigate = useNavigate()
     const onSubmit = data => {
         console.log(data)
         loginByEmailAndPassword(data.email, data.password)
@@ -22,6 +25,8 @@ const Login = () => {
                     timer: 1500
                 });
                 setErr("")
+                navigate(location?.state ? location.state : "/")
+
             })
             .catch(() => {
                 setErr("Invalid Email or Password")

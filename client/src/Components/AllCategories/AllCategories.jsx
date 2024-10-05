@@ -10,7 +10,6 @@ const AllCategories = () => {
     if (isError) {
         return
     }
-    console.log(data);
     return (
         <div className="p-5">
             <SectionTitle heading="Explore Our Categories" subHeading="Browse through our wide range of health and wellness products to find exactly what you need"></SectionTitle>

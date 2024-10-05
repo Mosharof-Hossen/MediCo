@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaGithub, FaGoogle } from "react-icons/fa";
 import PropTypes from 'prop-types';
 import useAuthContext from "../Hooks/useAuthContext";
@@ -7,6 +7,9 @@ import useUserPost from "../API/useUserPost";
 const SocialLinks = (link) => {
     const userMutation = useUserPost();
     const { googleLogin, githubLogin } = useAuthContext();
+    const navigate = useNavigate();
+    const location = useLocation();
+    console.log(location);
 
     const handleGoogleLogin = () => {
         googleLogin()
@@ -16,6 +19,7 @@ const SocialLinks = (link) => {
                     userId: currentUser.user.uid,
                     role: "user"
                 })
+                navigate(location?.state ? location.state : "/")
             })
             .catch(err => console.log(err))
     }
@@ -27,6 +31,7 @@ const SocialLinks = (link) => {
                     userId: currentUser.user.uid,
                     role: "user"
                 })
+                navigate(location?.state ? location.state : "/")
             })
             .catch(err => console.log(err))
     }

@@ -1,13 +1,17 @@
-import { useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import useFetchProductByCategory from '../../API/useFetchProductByCategory';
 import { FaEye } from 'react-icons/fa';
 import SectionTitle from '../../Components/SectionTitle/SectionTitle';
 import ItemModal from './ItemModal';
 import { useState } from 'react';
+import useAuthContext from '../../Hooks/useAuthContext';
 
 const Category = () => {
     const category = useParams();
+    const { user } = useAuthContext();
     const [viewItem, setViewItem] = useState({});
+    const navigate = useNavigate();
+    const location = useLocation();
     const { data: products, isError, isLoading } = useFetchProductByCategory(category.category)
 
     if (isLoading) {
@@ -16,12 +20,15 @@ const Category = () => {
     if (isError) {
         return
     }
-    const handleItemView = (id) => {
-        const filteredItem = products.find(item => item._id == id);
-        setViewItem(filteredItem);
+    const handleItemView = (item) => {
+        setViewItem(item);
         document.getElementById('my_modal_1').showModal()
     }
-
+    const handleCart = () => {
+        if (!user) {
+            navigate("/login", { state: location.pathname });
+        }
+    }
     return (
         <div className='px-10 space-y-10'>
             <SectionTitle heading={"Quality Health Products You Can Trust"} subHeading={"Discover top-rated products from trusted vendors to support your health and well-being."}></SectionTitle>
@@ -55,8 +62,8 @@ const Category = () => {
                                     <td>{item.itemName}</td>
                                     <td>{item.company}</td>
                                     <td>$ {item.perUnitPrice}</td>
-                                    <td><button onClick={() => handleItemView(item._id)} className='flex items-center '><FaEye className='text-2xl text-primary-c' /></button></td>
-                                    <td><button className='flex items-center bg-primary-c text-white px-3 py-2 rounded'>Add to Cart</button></td>
+                                    <td><button onClick={() => handleItemView(item)} className='flex items-center '><FaEye className='text-2xl text-primary-c' /></button></td>
+                                    <td><button onClick={handleCart} className='flex items-center bg-primary-c text-white px-3 py-2 rounded'>Add to Cart</button></td>
                                 </tr>)
                             }
                         </tbody>

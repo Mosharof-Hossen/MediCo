@@ -2,7 +2,6 @@ import PropTypes from 'prop-types';
 
 const ItemModal = ({ item }) => {
     const { image, itemName, company, itemGenericName, itemMassUnit, discountPercentage, category, perUnitPrice, application, shortDescription } = item
-    console.log(item);
     return (
         <div className="modal-box w-11/12 max-w-3xl space-y-5">
             <img src={image} alt="" className='rounded'/>
