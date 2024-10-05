@@ -1,9 +1,13 @@
 import { useParams } from 'react-router-dom';
 import useFetchProductByCategory from '../../API/useFetchProductByCategory';
 import { FaEye } from 'react-icons/fa';
+import SectionTitle from '../../Components/SectionTitle/SectionTitle';
+import ItemModal from './ItemModal';
+import { useState } from 'react';
 
 const Category = () => {
     const category = useParams();
+    const [viewItem, setViewItem] = useState({});
     const { data: products, isError, isLoading } = useFetchProductByCategory(category.category)
 
     if (isLoading) {
@@ -12,10 +16,15 @@ const Category = () => {
     if (isError) {
         return
     }
-    console.log(products);
-    return (
-        <div>
+    const handleItemView = (id) => {
+        const filteredItem = products.find(item => item._id == id);
+        setViewItem(filteredItem);
+        document.getElementById('my_modal_1').showModal()
+    }
 
+    return (
+        <div className='px-10 space-y-10'>
+            <SectionTitle heading={"Quality Health Products You Can Trust"} subHeading={"Discover top-rated products from trusted vendors to support your health and well-being."}></SectionTitle>
             <div>
                 <div className="overflow-x-auto">
                     <table className="table table-zebra">
@@ -46,15 +55,17 @@ const Category = () => {
                                     <td>{item.itemName}</td>
                                     <td>{item.company}</td>
                                     <td>$ {item.perUnitPrice}</td>
-                                    <td><button className='flex items-center '><FaEye className='text-2xl text-primary-c' /></button></td>
+                                    <td><button onClick={() => handleItemView(item._id)} className='flex items-center '><FaEye className='text-2xl text-primary-c' /></button></td>
                                     <td><button className='flex items-center bg-primary-c text-white px-3 py-2 rounded'>Add to Cart</button></td>
                                 </tr>)
                             }
-
                         </tbody>
                     </table>
                 </div>
             </div>
+            <dialog id="my_modal_1" className="modal">
+                <ItemModal item={viewItem}></ItemModal>
+            </dialog>
         </div>
     );
 };
