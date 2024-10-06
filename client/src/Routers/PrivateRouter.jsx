@@ -1,10 +1,9 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import useAuthContext from '../Hooks/useAuthContext';
 import { Navigate } from 'react-router-dom';
 
 const PrivateRouter = ({ children }) => {
-    const { user, loading } = useAuthContext();
+    const { user,  } = useAuthContext();
     // if(loading){
     //         return <div className='text-center'><span className='loading loading-bars loading-lg'></span></div>
     // }

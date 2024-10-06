@@ -5,6 +5,9 @@ import SectionTitle from '../../Components/SectionTitle/SectionTitle';
 import ItemModal from './ItemModal';
 import { useState } from 'react';
 import useAuthContext from '../../Hooks/useAuthContext';
+import useFetchPostItemToCart from '../../API/useFetchPostItemToCart';
+
+
 
 const Category = () => {
     const category = useParams();
@@ -12,6 +15,8 @@ const Category = () => {
     const [viewItem, setViewItem] = useState({});
     const navigate = useNavigate();
     const location = useLocation();
+    const addItemToCartMutation = useFetchPostItemToCart();
+
     const { data: products, isError, isLoading } = useFetchProductByCategory(category.category)
 
     if (isLoading) {
@@ -24,9 +29,15 @@ const Category = () => {
         setViewItem(item);
         document.getElementById('my_modal_1').showModal()
     }
-    const handleCart = () => {
+    const handleCart = (item) => {
         if (!user) {
             navigate("/login", { state: location.pathname });
+        }
+        else {
+            addItemToCartMutation.mutate({
+                useEmail: user.email,
+                itemId: item._id
+            })
         }
     }
     return (
@@ -63,7 +74,7 @@ const Category = () => {
                                     <td>{item.company}</td>
                                     <td>$ {item.perUnitPrice}</td>
                                     <td><button onClick={() => handleItemView(item)} className='flex items-center '><FaEye className='text-2xl text-primary-c' /></button></td>
-                                    <td><button onClick={handleCart} className='flex items-center bg-primary-c text-white px-3 py-2 rounded'>Add to Cart</button></td>
+                                    <td><button onClick={() => handleCart(item)} className='flex items-center bg-primary-c text-white px-3 py-2 rounded'>Add to Cart</button></td>
                                 </tr>)
                             }
                         </tbody>

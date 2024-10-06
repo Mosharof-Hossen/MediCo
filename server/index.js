@@ -35,6 +35,7 @@ async function run() {
         const usersCollection = client.db("medicoDB").collection("users");
         const categoriesCollection = client.db("medicoDB").collection("categories");
         const itemsCollection = client.db("medicoDB").collection("items");
+        const cartCollection = client.db("medicoDB").collection("cart");
 
         app.get("/all-category", async (req, res) => {
             const result = await categoriesCollection.find().toArray();
@@ -60,6 +61,12 @@ async function run() {
             const category = req.params.category;
             console.log(category);
             const result = await itemsCollection.find({ category: category }).toArray();
+            res.send(result)
+        })
+
+        app.post(`/addToCart`, async (req, res) => {
+            const item = req.body
+            const result = await cartCollection.insertOne(item);
             res.send(result)
         })
 

@@ -1,6 +1,6 @@
 import { Link, NavLink } from "react-router-dom";
 import "./Navbar.css"
-import { FaRegUser } from "react-icons/fa";
+import { FaRegUser, FaShoppingCart } from "react-icons/fa";
 import logo from "../../assets/logo.png"
 import useAuthContext from "../../Hooks/useAuthContext";
 import defaultUser from "../../assets/login/user.png"
@@ -60,7 +60,16 @@ const Navbar = () => {
                         }
                     </ul>
                 </div>
-                <div className="navbar-end">
+                <div className="navbar-end gap-5">
+                    {
+                        user &&
+                        <div className="indicator">
+                            <span className="indicator-item ">5</span>
+                            <div className=" grid w-10 h-5 place-items-center">
+                                <FaShoppingCart className="text-2xl"/>
+                            </div>
+                        </div>
+                    }
                     {
                         user ?
                             <div className="dropdown dropdown-end bg-primary-c">
