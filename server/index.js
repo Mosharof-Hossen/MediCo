@@ -65,9 +65,18 @@ async function run() {
         })
 
         app.get("/items", async (req, res) => {
-            const query = req.query;
-            console.log(query.selectedCategories);
-            const result = await itemsCollection.find(query?.selectedCategories?.length > 0 ? { category: { $in: query.selectedCategories } } : {}).toArray();
+            console.log(req.query);
+            const selectedCategories = req.query.selectedCategories ? req.query.selectedCategories : [];
+            const isDiscounted = req.query.isDiscounted === "true";
+            const query = {};
+            if (selectedCategories.length > 0) {
+                query.category = { $in: selectedCategories };
+            }
+            if (isDiscounted) {
+                query.discountPercentage = { $gt: 0 };
+            }
+            console.log(query);
+            const result = await itemsCollection.find(query).toArray();
             res.send(result);
         })
 

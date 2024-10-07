@@ -7,18 +7,20 @@ import { useForm } from "react-hook-form";
 const Shop = () => {
     const { register, watch } = useForm({
         defaultValues: {
-            categories: []
+            categories: [],
+            discounted: false,
         }
     })
     const selectedCategories = watch("categories");
+    const isDiscounted = watch("discounted");
 
-    const { data, isLoading: dataLoading, isError } = useFetchGetItem(selectedCategories);
+    const { data, isLoading: dataLoading, isError } = useFetchGetItem(selectedCategories, isDiscounted);
     const { data: categories, isError: categoryError, isLoading: categoryLoading } = useFetchGetAllCategories();
 
     if (isError || categoryError) {
         return
     }
-    console.log(categories);
+    console.log(data);
 
     return (
         <div>
@@ -57,16 +59,18 @@ const Shop = () => {
                                                 <div key={category._id} className="form-control">
                                                     <label className="label cursor-pointer flex justify-start gap-3">
                                                         <input value={category.categoryNameId} {...register('categories')} type="checkbox" className="checkbox" />
-
                                                         <p>{category.categoryName}</p>
-
                                                     </label>
-
                                                 </div>
                                             )
                                     }
                                 </form>
                             </div>
+                            <label className="label cursor-pointer flex justify-start gap-3">
+                                <input  {...register('discounted')} type="checkbox" className="checkbox" />
+                                <h4 className="text-2xl font-bold">Discount</h4>
+                            </label>
+
                         </div>
                     </div>
                 </div>
