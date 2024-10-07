@@ -69,6 +69,8 @@ async function run() {
             const selectedCategories = req.query.selectedCategories ? req.query.selectedCategories : [];
             const isDiscounted = req.query.isDiscounted === "true";
             const searchQuery = req.query.searchQuery || "";
+            const sortOption = req.query.sort || "name";
+
             const query = {};
             if (selectedCategories.length > 0) {
                 query.category = { $in: selectedCategories };
@@ -79,8 +81,16 @@ async function run() {
             if (searchQuery) {
                 query.itemName = { $regex: searchQuery, $options: "i" }
             }
-            console.log(query);
-            const result = await itemsCollection.find(query).toArray();
+
+            const sortCriteria = {};
+            if (sortOption == "low-to-high") {
+                sortCriteria.perUnitPrice = 1;
+            } else if (sortOption == "high-to-low") {
+                sortCriteria.perUnitPrice = -1;
+            }
+
+            console.log(sortCriteria);
+            const result = await itemsCollection.find(query).sort(sortCriteria).toArray();
             res.send(result);
         })
 

@@ -10,13 +10,16 @@ const Shop = () => {
             categories: [],
             discounted: false,
             search: '',
+            sort: ""
         }
     })
     const selectedCategories = watch("categories");
     const isDiscounted = watch("discounted");
     const searchQuery = watch('search');
+    const sort = watch("sort")
+    console.log(sort);
 
-    const { data, isLoading: dataLoading, isError } = useFetchGetItem(selectedCategories, isDiscounted, searchQuery);
+    const { data, isLoading: dataLoading, isError } = useFetchGetItem(selectedCategories, isDiscounted, searchQuery, sort);
     const { data: categories, isError: categoryError, isLoading: categoryLoading } = useFetchGetAllCategories();
 
     if (isError || categoryError) {
@@ -46,9 +49,20 @@ const Shop = () => {
                                 </svg>
                             </label>
                         </div>
-                        <label htmlFor="my-drawer-2" className="btn mr-auto mx-5 drawer-button lg:hidden">
-                            Filter <FaAngleDoubleRight className="text-2xl" />
-                        </label>
+                        <div className="flex  items-center">
+                            <label htmlFor="my-drawer-2" className="btn mr-auto mx-5 drawer-button lg:hidden">
+                                Filter <FaAngleDoubleRight className="text-2xl" />
+                            </label>
+                            <div className="flex justify-center items-center mx-5 text-gray-500">
+                                <span className="w-24">Sort by:</span>
+                                <select  {...register("sort")} className="select select-bordered w-full max-w-xs">
+                                    <option value={sort} disabled >Select an Option</option>
+                                    <option value={"low-to-high"}>Price: Low to High</option>
+                                    <option value={"high-to-low"}>Price: High to Low</option>
+                                </select>
+
+                            </div>
+                        </div>
                     </div>
                     {
                         dataLoading ?

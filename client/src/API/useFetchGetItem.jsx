@@ -1,11 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxios from "../Hooks/useAxios";
 
-const useFetchGetItem = (categories, isDiscounted, searchQuery) => {
+const useFetchGetItem = (categories, isDiscounted, searchQuery, sort) => {
     const axios = useAxios();
-    console.log(categories);
     return useQuery({
-        queryKey: ['items', categories, isDiscounted, searchQuery],
+        queryKey: ['items', categories, isDiscounted, searchQuery, sort],
         queryFn: async () => {
 
             // const queryString = categories.join(",");
@@ -13,7 +12,8 @@ const useFetchGetItem = (categories, isDiscounted, searchQuery) => {
                 params: {
                     selectedCategories: categories,
                     isDiscounted: isDiscounted,
-                    searchQuery: searchQuery
+                    searchQuery: searchQuery,
+                    sort: sort
                 }
             })
             return res.data
