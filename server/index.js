@@ -65,7 +65,9 @@ async function run() {
         })
 
         app.get("/items", async (req, res) => {
-            const result = await itemsCollection.find().toArray();
+            const query = req.query;
+            console.log(query.selectedCategories);
+            const result = await itemsCollection.find(query?.selectedCategories?.length > 0 ? { category: { $in: query.selectedCategories } } : {}).toArray();
             res.send(result);
         })
 
