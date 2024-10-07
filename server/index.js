@@ -68,12 +68,16 @@ async function run() {
             console.log(req.query);
             const selectedCategories = req.query.selectedCategories ? req.query.selectedCategories : [];
             const isDiscounted = req.query.isDiscounted === "true";
+            const searchQuery = req.query.searchQuery || "";
             const query = {};
             if (selectedCategories.length > 0) {
                 query.category = { $in: selectedCategories };
             }
             if (isDiscounted) {
                 query.discountPercentage = { $gt: 0 };
+            }
+            if (searchQuery) {
+                query.itemName = { $regex: searchQuery, $options: "i" }
             }
             console.log(query);
             const result = await itemsCollection.find(query).toArray();

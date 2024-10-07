@@ -9,12 +9,14 @@ const Shop = () => {
         defaultValues: {
             categories: [],
             discounted: false,
+            search: '',
         }
     })
     const selectedCategories = watch("categories");
     const isDiscounted = watch("discounted");
+    const searchQuery = watch('search');
 
-    const { data, isLoading: dataLoading, isError } = useFetchGetItem(selectedCategories, isDiscounted);
+    const { data, isLoading: dataLoading, isError } = useFetchGetItem(selectedCategories, isDiscounted, searchQuery);
     const { data: categories, isError: categoryError, isLoading: categoryLoading } = useFetchGetAllCategories();
 
     if (isError || categoryError) {
@@ -28,9 +30,26 @@ const Shop = () => {
                 <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content ">
                     {/* Page content here */}
-                    <label htmlFor="my-drawer-2" className="btn mr-auto m-5 drawer-button lg:hidden">
-                        Filter <FaAngleDoubleRight className="text-2xl" />
-                    </label>
+                    <div>
+                        <div className="p-5">
+                            <label className="input input-bordered flex items-center gap-2 md:w-2/3 mx-auto">
+                                <input type="text" {...register('search')} className="grow " placeholder="Search Name" />
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 16 16"
+                                    fill="currentColor"
+                                    className="h-4 w-4 opacity-70">
+                                    <path
+                                        fillRule="evenodd"
+                                        d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
+                                        clipRule="evenodd" />
+                                </svg>
+                            </label>
+                        </div>
+                        <label htmlFor="my-drawer-2" className="btn mr-auto mx-5 drawer-button lg:hidden">
+                            Filter <FaAngleDoubleRight className="text-2xl" />
+                        </label>
+                    </div>
                     {
                         dataLoading ?
                             <div className='text-center'><span className='loading loading-bars loading-lg'></span></div>
