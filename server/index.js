@@ -59,13 +59,12 @@ async function run() {
 
         app.get("/products/:category", async (req, res) => {
             const category = req.params.category;
-            console.log(category);
             const result = await itemsCollection.find({ category: category }).toArray();
             res.send(result)
         })
 
         app.get("/items", async (req, res) => {
-            console.log(req.query);
+            const { itemPerPage, currentPage } = req.query;
             const selectedCategories = req.query.selectedCategories ? req.query.selectedCategories : [];
             const isDiscounted = req.query.isDiscounted === "true";
             const searchQuery = req.query.searchQuery || "";
@@ -89,9 +88,12 @@ async function run() {
                 sortCriteria.perUnitPrice = -1;
             }
 
-            console.log(sortCriteria);
-            const result = await itemsCollection.find(query).sort(sortCriteria).toArray();
-            res.send(result);
+            const totalItem = await itemsCollection.countDocuments(query);
+            const items = await itemsCollection.find(query).skip((currentPage - 1) * itemPerPage).limit(parseInt(itemPerPage)).sort(sortCriteria).toArray();
+
+            const totalPage = Math.ceil(totalItem / itemPerPage);
+
+            res.send({ items, totalPage });
         })
 
         app.post(`/addToCart`, async (req, res) => {

@@ -3,8 +3,11 @@ import useFetchGetItem from "../../API/useFetchGetItem";
 import ProductCart from "./ProductCart";
 import { FaAngleDoubleRight } from "react-icons/fa";
 import { useForm } from "react-hook-form";
+import { useState } from "react";
 
 const Shop = () => {
+    const itemPerPage = 10;
+    const [currentPage, setCurrentPage] = useState(1);
     const { register, watch } = useForm({
         defaultValues: {
             categories: [],
@@ -17,16 +20,14 @@ const Shop = () => {
     const isDiscounted = watch("discounted");
     const searchQuery = watch('search');
     const sort = watch("sort")
-    console.log(sort);
 
-    const { data, isLoading: dataLoading, isError } = useFetchGetItem(selectedCategories, isDiscounted, searchQuery, sort);
+    const { data, isLoading: dataLoading, isError } = useFetchGetItem(selectedCategories, isDiscounted, searchQuery, sort, itemPerPage, currentPage);
     const { data: categories, isError: categoryError, isLoading: categoryLoading } = useFetchGetAllCategories();
 
     if (isError || categoryError) {
         return
     }
-    console.log(data);
-
+    
     return (
         <div>
             <div className="drawer lg:drawer-open">
@@ -70,11 +71,22 @@ const Shop = () => {
                             :
                             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 p-5">
                                 {
-                                    data.map((item) => <ProductCart key={item._id} item={item}></ProductCart>)
+                                    data.items.map((item) => <ProductCart key={item._id} item={item}></ProductCart>)
                                 }
                             </div>
                     }
+                    <div className="flex justify-center mt-5">
+                        {
+                            [...Array(data?.totalPage).keys()].map(page => <button
+                                key={page}
+                                className= {currentPage == page +1 ?"text-xl px-5 bg-primary-c text-white py-3 mx-1 border-2 rounded-full" :"text-xl px-5 py-3 mx-1 border-2 rounded-full"}
+                                onClick={() => setCurrentPage(page + 1)}
+                            >
 
+                                {page + 1}
+                            </button>)
+                        }
+                    </div>
 
                 </div>
                 <div className="drawer-side">
