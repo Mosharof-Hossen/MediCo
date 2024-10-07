@@ -2,7 +2,6 @@ import { useQuery } from "@tanstack/react-query";
 import useAxios from "../Hooks/useAxios";
 
 const useFetchGetItem = (categories, isDiscounted, searchQuery, sort, itemPerPage, currentPage) => {
-    console.log(currentPage);
     const axios = useAxios();
     return useQuery({
         queryKey: ['items', categories, isDiscounted, searchQuery, sort, itemPerPage, currentPage],

@@ -4,8 +4,11 @@ import ProductCart from "./ProductCart";
 import { FaAngleDoubleRight } from "react-icons/fa";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
+import ItemModal from "../Category/ItemModal";
 
 const Shop = () => {
+    const [viewItem, setViewItem] = useState({})
+
     const itemPerPage = 10;
     const [currentPage, setCurrentPage] = useState(1);
     const { register, watch } = useForm({
@@ -27,7 +30,10 @@ const Shop = () => {
     if (isError || categoryError) {
         return
     }
-    
+    const viewItemFunction = (item) => {
+        setViewItem(item);
+        document.getElementById('my_modal_2').showModal()
+    }
     return (
         <div>
             <div className="drawer lg:drawer-open">
@@ -71,15 +77,18 @@ const Shop = () => {
                             :
                             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 p-5">
                                 {
-                                    data.items.map((item) => <ProductCart key={item._id} item={item}></ProductCart>)
+                                    data.items.map((item) => <ProductCart key={item._id} item={item} viewItemFunction={viewItemFunction}></ProductCart>)
                                 }
                             </div>
                     }
+                    <dialog id="my_modal_2" className="modal">
+                        <ItemModal item={viewItem}></ItemModal>
+                    </dialog>
                     <div className="flex justify-center mt-5">
                         {
                             [...Array(data?.totalPage).keys()].map(page => <button
                                 key={page}
-                                className= {currentPage == page +1 ?"text-xl px-5 bg-primary-c text-white py-3 mx-1 border-2 rounded-full" :"text-xl px-5 py-3 mx-1 border-2 rounded-full"}
+                                className={currentPage == page + 1 ? "text-xl px-5 bg-primary-c text-white py-3 mx-1 border-2 rounded-full" : "text-xl px-5 py-3 mx-1 border-2 rounded-full"}
                                 onClick={() => setCurrentPage(page + 1)}
                             >
 
