@@ -9,6 +9,7 @@ const AuthProviders = ({ children }) => {
     const [user, setUser] = useState(null)
     const googleProvider = new GoogleAuthProvider();
     const githubProvider = new GithubAuthProvider();
+    const [waitForUser, setWaitForUser] = useState(false);
 
     // Create Account by Email and Password
     const createAccountByEmailPass = (email, password) => {
@@ -37,6 +38,9 @@ const AuthProviders = ({ children }) => {
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser)
+            if (currentUser) {
+                setWaitForUser(true)
+            }
         })
 
         return () => {
@@ -51,7 +55,8 @@ const AuthProviders = ({ children }) => {
         githubLogin,
         createAccountByEmailPass,
         loginByEmailAndPassword,
-        logout
+        logout,
+        waitForUser
     }
     return (
         <AuthContext.Provider value={authInfo}>

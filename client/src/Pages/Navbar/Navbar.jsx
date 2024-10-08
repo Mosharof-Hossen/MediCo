@@ -15,7 +15,6 @@ const Navbar = () => {
     const links = <>
         <NavLink to={"/"} className={"lg:px-2  lg:mx-1 w-fit py-1 rounded  text-xl font-semibold "}><li>Home</li></NavLink>
         <NavLink to={"/shop"} className={"lg:px-2  lg:mx-1 w-fit py-1 rounded  text-xl font-semibold "}><li>Shop</li></NavLink>
-        <NavLink to={"/cart"} className={"lg:px-2  lg:mx-1 w-fit py-1 rounded  text-xl font-semibold "}><li>Cart</li></NavLink>
     </>
     const profile = <>
         <NavLink to={"/dashboard/user"} className={"lg:px-2  lg:mx-1 w-fit py-1 rounded  text-xl font-semibold "}><li>Dashboard</li></NavLink>
@@ -63,12 +62,14 @@ const Navbar = () => {
                 <div className="navbar-end gap-5">
                     {
                         user &&
-                        <div className="indicator">
-                            <span className="indicator-item ">5</span>
-                            <div className=" grid w-10 h-5 place-items-center">
-                                <FaShoppingCart className="text-2xl"/>
+                        <Link to={"/dashboard/user/cart"}>
+                            <div className="indicator">
+                                <span className="indicator-item ">5</span>
+                                <div className=" grid w-10 h-5 place-items-center">
+                                    <FaShoppingCart className="text-2xl" />
+                                </div>
                             </div>
-                        </div>
+                        </Link>
                     }
                     {
                         user ?

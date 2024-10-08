@@ -36,6 +36,7 @@ const Category = () => {
         else {
             addItemToCartMutation.mutate({
                 useEmail: user.email,
+                userId: user.uid,
                 itemId: item._id
             })
         }

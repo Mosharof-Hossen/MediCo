@@ -22,7 +22,7 @@ const useFetchPostItemToCart = () => {
                 animationIn: ["animate__animated", "animate__fadeIn"],
                 animationOut: ["animate__animated", "animate__fadeOut"],
                 dismiss: {
-                  duration: 1000,
+                  duration: 1500,
                   onScreen: true
                 }
               });

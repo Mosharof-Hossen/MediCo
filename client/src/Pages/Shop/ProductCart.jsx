@@ -1,11 +1,29 @@
 import PropTypes from 'prop-types';
 import { FaEye } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
+import useFetchPostItemToCart from '../../API/useFetchPostItemToCart';
+import useAuthContext from '../../Hooks/useAuthContext';
 
 
 const ProductCart = ({ item, viewItemFunction }) => {
+    const addItemToCartMutation = useFetchPostItemToCart();
+    const { user } = useAuthContext()
     const { image, itemName, discountPercentage, perUnitPrice, application } = item
     const priceAfterDiscount = parseInt(perUnitPrice - (perUnitPrice * (discountPercentage / 100)));
+    const navigate = useNavigate();
 
+    const handleCart = (item) => {
+        if (!user) {
+            navigate("/login", { state: location.pathname });
+        }
+        else {
+            addItemToCartMutation.mutate({
+                userEmail: user.email,
+                userId: user.uid,
+                itemId: item._id
+            })
+        }
+    }
 
     return (
         <div className="card card-compact bg-base-100 rounded shadow-2xl relative">
@@ -30,7 +48,7 @@ const ProductCart = ({ item, viewItemFunction }) => {
                         }
                         <p className="text-xl font-semibold">${priceAfterDiscount}</p>
                     </div>
-                    <button className="px-3 py-2  bg-primary-c h-fit text-white rounded text-xs">
+                    <button onClick={() => handleCart(item)} className="px-3 py-2  bg-primary-c h-fit text-white rounded text-xs">
                         Add to Cart
                     </button>
                 </div>
