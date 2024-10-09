@@ -1,16 +1,44 @@
-import { NavLink, Outlet } from 'react-router-dom';
+import { Link, NavLink, Outlet } from 'react-router-dom';
 import logo from "../assets/logo.png"
 import useFetchUserInfo from '../API/useFetchUserInfo';
 
 const Dashboard = () => {
 
-    const { data ,} = useFetchUserInfo()
-    console.log(data);
-    const links = <>
-        <NavLink to={"/"} className={"lg:px-2  lg:mx-1 w-fit py-1 rounded  text-xl font-semibold "}><li>Home</li></NavLink>
-        <NavLink to={"/dashboard/user/cart"} className={"lg:px-2  lg:mx-1 w-fit py-1 rounded  text-xl font-semibold "}><li>Cart</li></NavLink>
-        <NavLink to={"/dashboard/user/payment-history"} className={"lg:px-2  lg:mx-1 w-fit py-1 rounded  text-xl font-semibold "}><li>Payment-History</li></NavLink>
-    </>
+    const { data: userInfo, isLoading, isError } = useFetchUserInfo()
+    if (isLoading) {
+        return <div className='text-center'><span className='loading loading-bars loading-lg'></span></div>
+    }
+    if (isError) {
+        return
+    }
+
+    console.log(userInfo);
+    let links
+    if (userInfo?.role === "admin") {
+        links = <>
+            <NavLink to={"/dashboard/admin"} end className={"lg:px-2  lg:mx-1 w-fit py-1 rounded  text-xl font-semibold "}><li>Profile</li></NavLink>
+            <NavLink to={"/dashboard/admin/manage-user"} className={"lg:px-2  lg:mx-1 w-fit py-1 rounded  text-xl font-semibold "}><li>Manage User</li></NavLink>
+            <NavLink to={"/dashboard/admin/payment-manage"} className={"lg:px-2  lg:mx-1 w-fit py-1 rounded  text-xl font-semibold "}><li>Payment Manage</li></NavLink>
+            <NavLink to={"/dashboard/admin/sales-report"} className={"lg:px-2  lg:mx-1 w-fit py-1 rounded  text-xl font-semibold "}><li>Sales Report</li></NavLink>
+            <NavLink to={"/dashboard/admin/manage-banner"} className={"lg:px-2  lg:mx-1 w-fit py-1 rounded  text-xl font-semibold "}><li>Manage Banner</li></NavLink>
+        </>
+    }
+    else if (userInfo?.role === "user") {
+        links = <>
+            <NavLink to={"/dashboard/user"} end className={"lg:px-2  lg:mx-1 w-fit py-1 rounded  text-xl font-semibold "}><li>Profile</li></NavLink>
+            <NavLink to={"/dashboard/user/cart"} className={"lg:px-2  lg:mx-1 w-fit py-1 rounded  text-xl font-semibold "}><li>Cart</li></NavLink>
+            <NavLink to={"/dashboard/user/payment-history"} className={"lg:px-2  lg:mx-1 w-fit py-1 rounded  text-xl font-semibold "}><li>Payment-History</li></NavLink>
+        </>
+    }
+    else if (userInfo?.role === "seller") {
+        links = <>
+            <NavLink to={"/dashboard/seller"} end className={"lg:px-2  lg:mx-1 w-fit py-1 rounded  text-xl font-semibold "}><li>Profile</li></NavLink>
+            <NavLink to={"/dashboard/seller/manage-medicines"} className={"lg:px-2  lg:mx-1 w-fit py-1 rounded  text-xl font-semibold "}><li>Manage Medicines</li></NavLink>
+            <NavLink to={"/dashboard/seller/payment-history"} className={"lg:px-2  lg:mx-1 w-fit py-1 rounded  text-xl font-semibold "}><li>Payment-History</li></NavLink>
+            <NavLink to={"/dashboard/seller/ask-for-ads"} className={"lg:px-2  lg:mx-1 w-fit py-1 rounded  text-xl font-semibold "}><li>Ask For Ads</li></NavLink>
+        </>
+    }
+
     return (
         <div className="drawer ">
             <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
@@ -33,7 +61,7 @@ const Dashboard = () => {
                         </label>
                     </div>
                     <div className="flex items-center flex-1">
-                        <img src={logo} alt="" className="w-28 h-fit" />
+                        <Link to={"/"}><img src={logo} alt="" className="w-28 h-fit" /></Link>
                     </div>
                     <div className="hidden flex-none lg:block">
                         <ul className="menu menu-horizontal">
