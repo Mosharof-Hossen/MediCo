@@ -12,8 +12,7 @@ const useUserPost = () => {
     const userMutation = useMutation({
         mutationKey: ["userCreation"],
         mutationFn: userPostFunction,
-        onSuccess: (data) => {
-            console.log(data);
+        onSuccess: () => {
             Swal.fire({
                 position: "top-end",
                 icon: "success",

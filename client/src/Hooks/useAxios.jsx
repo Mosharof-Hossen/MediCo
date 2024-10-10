@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useEffect } from 'react';
 import useAuthContext from './useAuthContext';
+import { useNavigate } from "react-router-dom";
 
 const instance = axios.create({
     baseURL: "http://localhost:3000",
@@ -8,6 +9,7 @@ const instance = axios.create({
 })
 const useAxios = () => {
     const { logout } = useAuthContext()
+    const navigate = useNavigate();
 
     useEffect(() => {
 
@@ -30,10 +32,11 @@ const useAxios = () => {
                 if (err?.response?.status === 403 || err?.response?.status === 404) {
                     logout();
                     localStorage.removeItem("token");
+                    navigate("/login")
                 }
             }
         )
-    }, [logout])
+    }, [logout, navigate])
 
 
     return instance

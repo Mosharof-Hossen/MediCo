@@ -19,7 +19,7 @@ const useFetchUserInfo = () => {
     return useQuery({
         queryKey: ["UserInfo", user?.email, user?.uid],
         queryFn: fetchMethod,
-        enabled: waitForUser && !!user?.email,
+        enabled: waitForUser && !!(user?.email || user?.uid),
     })
 };
 

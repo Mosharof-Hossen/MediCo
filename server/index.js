@@ -53,7 +53,6 @@ async function run() {
 
         const verifyToken = (req, res, next) => {
             const token = req.headers.authorization && req.headers.authorization.split(" ")[1];
-            console.log(token);
             if (!token) {
                 return res.status(403).json({ message: "Token is missing. Access Denied" });
             }
@@ -61,7 +60,6 @@ async function run() {
                 if (err) {
                     return res.status(403).json({ message: "Invalid or Expired token. Access Denied" })
                 }
-                console.log(user);
                 req.tokenUser = user;
                 next()
             })
@@ -144,10 +142,19 @@ async function run() {
 
         // ********** User Related API ***********
         app.get("/user/cart", verifyToken, async (req, res) => {
-            const user = req.query;
-            console.log(user);
+            const user = req.query.user;
+            console.log("token user: ", req.tokenUser.email);
+            console.log("User: ", user.email);
+            if (req.tokenUser?.email == user?.email || req.tokenUser?.uid == user?.uid) {
+                const results = await cartCollection.find({
+                    $or: [user.email ? { userEmail: user.email } : { userId: user.uid }]
+                }).toArray()
+                res.send(results)
+            }
+            else {
+                res.send([])
+            }
 
-            res.send({})
         })
 
         // Send a ping to confirm a successful connection
