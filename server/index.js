@@ -42,7 +42,6 @@ async function run() {
         // JWT API
         app.post('/login', async (req, res) => {
             const payload = req.body;
-            console.log(payload);
             if (payload.email || payload.uid) {
                 const token = jwt.sign(payload, process.env.JWT_KEY, { expiresIn: "1h" })
                 res.send({ token });
@@ -52,6 +51,23 @@ async function run() {
         })
 
 
+        const verifyToken = (req, res, next) => {
+            const token = req.headers.authorization && req.headers.authorization.split(" ")[1];
+            console.log(token);
+            if (!token) {
+                return res.status(403).json({ message: "Token is missing. Access Denied" });
+            }
+            jwt.verify(token, process.env.JWT_KEY, (err, user) => {
+                if (err) {
+                    return res.status(403).json({ message: "Invalid or Expired token. Access Denied" })
+                }
+                console.log(user);
+                req.tokenUser = user;
+                next()
+            })
+        }
+
+        // /////////////////////////////////////////////////////////////////////////////////////
         app.get("/all-category", async (req, res) => {
             const result = await categoriesCollection.find().toArray();
             res.send(result)
@@ -124,6 +140,14 @@ async function run() {
                 $or: [{ email: data.email }, { userId: data.uid }]
             })
             res.send(result);
+        })
+
+        // ********** User Related API ***********
+        app.get("/user/cart", verifyToken, async (req, res) => {
+            const user = req.query;
+            console.log(user);
+
+            res.send({})
         })
 
         // Send a ping to confirm a successful connection
