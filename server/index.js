@@ -146,10 +146,44 @@ async function run() {
             console.log("token user: ", req.tokenUser.email);
             console.log("User: ", user.email);
             if (req.tokenUser?.email == user?.email || req.tokenUser?.uid == user?.uid) {
-                const results = await cartCollection.find({
-                    $or: [user.email ? { userEmail: user.email } : { userId: user.uid }]
-                }).toArray()
-                res.send(results)
+                // const results = await cartCollection.find({
+                //     $or: [user.email ? { userEmail: user.email } : { userId: user.uid }]
+                // }).toArray()
+                const result = await cartCollection.aggregate([
+                    {
+                        $match: { userId: user.uid }
+                    },
+                    {
+                        $addFields: {
+                            itemIdObject: { $toObjectId: "$itemId" }  // Convert itemId to ObjectId for matching
+                        }
+                    },
+                    {
+                        $lookup: {
+                            from: "items",                  // The 'items' collection
+                            localField: "itemIdObject",            // Field in 'card' that references 'items'
+                            foreignField: "_id",             // Field in 'items' that is the _id
+                            as: "itemDetails"                // Output array field to store matched items
+                        }
+                    },
+                    {
+                        $unwind: "$itemDetails"
+                    },
+                    {
+                        $project: {
+                            _id: 1,
+                            userEmail: 1,
+                            userId: 1,
+                            itemId: 1,
+                            "itemDetails.itemName": 1,
+                            "itemDetails.perUnitPrice": 1,
+                            "itemDetails.discountPercentage": 1,
+                            "itemDetails.company": 1,
+                        }
+                    }
+                ]).toArray()
+                console.log(result);
+                res.send(result)
             }
             else {
                 res.send([])
