@@ -12,7 +12,6 @@ const Dashboard = () => {
         return
     }
 
-    console.log(userInfo);
     let links
     if (userInfo?.role === "admin") {
         links = <>

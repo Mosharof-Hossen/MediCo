@@ -2,6 +2,7 @@ import { createContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { createUserWithEmailAndPassword, GithubAuthProvider, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 import auth from '../Firebase/Firebase';
+import usePublicAxios from '../Hooks/usePublicAxios';
 
 export const AuthContext = createContext(null)
 
@@ -10,6 +11,7 @@ const AuthProviders = ({ children }) => {
     const googleProvider = new GoogleAuthProvider();
     const githubProvider = new GithubAuthProvider();
     const [waitForUser, setWaitForUser] = useState(false);
+    const publicAxios = usePublicAxios();
 
     // Create Account by Email and Password
     const createAccountByEmailPass = (email, password) => {
@@ -36,9 +38,16 @@ const AuthProviders = ({ children }) => {
     }
 
     useEffect(() => {
-        const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
+        const unSubscribe = onAuthStateChanged(auth, async (currentUser) => {
             setUser(currentUser)
             if (currentUser) {
+                const jwt = {
+                    email: currentUser.email,
+                    uid: currentUser.uid
+                }
+                console.log(currentUser);
+                const res = await publicAxios.post("/login", jwt)
+                localStorage.setItem("token", res.data.token);
                 setWaitForUser(true)
             }
         })
@@ -46,7 +55,7 @@ const AuthProviders = ({ children }) => {
         return () => {
             return unSubscribe();
         }
-    }, [])
+    }, [publicAxios])
 
     console.log(user);
     const authInfo = {

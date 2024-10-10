@@ -2,6 +2,8 @@ const express = require('express');
 const cors = require('cors');
 require("dotenv").config();
 const { MongoClient, ServerApiVersion } = require('mongodb');
+const jwt = require("jsonwebtoken");
+
 
 
 const app = express();
@@ -36,6 +38,19 @@ async function run() {
         const categoriesCollection = client.db("medicoDB").collection("categories");
         const itemsCollection = client.db("medicoDB").collection("items");
         const cartCollection = client.db("medicoDB").collection("cart");
+
+        // JWT API
+        app.post('/login', async (req, res) => {
+            const payload = req.body;
+            console.log(payload);
+            if (payload.email || payload.uid) {
+                const token = jwt.sign(payload, process.env.JWT_KEY, { expiresIn: "1h" })
+                res.send({ token });
+            } else {
+                res.status(403).json({ message: "Invalid Email or Password" })
+            }
+        })
+
 
         app.get("/all-category", async (req, res) => {
             const result = await categoriesCollection.find().toArray();
