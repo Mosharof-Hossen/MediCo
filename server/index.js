@@ -143,8 +143,7 @@ async function run() {
         // ********** User Related API ***********
         app.get("/user/cart", verifyToken, async (req, res) => {
             const user = req.query.user;
-            console.log("token user: ", req.tokenUser.email);
-            console.log("User: ", user.email);
+
             if (req.tokenUser?.email == user?.email || req.tokenUser?.uid == user?.uid) {
                 // const results = await cartCollection.find({
                 //     $or: [user.email ? { userEmail: user.email } : { userId: user.uid }]
@@ -169,26 +168,31 @@ async function run() {
                     {
                         $unwind: "$itemDetails"
                     },
-                    {
-                        $project: {
-                            _id: 1,
-                            userEmail: 1,
-                            userId: 1,
-                            itemId: 1,
-                            "itemDetails.itemName": 1,
-                            "itemDetails.perUnitPrice": 1,
-                            "itemDetails.discountPercentage": 1,
-                            "itemDetails.company": 1,
-                        }
-                    }
+                    // {
+                    //     $project: {
+                    //         _id: 1,
+                    //         userEmail: 1,
+                    //         userId: 1,
+                    //         itemId: 1,
+                    //         "itemDetails.itemName": 1,
+                    //         "itemDetails.perUnitPrice": 1,
+                    //         "itemDetails.discountPercentage": 1,
+                    //         "itemDetails.company": 1,
+                    //     }
+                    // }
                 ]).toArray()
-                console.log(result);
                 res.send(result)
             }
             else {
                 res.send([])
             }
 
+        })
+
+        app.delete('/user/cart/:id', async (req, res) => {
+            const id = req.params.id;
+            const result = await cartCollection.deleteMany({ userId: id });
+            res.send({ result })
         })
 
         // Send a ping to confirm a successful connection

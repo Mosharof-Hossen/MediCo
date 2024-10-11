@@ -7,8 +7,6 @@ import { useState } from 'react';
 import useAuthContext from '../../Hooks/useAuthContext';
 import useFetchPostItemToCart from '../../API/useFetchPostItemToCart';
 
-
-
 const Category = () => {
     const category = useParams();
     const { user } = useAuthContext();
@@ -16,6 +14,7 @@ const Category = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const addItemToCartMutation = useFetchPostItemToCart();
+    
 
     const { data: products, isError, isLoading } = useFetchProductByCategory(category.category)
 

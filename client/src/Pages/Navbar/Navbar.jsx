@@ -4,9 +4,11 @@ import { FaRegUser, FaShoppingCart } from "react-icons/fa";
 import logo from "../../assets/logo.png"
 import useAuthContext from "../../Hooks/useAuthContext";
 import defaultUser from "../../assets/login/user.png"
+import useFetchGetCartItem from "../../API/UserApi/useFetchGetCartItem";
 
 const Navbar = () => {
     const { user, logout } = useAuthContext();
+    const { data: cartItem, isLoading } = useFetchGetCartItem();
 
     const handleLogout = () => {
         logout()
@@ -64,7 +66,7 @@ const Navbar = () => {
                         user &&
                         <Link to={"/dashboard/user/cart"}>
                             <div className="indicator">
-                                <span className="indicator-item ">5</span>
+                                <span className="indicator-item ">{isLoading ? 0 : cartItem?.length}</span>
                                 <div className=" grid w-10 h-5 place-items-center">
                                     <FaShoppingCart className="text-2xl" />
                                 </div>
