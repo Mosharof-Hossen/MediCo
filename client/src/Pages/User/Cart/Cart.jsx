@@ -80,7 +80,7 @@ const Cart = () => {
                 <div className="overflow-x-auto">
                     <div className="flex justify-between my-5 items-center">
                         <h4 className="uppercase font-bold text-xl text-gray-500">Total orders: {cartItem?.length}</h4>
-                        <h4 className="uppercase font-bold text-xl text-gray-500">Total Price: ${cartItem?.reduce((acc, cur) => acc + cur.itemDetails.perUnitPrice, 0)}</h4>
+                        <h4 className="uppercase font-bold text-xl text-gray-500">Total Price: ${cartItem?.reduce((acc, cur) => acc + cur.itemDetails.perUnitPrice * cur.quantity, 0)}</h4>
                         <div className="md:space-x-2 space-y-2">
                             <button className="btn bg-primary-c text-white ">Checkout</button>
                             <button onClick={() => clearAll(cartItem[0]?.userId)} className="btn bg-red-500 text-white "><FaTrashAlt></FaTrashAlt> Clear All</button>
@@ -114,12 +114,12 @@ const Cart = () => {
                                     <td>{item.itemDetails.itemName}</td>
                                     <td>
                                         <div className="flex space-x-3 items-center">
-                                            <button disabled={item?.quantity<2?true:false} onClick={() => handleQuantity(item.itemId, item.userId, item?.quantity, 'minus')}><FaMinus className={item?.quantity<2?"text-gray-400":""}></FaMinus></button>
+                                            <button disabled={item?.quantity < 2 ? true : false} onClick={() => handleQuantity(item.itemId, item.userId, item?.quantity, 'minus')}><FaMinus className={item?.quantity < 2 ? "text-gray-400" : ""}></FaMinus></button>
                                             <span className="font-bold">{item?.quantity}</span>
                                             <button onClick={() => handleQuantity(item.itemId, item.userId, item?.quantity, 'plus')}><FaPlus></FaPlus></button>
                                         </div>
                                     </td>
-                                    <td>$ {item.itemDetails.perUnitPrice}</td>
+                                    <td>$ {item.itemDetails.perUnitPrice * item.quantity}</td>
                                     <td><button onClick={() => handleItemView(item.itemDetails)} className='flex items-center '><FaEye className='text-2xl text-primary-c' /></button></td>
                                     <td><button onClick={() => handleDelete(item.itemId)} className='flex items-center '><FaTrashAlt className='text-2xl text-red-600' /></button></td>
                                 </tr>)
