@@ -2,16 +2,20 @@ import { useState } from "react";
 import useFetchGetCartItem from "../../../API/UserApi/useFetchGetCartItem";
 import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
 import ItemModal from "../../Category/ItemModal";
-import { FaEye, FaTrashAlt } from "react-icons/fa";
+import { FaEye, FaMinus, FaPlus, FaTrashAlt } from "react-icons/fa";
 import useFetchClearCart from "../../../API/UserApi/useFetchClearCart";
 import Swal from "sweetalert2";
 import useFetchDeleteCartItem from "../../../API/UserApi/useFetchDeleteCartItem";
+import useFetchUpdateQuantity from "../../../API/UserApi/useFetchUpdateQuantity";
 
 const Cart = () => {
     const [viewItem, setViewItem] = useState({});
     const clearCartMutation = useFetchClearCart();
     const cartItemDeleteMutation = useFetchDeleteCartItem();
     const { data: cartItem, isLoading, isError } = useFetchGetCartItem();
+    const updateQuantityMutation = useFetchUpdateQuantity();
+
+
     if (isLoading) {
         return <div className='text-center'><span className='loading loading-bars loading-lg'></span></div>
     }
@@ -38,7 +42,6 @@ const Cart = () => {
             }
         });
     }
-
     const handleDelete = (itemId) => {
         Swal.fire({
             title: "Are you sure?",
@@ -54,6 +57,22 @@ const Cart = () => {
             }
         });
     }
+
+    const handleQuantity = (itemId, userId, quantity, sign) => {
+        if (sign === "plus") {
+            const count = quantity + 1;
+            updateQuantityMutation.mutate({
+                userId, itemId, quantity: count
+            })
+        }
+        if (sign === "minus" && quantity > 1) {
+            const count = quantity - 1;
+            updateQuantityMutation.mutate({
+                userId, itemId, quantity: count
+            })
+        }
+    }
+
     return (
         <div className='px-5 space-y-10 bg-slate-100'>
             <SectionTitle heading={"Review & Proceed to Checkout"} subHeading={"Check the items in your cart, update quantities, and proceed to a secure checkout."}></SectionTitle>
@@ -63,7 +82,7 @@ const Cart = () => {
                         <h4 className="uppercase font-bold text-xl text-gray-500">Total orders: {cartItem?.length}</h4>
                         <h4 className="uppercase font-bold text-xl text-gray-500">Total Price: ${cartItem?.reduce((acc, cur) => acc + cur.itemDetails.perUnitPrice, 0)}</h4>
                         <div className="md:space-x-2 space-y-2">
-                            <button className="btn bg-primary-c text-white ">Pay</button>
+                            <button className="btn bg-primary-c text-white ">Checkout</button>
                             <button onClick={() => clearAll(cartItem[0]?.userId)} className="btn bg-red-500 text-white "><FaTrashAlt></FaTrashAlt> Clear All</button>
                         </div>
                     </div>
@@ -93,7 +112,13 @@ const Cart = () => {
                                         </div>
                                     </th>
                                     <td>{item.itemDetails.itemName}</td>
-                                    <td>1</td>
+                                    <td>
+                                        <div className="flex space-x-3 items-center">
+                                            <button disabled={item?.quantity<2?true:false} onClick={() => handleQuantity(item.itemId, item.userId, item?.quantity, 'minus')}><FaMinus className={item?.quantity<2?"text-gray-400":""}></FaMinus></button>
+                                            <span className="font-bold">{item?.quantity}</span>
+                                            <button onClick={() => handleQuantity(item.itemId, item.userId, item?.quantity, 'plus')}><FaPlus></FaPlus></button>
+                                        </div>
+                                    </td>
                                     <td>$ {item.itemDetails.perUnitPrice}</td>
                                     <td><button onClick={() => handleItemView(item.itemDetails)} className='flex items-center '><FaEye className='text-2xl text-primary-c' /></button></td>
                                     <td><button onClick={() => handleDelete(item.itemId)} className='flex items-center '><FaTrashAlt className='text-2xl text-red-600' /></button></td>

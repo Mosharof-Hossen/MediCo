@@ -14,7 +14,7 @@ const Category = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const addItemToCartMutation = useFetchPostItemToCart();
-    
+
 
     const { data: products, isError, isLoading } = useFetchProductByCategory(category.category)
 
@@ -36,7 +36,8 @@ const Category = () => {
             addItemToCartMutation.mutate({
                 useEmail: user.email,
                 userId: user.uid,
-                itemId: item._id
+                itemId: item._id,
+                quantity: 1
             })
         }
     }

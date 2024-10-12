@@ -20,7 +20,8 @@ const ProductCart = ({ item, viewItemFunction }) => {
             addItemToCartMutation.mutate({
                 userEmail: user.email,
                 userId: user.uid,
-                itemId: item._id
+                itemId: item._id,
+                quantity: 1
             })
         }
     }

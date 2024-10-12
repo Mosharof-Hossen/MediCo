@@ -189,12 +189,23 @@ async function run() {
 
         })
 
-        app.delete('/user/carts/:id', async (req, res) => {
+        app.patch("/user/carts", verifyToken, async (req, res) => {
+            const data = req.body;
+            const filter = {
+                userId: data.userId,
+                itemId: data.itemId
+            }
+            const result = await cartCollection.updateOne(filter, { $set: { quantity: data.quantity } })
+            console.log(data);
+            res.send(result)
+        })
+
+        app.delete('/user/carts/:id', verifyToken, async (req, res) => {
             const id = req.params.id;
             const result = await cartCollection.deleteMany({ userId: id });
             res.send({ result })
         })
-        app.delete('/user/cart/:id', async (req, res) => {
+        app.delete('/user/cart/:id', verifyToken, async (req, res) => {
             const id = req.params.id;
             const result = await cartCollection.deleteMany({ itemId: id });
             res.send({ result })
