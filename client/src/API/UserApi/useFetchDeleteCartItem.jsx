@@ -1,17 +1,17 @@
 import { useMutation } from "@tanstack/react-query";
 import useAxios from "../../Hooks/useAxios";
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
 import useFetchGetCartItem from "./useFetchGetCartItem";
 
-const useFetchClearCart = () => {
+const useFetchDeleteCartItem = () => {
     const { refetch } = useFetchGetCartItem()
     const axios = useAxios();
-    const deleteApi = async (id) => {
-        const res = await axios.delete(`/user/carts/${id}`);
+    const deleteApi = async (itemId) => {
+        const res = await axios.delete(`/user/cart/${itemId}`);
         return res.data;
     }
-    const clearCartMutation = useMutation({
-        mutationKey: ["ClearCart"],
+    const cartItemDeleteMutation = useMutation({
+        mutationKey: ["cartItemDelete"],
         mutationFn: deleteApi,
         onSuccess: () => {
             Swal.fire({
@@ -22,7 +22,7 @@ const useFetchClearCart = () => {
             refetch();
         }
     })
-    return clearCartMutation;
+    return cartItemDeleteMutation
 };
 
-export default useFetchClearCart;
+export default useFetchDeleteCartItem;

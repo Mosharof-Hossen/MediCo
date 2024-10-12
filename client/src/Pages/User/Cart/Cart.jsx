@@ -2,13 +2,15 @@ import { useState } from "react";
 import useFetchGetCartItem from "../../../API/UserApi/useFetchGetCartItem";
 import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
 import ItemModal from "../../Category/ItemModal";
-import { FaEye, FaTrashRestoreAlt } from "react-icons/fa";
+import { FaEye, FaTrashAlt } from "react-icons/fa";
 import useFetchClearCart from "../../../API/UserApi/useFetchClearCart";
 import Swal from "sweetalert2";
+import useFetchDeleteCartItem from "../../../API/UserApi/useFetchDeleteCartItem";
 
 const Cart = () => {
     const [viewItem, setViewItem] = useState({});
     const clearCartMutation = useFetchClearCart();
+    const cartItemDeleteMutation = useFetchDeleteCartItem();
     const { data: cartItem, isLoading, isError } = useFetchGetCartItem();
     if (isLoading) {
         return <div className='text-center'><span className='loading loading-bars loading-lg'></span></div>
@@ -36,6 +38,22 @@ const Cart = () => {
             }
         });
     }
+
+    const handleDelete = (itemId) => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, Clear All!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                cartItemDeleteMutation.mutate(itemId);
+            }
+        });
+    }
     return (
         <div className='px-5 space-y-10 bg-slate-100'>
             <SectionTitle heading={"Review & Proceed to Checkout"} subHeading={"Check the items in your cart, update quantities, and proceed to a secure checkout."}></SectionTitle>
@@ -44,9 +62,9 @@ const Cart = () => {
                     <div className="flex justify-between my-5 items-center">
                         <h4 className="uppercase font-bold text-xl text-gray-500">Total orders: {cartItem?.length}</h4>
                         <h4 className="uppercase font-bold text-xl text-gray-500">Total Price: ${cartItem?.reduce((acc, cur) => acc + cur.itemDetails.perUnitPrice, 0)}</h4>
-                        <div className="space-x-2">
+                        <div className="md:space-x-2 space-y-2">
                             <button className="btn bg-primary-c text-white ">Pay</button>
-                            <button onClick={() => clearAll(cartItem[0]?.userId)} className="btn bg-red-500 text-white "><FaTrashRestoreAlt></FaTrashRestoreAlt> Clear All</button>
+                            <button onClick={() => clearAll(cartItem[0]?.userId)} className="btn bg-red-500 text-white "><FaTrashAlt></FaTrashAlt> Clear All</button>
                         </div>
                     </div>
                     <table className="table table-zebra">
@@ -56,8 +74,10 @@ const Cart = () => {
                                 <th className="rounded-tl-3xl"></th>
                                 <th>Image</th>
                                 <th>Item Name</th>
+                                <th>Quantity</th>
                                 <th>Unit Per Price</th>
-                                <th className="rounded-tr-3xl">View</th>
+                                <th>View</th>
+                                <th className="rounded-tr-3xl">Delete</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -73,8 +93,10 @@ const Cart = () => {
                                         </div>
                                     </th>
                                     <td>{item.itemDetails.itemName}</td>
+                                    <td>1</td>
                                     <td>$ {item.itemDetails.perUnitPrice}</td>
                                     <td><button onClick={() => handleItemView(item.itemDetails)} className='flex items-center '><FaEye className='text-2xl text-primary-c' /></button></td>
+                                    <td><button onClick={() => handleDelete(item.itemId)} className='flex items-center '><FaTrashAlt className='text-2xl text-red-600' /></button></td>
                                 </tr>)
                             }
                         </tbody>
