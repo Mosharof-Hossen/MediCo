@@ -20,6 +20,7 @@ import ManageBanner from "../Pages/Admin/ManageBanner/ManageBanner";
 import SellerProfile from "../Pages/Seller/SellerProfile/SellerProfile";
 import ManageMedicines from "../Pages/Seller/ManageMedicines/ManageMedicines";
 import AskForAds from "../Pages/Seller/AskForAds/AskForAds";
+import Checkout from "../Pages/User/Checkout/Checkout";
 
 const router = createBrowserRouter([
     {
@@ -59,6 +60,10 @@ const router = createBrowserRouter([
             {
                 path: "/dashboard/user/cart",
                 element: <Cart></Cart>
+            },
+            {
+                path: "/dashboard/user/checkout",
+                element: <Checkout></Checkout>
             },
             {
                 path: "/dashboard/user/payment-history",
