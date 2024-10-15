@@ -2,6 +2,7 @@ import { CardElement, PaymentElement, useElements, useStripe } from '@stripe/rea
 import useFetchGetCartItem from '../../../API/UserApi/useFetchGetCartItem';
 import { useEffect, useState } from 'react';
 import useAxios from '../../../Hooks/useAxios';
+import useAuthContext from '../../../Hooks/useAuthContext';
 
 const CheckoutForm = () => {
     const stripe = useStripe();
@@ -9,8 +10,10 @@ const CheckoutForm = () => {
     const axios = useAxios();
     const { data: cartItem, isLoading, isError } = useFetchGetCartItem();
     const [err, setErr] = useState("");
-    const totalPrice = cartItem?.reduce((acc, cur) => acc + cur.itemDetails.perUnitPrice * cur.quantity, 0)
     const [clientSecret, setClientSecret] = useState("")
+    const { user } = useAuthContext();
+
+    const totalPrice = cartItem?.reduce((acc, cur) => acc + cur.itemDetails.perUnitPrice * cur.quantity, 0)
     useEffect(() => {
         if (totalPrice) {
             axios.post(`/create-payment-intent`, { price: totalPrice })
@@ -28,7 +31,6 @@ const CheckoutForm = () => {
         return
     }
 
-    console.log(clientSecret);
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -51,6 +53,22 @@ const CheckoutForm = () => {
         } else {
             console.log('[PaymentMethod]', paymentMethod);
             setErr("")
+        }
+
+        const { paymentIntent, error: confirmErr } = await stripe.confirmCardPayment(clientSecret, {
+            payment_method: {
+                card: card,
+                billing_details: {
+                    email: user.email || 'unknown@gmail.com',
+                    name: user.displayName || 'unknown'
+                }
+            }
+        })
+
+        if (confirmErr) {
+            console.log(confirmErr);
+        } else {
+            console.log("confirm- ", paymentIntent);
         }
 
 
