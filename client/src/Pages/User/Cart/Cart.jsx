@@ -27,7 +27,6 @@ const Cart = () => {
         setViewItem(item);
         document.getElementById('my_modal_3').showModal()
     }
-    console.log(cartItem);
     const clearAll = (userId) => {
         Swal.fire({
             title: "Are you sure?",
@@ -83,7 +82,15 @@ const Cart = () => {
                         <h4 className="uppercase font-bold text-xl text-gray-500">Total orders: {cartItem?.length}</h4>
                         <h4 className="uppercase font-bold text-xl text-gray-500">Total Price: ${cartItem?.reduce((acc, cur) => acc + cur.itemDetails.perUnitPrice * cur.quantity, 0)}</h4>
                         <div className="md:space-x-2 space-y-2">
-                            <button className="btn hover:bg-teal-600 bg-primary-c text-white ">Checkout</button>
+                            {
+                                cartItem?.length > 0 &&
+                                <Link to={"/dashboard/user/checkout"}>
+                                    <button className="btn text-white hover:bg-teal-600 bg-primary-c">
+                                        Checkout
+                                    </button>
+                                </Link>
+                            }
+
                             <button onClick={() => clearAll(cartItem[0]?.userId)} className="btn bg-red-500 text-white hover:bg-red-600"><FaTrashAlt></FaTrashAlt> Clear All</button>
                         </div>
                     </div>
@@ -129,11 +136,15 @@ const Cart = () => {
                     </table>
                 </div>
                 <div className="text-center my-5">
-                    <Link to={"/dashboard/user/checkout"}>
-                        <button className="btn text-white hover:bg-teal-600 bg-primary-c">
-                            Proceed To Checkout
-                        </button>
-                    </Link>
+                    {
+                        cartItem?.length > 0 &&
+                        <Link to={"/dashboard/user/checkout"}>
+                            <button className="btn text-white hover:bg-teal-600 bg-primary-c">
+                                Proceed To Checkout
+                            </button>
+                        </Link>
+                    }
+
                 </div>
             </div>
             <dialog id="my_modal_3" className="modal">

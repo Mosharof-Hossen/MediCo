@@ -38,6 +38,7 @@ async function run() {
         const categoriesCollection = client.db("medicoDB").collection("categories");
         const itemsCollection = client.db("medicoDB").collection("items");
         const cartCollection = client.db("medicoDB").collection("cart");
+        const paymentCollection = client.db("medicoDB").collection("payment");
 
         // JWT API
         app.post('/login', async (req, res) => {
@@ -221,6 +222,19 @@ async function run() {
                 payment_method_types: ['card'],
             })
             res.send({ client_secret: paymentIntent.client_secret })
+        })
+
+        app.post("/payment", verifyToken, async (req, res) => {
+            const data = req.body;
+            const paymentResult = await paymentCollection.insertOne(data);
+            if (paymentResult.acknowledged == true) {
+                const query = {
+                    userId: data.userId
+                }
+                const result = await cartCollection.deleteMany(query);
+                return res.send(result)
+            }
+            res.send({})
         })
 
         // Send a ping to confirm a successful connection

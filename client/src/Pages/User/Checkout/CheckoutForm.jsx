@@ -3,6 +3,7 @@ import useFetchGetCartItem from '../../../API/UserApi/useFetchGetCartItem';
 import { useEffect, useState } from 'react';
 import useAxios from '../../../Hooks/useAxios';
 import useAuthContext from '../../../Hooks/useAuthContext';
+import useFetchPayment from '../../../API/UserApi/useFetchPayment';
 
 const CheckoutForm = () => {
     const stripe = useStripe();
@@ -12,6 +13,8 @@ const CheckoutForm = () => {
     const [err, setErr] = useState("");
     const [clientSecret, setClientSecret] = useState("")
     const { user } = useAuthContext();
+    const paymentMutation = useFetchPayment();
+    const [buttonDisable, setButtonDisable] = useState(false);
 
     const totalPrice = cartItem?.reduce((acc, cur) => acc + cur.itemDetails.perUnitPrice * cur.quantity, 0)
     useEffect(() => {
@@ -33,6 +36,7 @@ const CheckoutForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setButtonDisable(true)
 
         if (!stripe || !elements) {
             return;
@@ -43,7 +47,7 @@ const CheckoutForm = () => {
             return;
         }
 
-        const { error, paymentMethod } = await stripe.createPaymentMethod({
+        const { error,  } = await stripe.createPaymentMethod({
             type: 'card',
             card,
         });
@@ -51,7 +55,7 @@ const CheckoutForm = () => {
         if (error) {
             setErr(error.message)
         } else {
-            console.log('[PaymentMethod]', paymentMethod);
+            // console.log('[PaymentMethod]', paymentMethod);
             setErr("")
         }
 
@@ -66,9 +70,21 @@ const CheckoutForm = () => {
         })
 
         if (confirmErr) {
+            setButtonDisable(false)
             console.log(confirmErr);
         } else {
-            console.log("confirm- ", paymentIntent);
+            setButtonDisable(false)
+            if (paymentIntent.status === "succeeded") {
+                const payment = {
+                    transactionId: paymentIntent.id,
+                    userEmail: user.email,
+                    userId: user.uid,
+                    date: new Date(),
+                    itemIds: cartItem.map(item => item.itemId),
+                    status: "Pending"
+                }
+                paymentMutation.mutate(payment)
+            }
         }
 
 
@@ -97,7 +113,7 @@ const CheckoutForm = () => {
                         },
                     }}
                 />
-                <button type="submit" disabled={!stripe} className='bg-primary-c text-white px-3 py-1 rounded text-xl'>
+                <button type="submit" disabled={!stripe || buttonDisable} className='bg-primary-c text-white px-3 py-1 rounded text-xl'>
                     Pay
                 </button>
                 <p className='text-xs text-red-600 font-semibold'>{err}</p>
