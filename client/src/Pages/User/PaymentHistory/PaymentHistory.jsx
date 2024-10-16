@@ -20,10 +20,11 @@ const PaymentHistory = () => {
         const doc = new jsPDF();
 
         // Define the columns and rows of the table
-        const columns = ['ID', 'User Email', 'UserId', 'TransactionId', 'Date', 'Price']; // Table headers
+        const columns = ['ID', 'User Email', 'UserId', 'TransactionId', 'Date', 'Price $']; // Table headers
         const rows = data.map((item, i) => [i + 1, item.userEmail, item.userId, item.transactionId, item.date.split("T")[0], item.totalPrice])
         // Adding title to the PDF
-        doc.text('User Information Table', 14, 20);
+        doc.text('User Payment Information Table', 14, 20);
+
 
         // Generating the table in PDF
         doc.autoTable({
@@ -51,7 +52,7 @@ const PaymentHistory = () => {
 
     const downloadPDF = () => {
         const doc = new jsPDF();
-        const columns = ['ID', 'User Email', 'UserId', 'TransactionId', 'Date', 'Price']; // Table headers
+        const columns = ['ID', 'User Email', 'UserId', 'TransactionId', 'Date', 'Price $']; // Table headers
         const rows = data.map((item, i) => [i + 1, item.userEmail, item.userId, item.transactionId, item.date.split("T")[0], item.totalPrice])
         // Adding title to the PDF
         doc.text('User Information Table', 14, 20);
@@ -109,7 +110,7 @@ const PaymentHistory = () => {
                                     <th>{item.date.split("T")[0]}</th>
                                     <th>{item.userEmail}</th>
                                     <th>{item.transactionId}</th>
-                                    <th>{item.totalPrice}</th>
+                                    <th>${item.totalPrice}</th>
                                     <th>{item.status}</th>
                                     {/* <th>
                                         <div className="avatar">
