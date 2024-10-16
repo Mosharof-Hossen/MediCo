@@ -213,6 +213,12 @@ async function run() {
         })
 
         // ---------------- Payment Section ------------
+        app.get("/payment/:email/:uid", verifyToken, async (req, res) => {
+            const info = req.params;
+            const result = await paymentCollection.find({ userId: info.uid }).toArray();
+            res.send(result);
+        })
+
         app.post('/create-payment-intent', verifyToken, async (req, res) => {
             const { price } = req.body;
             const amount = parseInt(price * 100);
@@ -236,6 +242,8 @@ async function run() {
             }
             res.send({})
         })
+
+
 
         // Send a ping to confirm a successful connection
         await client.db("admin").command({ ping: 1 });

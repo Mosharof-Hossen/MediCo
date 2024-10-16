@@ -1,4 +1,4 @@
-import { CardElement, PaymentElement, useElements, useStripe } from '@stripe/react-stripe-js';
+import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import useFetchGetCartItem from '../../../API/UserApi/useFetchGetCartItem';
 import { useEffect, useState } from 'react';
 import useAxios from '../../../Hooks/useAxios';
