@@ -47,7 +47,7 @@ const CheckoutForm = () => {
             return;
         }
 
-        const { error,  } = await stripe.createPaymentMethod({
+        const { error, } = await stripe.createPaymentMethod({
             type: 'card',
             card,
         });
@@ -81,7 +81,8 @@ const CheckoutForm = () => {
                     userId: user.uid,
                     date: new Date(),
                     itemIds: cartItem.map(item => item.itemId),
-                    status: "Pending"
+                    status: "Pending",
+                    totalPrice: totalPrice
                 }
                 paymentMutation.mutate(payment)
             }
