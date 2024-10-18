@@ -24,9 +24,9 @@ const Dashboard = () => {
     }
     else if (userInfo?.role === "user") {
         links = <>
-            <NavLink to={"/dashboard/user"} end className={"lg:px-2  lg:mx-1 w-fit py-1 rounded  text-xl font-semibold "}><li>Profile</li></NavLink>
-            <NavLink to={"/dashboard/user/cart"} className={"lg:px-2  lg:mx-1 w-fit py-1 rounded  text-xl font-semibold "}><li>Cart</li></NavLink>
-            <NavLink to={"/dashboard/user/payment-history"} className={"lg:px-2  lg:mx-1 w-fit py-1 rounded  text-xl font-semibold "}><li>Payment-History</li></NavLink>
+            <NavLink to={"/dashboard/user"} end className={"  py-1 text-white text-xl font-semibold"}><li>Profile</li></NavLink>
+            <NavLink to={"/dashboard/user/cart"} className={" py-1  text-white text-xl font-semibold"}><li>Cart</li></NavLink>
+            <NavLink to={"/dashboard/user/payment-history"} className={" py-1 text-white text-xl font-semibold "}><li>Payment-History</li></NavLink>
         </>
     }
     else if (userInfo?.role === "seller") {
@@ -41,7 +41,7 @@ const Dashboard = () => {
     return (
         <div className="drawer ">
             <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
-            <div className="drawer-content flex flex-col">
+            <div className="drawer-content ">
                 {/* Navbar */}
                 <div className="navbar  bg-primary-c text-white w-full">
                     <div className="flex-none lg:hidden">
@@ -62,18 +62,26 @@ const Dashboard = () => {
                     <div className="flex items-center flex-1">
                         <Link to={"/"}><img src={logo} alt="" className="w-28 h-fit" /></Link>
                     </div>
-                    <div className="hidden flex-none lg:block">
+                    {/* <div className="hidden flex-none lg:block">
                         <ul className="menu menu-horizontal">
                             {links}
                         </ul>
+                    </div> */}
+                </div>
+                <div className=" flex-none lg:flex min-h-screen">
+                    <div className=" bg-primary-c min-w-80 hidden lg:block ">
+                        <ul className="menu space-y-2 p-4">
+                            {links}
+                        </ul>
+                    </div>
+                    <div className="flex-1 bg-slate-100  min-h-screen ">
+                        <Outlet></Outlet>
                     </div>
                 </div>
-                {/* Page content here */}
-                <Outlet></Outlet>
             </div>
             <div className="drawer-side ">
                 <label htmlFor="my-drawer-3" aria-label="close sidebar" className="drawer-overlay"></label>
-                <ul className="menu bg-primary-c text-white min-h-full w-80 p-4">
+                <ul className="menu bg-primary-c text-white min-h-full w-80 p-4 space-y-2">
                     {links}
                 </ul>
             </div>

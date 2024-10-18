@@ -3,7 +3,6 @@ import useFetchPaymentInfo from "../../../API/UserApi/useFetchPaymentInfo";
 import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
 import { jsPDF } from "jspdf";
 import 'jspdf-autotable';
-import logo from "../../../assets/logo.png"
 
 
 const PaymentHistory = () => {
@@ -104,16 +103,13 @@ const PaymentHistory = () => {
 
 
     return (
-        <div className='px-5 space-y-10 bg-slate-100'>
-            <SectionTitle heading={"Review & Proceed to Checkout"} subHeading={"Check the items in your cart, update quantities, and proceed to a secure checkout."}></SectionTitle>
+        <div className='px-5 space-y-10 '>
+            <SectionTitle heading={"Review & Proceed to Checkout"} subHeading={"Check the items in your cart, update quantities, and proceed to a secure checkout."}>
+
+            </SectionTitle>
             <div className="bg-white p-5 rounded">
                 <div className="overflow-x-auto">
-                    <div className="flex justify-between my-5 items-center">
-                        {/* <h4 className="uppercase font-bold text-xl text-gray-500">Total orders: {data?.length}</h4> */}
-                        {/* <h4 className="uppercase font-bold text-xl text-gray-500">Total Price: ${data?.reduce((acc, cur) => acc + cur.itemDetails.perUnitPrice * cur.quantity, 0)}</h4> */}
-
-                    </div>
-                    <table className="table table-zebra">
+                    <table className="table">
                         {/* head */}
                         <thead>
                             <tr className='bg-primary-c text-white'>
@@ -125,29 +121,24 @@ const PaymentHistory = () => {
                                 <th className="rounded-tr-3xl">Status</th>
                             </tr>
                         </thead>
+
                         <tbody>
-                            {/* row 1 */}
                             {
                                 data?.map((item, i) => <tr key={item._id}>
                                     <th>{i + 1}</th>
                                     <th>{item.date.split("T")[0]}</th>
-                                    <th>{item.userEmail}</th>
-                                    <th>{item.transactionId}</th>
+                                    <th className="break-words max-w-[150px] overflow-hidden text-ellipsis">{item.userEmail}</th>
+                                    <th className="break-words max-w-[150px] overflow-hidden text-ellipsis">{item.transactionId}</th>
                                     <th>${item.totalPrice}</th>
                                     <th>{item.status}</th>
-                                    {/* <th>
-                                        <div className="avatar">
-                                            <div className="w-14 rounded-xl">
-                                                <img src={item.itemDetails.image} />
-                                            </div>
-                                        </div>
-                                    </th> */}
-
                                 </tr>)
                             }
                         </tbody>
+
+
                     </table>
                 </div>
+
                 <div className="p-10 text-center space-y-6">
                     {
                         pdfURL ? <button onClick={downloadPDF} className="px-3 py-2 text-white bg-primary-c hover:bg-teal-600 rounded">

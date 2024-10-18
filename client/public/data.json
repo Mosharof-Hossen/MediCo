@@ -10,9 +10,9 @@
         "application": "Cardiology",
         "perUnitPrice": 50,
         "discountPercentage": 0,
-        "user": {
-            "email": "test@test.com",
-            "userId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
+        "seller": {
+            "sellerEmail": "test@test.com",
+            "sellerId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
         }
     },
     {
@@ -26,9 +26,9 @@
         "application": "Cardiovascular Monitoring",
         "perUnitPrice": 70,
         "discountPercentage": 10,
-        "user": {
-            "email": "test@test.com",
-            "userId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
+        "seller": {
+            "sellerEmail": "test@test.com",
+            "sellerId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
         }
     },
     {
@@ -42,9 +42,9 @@
         "application": "Temperature Measurement",
         "perUnitPrice": 15,
         "discountPercentage": 0,
-        "user": {
-            "email": "test@test.com",
-            "userId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
+        "seller": {
+            "sellerEmail": "test@test.com",
+            "sellerId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
         }
     },
     {
@@ -58,9 +58,9 @@
         "application": "Respiratory Monitoring",
         "perUnitPrice": 25,
         "discountPercentage": 5,
-        "user": {
-            "email": "test@test.com",
-            "userId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
+        "seller": {
+            "sellerEmail": "test@test.com",
+            "sellerId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
         }
     },
     {
@@ -74,9 +74,9 @@
         "application": "Diabetes Management",
         "perUnitPrice": 30,
         "discountPercentage": 0,
-        "user": {
-            "email": "mosharofhossen1998@gmail.com",
-            "userId": "0eHxy6cp8bRXGg1oJniXDjyjwFj2"
+        "seller": {
+            "sellerEmail": "mosharofhossen1998@gmail.com",
+            "sellerId": "0eHxy6cp8bRXGg1oJniXDjyjwFj2"
         }
     },
     {
@@ -90,9 +90,9 @@
         "application": "Respiratory Treatment",
         "perUnitPrice": 90,
         "discountPercentage": 15,
-        "user": {
-            "email": "test@test.com",
-            "userId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
+        "seller": {
+            "sellerEmail": "test@test.com",
+            "sellerId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
         }
     },
     {
@@ -106,9 +106,9 @@
         "application": "Emergency Care",
         "perUnitPrice": 35,
         "discountPercentage": 10,
-        "user": {
-            "email": "test@test.com",
-            "userId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
+        "seller": {
+            "sellerEmail": "test@test.com",
+            "sellerId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
         }
     },
     {
@@ -122,9 +122,9 @@
         "application": "Mobility Assistance",
         "perUnitPrice": 300,
         "discountPercentage": 0,
-        "user": {
-            "email": "test@test.com",
-            "userId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
+        "seller": {
+            "sellerEmail": "test@test.com",
+            "sellerId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
         }
     },
     {
@@ -138,9 +138,9 @@
         "application": "Diabetes Management",
         "perUnitPrice": 20,
         "discountPercentage": 0,
-        "user": {
-            "email": "test@test.com",
-            "userId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
+        "seller": {
+            "sellerEmail": "test@test.com",
+            "sellerId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
         }
     },
     {
@@ -154,9 +154,9 @@
         "application": "Cardiac Emergency",
         "perUnitPrice": 1200,
         "discountPercentage": 20,
-        "user": {
-            "email": "test@test.com",
-            "userId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
+        "seller": {
+            "sellerEmail": "test@test.com",
+            "sellerId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
         }
     },
     {
@@ -170,9 +170,9 @@
         "application": "Surgery",
         "perUnitPrice": 10,
         "discountPercentage": 0,
-        "user": {
-            "email": "mosharofhossen1998@gmail.com",
-            "userId": "0eHxy6cp8bRXGg1oJniXDjyjwFj2"
+        "seller": {
+            "sellerEmail": "mosharofhossen1998@gmail.com",
+            "sellerId": "0eHxy6cp8bRXGg1oJniXDjyjwFj2"
         }
     },
     {
@@ -186,9 +186,9 @@
         "application": "Hygiene",
         "perUnitPrice": 5,
         "discountPercentage": 0,
-        "user": {
-            "email": "test@test.com",
-            "userId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
+        "seller": {
+            "sellerEmail": "test@test.com",
+            "sellerId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
         }
     },
     {
@@ -202,9 +202,9 @@
         "application": "Cardiac Monitoring",
         "perUnitPrice": 800,
         "discountPercentage": 15,
-        "user": {
-            "email": "test@test.com",
-            "userId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
+        "seller": {
+            "sellerEmail": "test@test.com",
+            "sellerId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
         }
     },
     {
@@ -218,9 +218,9 @@
         "application": "Respiratory Care",
         "perUnitPrice": 20,
         "discountPercentage": 0,
-        "user": {
-            "email": "test@test.com",
-            "userId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
+        "seller": {
+            "sellerEmail": "test@test.com",
+            "sellerId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
         }
     },
     {
@@ -234,9 +234,9 @@
         "application": "ENT Examination",
         "perUnitPrice": 75,
         "discountPercentage": 5,
-        "user": {
-            "email": "mosharofhossen1998@gmail.com",
-            "userId": "0eHxy6cp8bRXGg1oJniXDjyjwFj2"
+        "seller": {
+            "sellerEmail": "mosharofhossen1998@gmail.com",
+            "sellerId": "0eHxy6cp8bRXGg1oJniXDjyjwFj2"
         }
     },
     {
@@ -250,9 +250,9 @@
         "application": "Pain Relief",
         "perUnitPrice": 10,
         "discountPercentage": 0,
-        "user": {
-            "email": "test@test.com",
-            "userId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
+        "seller": {
+            "sellerEmail": "test@test.com",
+            "sellerId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
         }
     },
     {
@@ -266,9 +266,9 @@
         "application": "Pain Relief",
         "perUnitPrice": 12,
         "discountPercentage": 5,
-        "user": {
-            "email": "test@test.com",
-            "userId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
+        "seller": {
+            "sellerEmail": "test@test.com",
+            "sellerId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
         }
     },
     {
@@ -282,9 +282,9 @@
         "application": "Pain Relief",
         "perUnitPrice": 8,
         "discountPercentage": 0,
-        "user": {
-            "email": "test@test.com",
-            "userId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
+        "seller": {
+            "sellerEmail": "test@test.com",
+            "sellerId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
         }
     },
     {
@@ -298,9 +298,9 @@
         "application": "Antibiotic",
         "perUnitPrice": 15,
         "discountPercentage": 10,
-        "user": {
-            "email": "test@test.com",
-            "userId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
+        "seller": {
+            "sellerEmail": "test@test.com",
+            "sellerId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
         }
     },
     {
@@ -314,9 +314,9 @@
         "application": "Allergy Relief",
         "perUnitPrice": 5,
         "discountPercentage": 0,
-        "user": {
-            "email": "mosharofhossen1998@gmail.com",
-            "userId": "0eHxy6cp8bRXGg1oJniXDjyjwFj2"
+        "seller": {
+            "sellerEmail": "mosharofhossen1998@gmail.com",
+            "sellerId": "0eHxy6cp8bRXGg1oJniXDjyjwFj2"
         }
     },
     {
@@ -330,9 +330,9 @@
         "application": "Immune Support",
         "perUnitPrice": 25,
         "discountPercentage": 0,
-        "user": {
-            "email": "test@test.com",
-            "userId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
+        "seller": {
+            "sellerEmail": "test@test.com",
+            "sellerId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
         }
     },
     {
@@ -346,9 +346,9 @@
         "application": "Heart Health",
         "perUnitPrice": 30,
         "discountPercentage": 10,
-        "user": {
-            "email": "test@test.com",
-            "userId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
+        "seller": {
+            "sellerEmail": "test@test.com",
+            "sellerId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
         }
     },
     {
@@ -362,9 +362,9 @@
         "application": "Bone Health",
         "perUnitPrice": 18,
         "discountPercentage": 0,
-        "user": {
-            "email": "test@test.com",
-            "userId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
+        "seller": {
+            "sellerEmail": "test@test.com",
+            "sellerId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
         }
     },
     {
@@ -378,9 +378,9 @@
         "application": "Muscle Support",
         "perUnitPrice": 22,
         "discountPercentage": 5,
-        "user": {
-            "email": "test@test.com",
-            "userId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
+        "seller": {
+            "sellerEmail": "test@test.com",
+            "sellerId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
         }
     },
     {
@@ -394,9 +394,9 @@
         "application": "Immune Support",
         "perUnitPrice": 15,
         "discountPercentage": 0,
-        "user": {
-            "email": "mosharofhossen1998@gmail.com",
-            "userId": "0eHxy6cp8bRXGg1oJniXDjyjwFj2"
+        "seller": {
+            "sellerEmail": "mosharofhossen1998@gmail.com",
+            "sellerId": "0eHxy6cp8bRXGg1oJniXDjyjwFj2"
         }
     },
     {
@@ -410,9 +410,9 @@
         "application": "Baby Care",
         "perUnitPrice": 25,
         "discountPercentage": 0,
-        "user": {
-            "email": "test@test.com",
-            "userId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
+        "seller": {
+            "sellerEmail": "test@test.com",
+            "sellerId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
         }
     },
     {
@@ -426,9 +426,9 @@
         "application": "Baby Hygiene",
         "perUnitPrice": 10,
         "discountPercentage": 5,
-        "user": {
-            "email": "test@test.com",
-            "userId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
+        "seller": {
+            "sellerEmail": "test@test.com",
+            "sellerId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
         }
     },
     {
@@ -442,9 +442,9 @@
         "application": "Skin Moisturization",
         "perUnitPrice": 15,
         "discountPercentage": 0,
-        "user": {
-            "email": "test@test.com",
-            "userId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
+        "seller": {
+            "sellerEmail": "test@test.com",
+            "sellerId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
         }
     },
     {
@@ -458,9 +458,9 @@
         "application": "Hair Care",
         "perUnitPrice": 12,
         "discountPercentage": 0,
-        "user": {
-            "email": "test@test.com",
-            "userId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
+        "seller": {
+            "sellerEmail": "test@test.com",
+            "sellerId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
         }
     },
     {
@@ -474,9 +474,9 @@
         "application": "Skin Care",
         "perUnitPrice": 8,
         "discountPercentage": 5,
-        "user": {
-            "email": "mosharofhossen1998@gmail.com",
-            "userId": "0eHxy6cp8bRXGg1oJniXDjyjwFj2"
+        "seller": {
+            "sellerEmail": "mosharofhossen1998@gmail.com",
+            "sellerId": "0eHxy6cp8bRXGg1oJniXDjyjwFj2"
         }
     },
     {
@@ -490,9 +490,9 @@
         "application": "Infection Prevention",
         "perUnitPrice": 10,
         "discountPercentage": 0,
-        "user": {
-            "email": "test@test.com",
-            "userId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
+        "seller": {
+            "sellerEmail": "test@test.com",
+            "sellerId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
         }
     },
     {
@@ -506,9 +506,9 @@
         "application": "Wound Protection",
         "perUnitPrice": 8,
         "discountPercentage": 5,
-        "user": {
-            "email": "test@test.com",
-            "userId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
+        "seller": {
+            "sellerEmail": "test@test.com",
+            "sellerId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
         }
     },
     {
@@ -522,9 +522,9 @@
         "application": "Injury Support",
         "perUnitPrice": 6,
         "discountPercentage": 0,
-        "user": {
-            "email": "test@test.com",
-            "userId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
+        "seller": {
+            "sellerEmail": "test@test.com",
+            "sellerId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
         }
     },
     {
@@ -538,9 +538,9 @@
         "application": "Pain Relief",
         "perUnitPrice": 4,
         "discountPercentage": 0,
-        "user": {
-            "email": "test@test.com",
-            "userId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
+        "seller": {
+            "sellerEmail": "test@test.com",
+            "sellerId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
         }
     },
     {
@@ -554,9 +554,9 @@
         "application": "Burn Treatment",
         "perUnitPrice": 12,
         "discountPercentage": 0,
-        "user": {
-            "email": "mosharofhossen1998@gmail.com",
-            "userId": "0eHxy6cp8bRXGg1oJniXDjyjwFj2"
+        "seller": {
+            "sellerEmail": "mosharofhossen1998@gmail.com",
+            "sellerId": "0eHxy6cp8bRXGg1oJniXDjyjwFj2"
         }
     },
     {
@@ -570,9 +570,9 @@
         "application": "Pain Relief",
         "perUnitPrice": 15,
         "discountPercentage": 0,
-        "user": {
-            "email": "test@test.com",
-            "userId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
+        "seller": {
+            "sellerEmail": "test@test.com",
+            "sellerId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
         }
     },
     {
@@ -586,9 +586,9 @@
         "application": "Digestive Health",
         "perUnitPrice": 12,
         "discountPercentage": 5,
-        "user": {
-            "email": "test@test.com",
-            "userId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
+        "seller": {
+            "sellerEmail": "test@test.com",
+            "sellerId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
         }
     },
     {
@@ -602,9 +602,9 @@
         "application": "Teething Relief",
         "perUnitPrice": 10,
         "discountPercentage": 0,
-        "user": {
-            "email": "test@test.com",
-            "userId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
+        "seller": {
+            "sellerEmail": "test@test.com",
+            "sellerId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
         }
     },
     {
@@ -618,9 +618,9 @@
         "application": "Anxiety Relief",
         "perUnitPrice": 8,
         "discountPercentage": 0,
-        "user": {
-            "email": "test@test.com",
-            "userId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
+        "seller": {
+            "sellerEmail": "test@test.com",
+            "sellerId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
         }
     },
     {
@@ -634,9 +634,9 @@
         "application": "Joint Health",
         "perUnitPrice": 12,
         "discountPercentage": 0,
-        "user": {
-            "email": "mosharofhossen1998@gmail.com",
-            "userId": "0eHxy6cp8bRXGg1oJniXDjyjwFj2"
+        "seller": {
+            "sellerEmail": "mosharofhossen1998@gmail.com",
+            "sellerId": "0eHxy6cp8bRXGg1oJniXDjyjwFj2"
         }
     },
     {
@@ -650,9 +650,9 @@
         "application": "Fever Reduction",
         "perUnitPrice": 10,
         "discountPercentage": 0,
-        "user": {
-            "email": "test@test.com",
-            "userId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
+        "seller": {
+            "sellerEmail": "test@test.com",
+            "sellerId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
         }
     },
     {
@@ -666,9 +666,9 @@
         "application": "Emotional Well-being",
         "perUnitPrice": 15,
         "discountPercentage": 5,
-        "user": {
-            "email": "test@test.com",
-            "userId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
+        "seller": {
+            "sellerEmail": "test@test.com",
+            "sellerId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
         }
     },
     {
@@ -682,9 +682,9 @@
         "application": "Nerve Health",
         "perUnitPrice": 12,
         "discountPercentage": 0,
-        "user": {
-            "email": "test@test.com",
-            "userId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
+        "seller": {
+            "sellerEmail": "test@test.com",
+            "sellerId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
         }
     },
     {
@@ -698,9 +698,9 @@
         "application": "Hormonal Health",
         "perUnitPrice": 14,
         "discountPercentage": 0,
-        "user": {
-            "email": "test@test.com",
-            "userId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
+        "seller": {
+            "sellerEmail": "test@test.com",
+            "sellerId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
         }
     },
     {
@@ -714,9 +714,9 @@
         "application": "Skin Health",
         "perUnitPrice": 10,
         "discountPercentage": 5,
-        "user": {
-            "email": "test@test.com",
-            "userId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
+        "seller": {
+            "sellerEmail": "test@test.com",
+            "sellerId": "tUDqelQDODOxISwdwhGPGT8oX4Z2"
         }
     }
 ]
