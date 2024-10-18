@@ -190,6 +190,13 @@ async function run() {
 
         })
 
+        app.get("/profile-info/:uid", verifyToken, async (req, res) => {
+            const userId = req.params;
+            console.log(userId);
+            const result = await paymentCollection.find({ userId: userId.uid }).toArray();
+            res.send(result);
+        })
+
         app.patch("/user/carts", verifyToken, async (req, res) => {
             const data = req.body;
             const filter = {
