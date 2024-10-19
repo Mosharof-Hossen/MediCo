@@ -2,10 +2,10 @@ import PropTypes from 'prop-types';
 import useAuthContext from '../Hooks/useAuthContext';
 import { Navigate, useLocation } from 'react-router-dom';
 
-const PrivateRouter = ({ children }) => {
+const PrivateAdminRouter = ({ children }) => {
     const { user, loading } = useAuthContext();
     const location = useLocation();
-    console.log(loading);
+
     if (loading) {
         return <div className='text-center'><span className='loading loading-bars loading-lg'></span></div>
     }
@@ -16,8 +16,7 @@ const PrivateRouter = ({ children }) => {
     return <Navigate to={"/login"} state={location.pathname}></Navigate>
 };
 
-PrivateRouter.propTypes = {
+PrivateAdminRouter.propTypes = {
     children: PropTypes.node
 };
-
-export default PrivateRouter;
+export default PrivateAdminRouter;

@@ -12,35 +12,42 @@ const AuthProviders = ({ children }) => {
     const githubProvider = new GithubAuthProvider();
     const [waitForUser, setWaitForUser] = useState(false);
     const publicAxios = usePublicAxios();
+    const [loading, setLoading] = useState(true);
 
     // Create Account by Email and Password
     const createAccountByEmailPass = (email, password) => {
+        setLoading(true);
         return createUserWithEmailAndPassword(auth, email, password);
     }
 
     // Sign in By Email and pass
     const loginByEmailAndPassword = (email, password) => {
+        setLoading(true);
         return signInWithEmailAndPassword(auth, email, password)
     }
 
     // Google Login
     const googleLogin = () => {
+        setLoading(true);
         return signInWithPopup(auth, googleProvider);
     }
 
     const githubLogin = () => {
+        setLoading(true);
         return signInWithPopup(auth, githubProvider)
     }
 
     // Logout
     const logout = () => {
+        setLoading(true)
         localStorage.removeItem("token")
         return signOut(auth);
     }
 
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, async (currentUser) => {
-            setUser(currentUser)
+            setUser(currentUser);
+            setLoading(false);
             if (currentUser) {
                 const jwt = {
                     email: currentUser.email,
@@ -66,7 +73,8 @@ const AuthProviders = ({ children }) => {
         createAccountByEmailPass,
         loginByEmailAndPassword,
         logout,
-        waitForUser
+        waitForUser,
+        loading
     }
     return (
         <AuthContext.Provider value={authInfo}>

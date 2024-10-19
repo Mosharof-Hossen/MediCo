@@ -8,7 +8,6 @@ import Shop from "../Pages/Shop/Shop";
 import SignUp from "../Pages/SignUp/SignUp";
 import Login from "../Pages/Login/Login";
 import Category from "../Pages/Category/Category";
-import Dashboard from "../Layout/dashboard";
 import Cart from "../Pages/User/Cart/Cart";
 import PaymentHistory from "../Pages/User/PaymentHistory/PaymentHistory";
 import UserProfile from "../Pages/User/UserProfile/UserProfile";
@@ -21,6 +20,8 @@ import SellerProfile from "../Pages/Seller/SellerProfile/SellerProfile";
 import ManageMedicines from "../Pages/Seller/ManageMedicines/ManageMedicines";
 import AskForAds from "../Pages/Seller/AskForAds/AskForAds";
 import Checkout from "../Pages/User/Checkout/Checkout";
+import PrivateRouter from "./PrivateRouter";
+import Dashboard from "../Layout/Dashboard";
 
 const router = createBrowserRouter([
     {
@@ -55,19 +56,19 @@ const router = createBrowserRouter([
         children: [
             {
                 path: "/dashboard/user",
-                element: <UserProfile></UserProfile>
+                element: <PrivateRouter> <UserProfile></UserProfile></PrivateRouter>
             },
             {
                 path: "/dashboard/user/cart",
-                element: <Cart></Cart>
+                element: <PrivateRouter><Cart></Cart></PrivateRouter>
             },
             {
                 path: "/dashboard/user/checkout",
-                element: <Checkout></Checkout>
+                element: <PrivateRouter><Checkout></Checkout> </PrivateRouter>
             },
             {
                 path: "/dashboard/user/payment-history",
-                element: <PaymentHistory></PaymentHistory>
+                element: <PrivateRouter><PaymentHistory></PaymentHistory></PrivateRouter>
             }
         ]
     },

@@ -5,21 +5,44 @@ import logo from "../../assets/logo.png"
 import useAuthContext from "../../Hooks/useAuthContext";
 import defaultUser from "../../assets/login/user.png"
 import useFetchGetCartItem from "../../API/UserApi/useFetchGetCartItem";
+import useFetchUserInfo from "../../API/useFetchUserInfo";
 
 const Navbar = () => {
     const { user, logout } = useAuthContext();
     const { data: cartItem, isLoading } = useFetchGetCartItem();
+    const { data: userInfo, isLoading: userInfoLoading, isError } = useFetchUserInfo()
 
+    if (isLoading || userInfoLoading) {
+        return <div className='text-center'><span className='loading loading-bars loading-lg'></span></div>
+    }
+    if (isError) {
+        return
+    }
     const handleLogout = () => {
         logout()
     }
 
+    console.log(userInfo);
     const links = <>
         <NavLink to={"/"} className={"lg:px-2  lg:mx-1 w-fit py-1 rounded  text-xl font-semibold "}><li>Home</li></NavLink>
         <NavLink to={"/shop"} className={"lg:px-2  lg:mx-1 w-fit py-1 rounded  text-xl font-semibold "}><li>Shop</li></NavLink>
     </>
     const profile = <>
-        <NavLink to={"/dashboard/user"} className={"lg:px-2  lg:mx-1 w-fit py-1 rounded  text-xl font-semibold "}><li>Dashboard</li></NavLink>
+        {
+            userInfo?.role === "user"
+            &&
+            <NavLink to={"/dashboard/user"} className={"lg:px-2  lg:mx-1 w-fit py-1 rounded  text-xl font-semibold "}><li>Dashboard</li></NavLink>
+        }
+        {
+            userInfo?.role === "seller"
+            &&
+            <NavLink to={"/dashboard/seller"} className={"lg:px-2  lg:mx-1 w-fit py-1 rounded  text-xl font-semibold "}><li>Dashboard</li></NavLink>
+        }
+        {
+            userInfo?.role === "admin"
+            &&
+            <NavLink to={"/dashboard/admin"} className={"lg:px-2  lg:mx-1 w-fit py-1 rounded  text-xl font-semibold "}><li>Dashboard</li></NavLink>
+        }
         <NavLink to={"/dashboard/user/update-profile"} className={"lg:px-2  lg:mx-1 w-fit py-1 rounded  text-xl font-semibold "}><li>Update Profile</li></NavLink>
         <Link onClick={handleLogout} className={"lg:px-2  lg:mx-1 w-fit py-1 rounded  text-xl font-semibold "}><li>Logout</li></Link>
     </>
@@ -63,7 +86,7 @@ const Navbar = () => {
                 </div>
                 <div className="navbar-end gap-5">
                     {
-                        user &&
+                        userInfo?.role === "user" &&
                         <Link to={"/dashboard/user/cart"}>
                             <div className="indicator">
                                 <span className="indicator-item ">{isLoading ? 0 : cartItem?.length}</span>

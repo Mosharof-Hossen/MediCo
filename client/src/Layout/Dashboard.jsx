@@ -24,9 +24,9 @@ const Dashboard = () => {
     }
     else if (userInfo?.role === "user") {
         links = <>
-            <NavLink to={"/dashboard/user"} end className={"  py-1 text-white text-xl font-semibold"}><li>Profile</li></NavLink>
-            <NavLink to={"/dashboard/user/cart"} className={" py-1  text-white text-xl font-semibold"}><li>Cart</li></NavLink>
-            <NavLink to={"/dashboard/user/payment-history"} className={" py-1 text-white text-xl font-semibold "}><li>Payment-History</li></NavLink>
+            <NavLink to={"/dashboard/user"} end className={"  py-1  text-xl font-semibold"}><li>Profile</li></NavLink>
+            <NavLink to={"/dashboard/user/cart"} className={" py-1   text-xl font-semibold"}><li>Cart</li></NavLink>
+            <NavLink to={"/dashboard/user/payment-history"} className={" py-1  text-xl font-semibold "}><li>Payment-History</li></NavLink>
         </>
     }
     else if (userInfo?.role === "seller") {
@@ -62,11 +62,6 @@ const Dashboard = () => {
                     <div className="flex items-center flex-1">
                         <Link to={"/"}><img src={logo} alt="" className="w-28 h-fit" /></Link>
                     </div>
-                    {/* <div className="hidden flex-none lg:block">
-                        <ul className="menu menu-horizontal">
-                            {links}
-                        </ul>
-                    </div> */}
                 </div>
                 <div className=" flex-none lg:flex min-h-screen">
                     <div className=" bg-primary-c min-w-80 hidden lg:block ">
