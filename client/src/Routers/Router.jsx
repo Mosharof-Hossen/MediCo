@@ -22,6 +22,7 @@ import AskForAds from "../Pages/Seller/AskForAds/AskForAds";
 import Checkout from "../Pages/User/Checkout/Checkout";
 import PrivateRouter from "./PrivateRouter";
 import Dashboard from "../Layout/Dashboard";
+import PrivateAdminRouter from "./PrivateAdminRouter";
 
 const router = createBrowserRouter([
     {
@@ -78,23 +79,23 @@ const router = createBrowserRouter([
         children: [
             {
                 path: "/dashboard/admin",
-                element: <AdminProfile></AdminProfile>
+                element: <PrivateAdminRouter><AdminProfile></AdminProfile></PrivateAdminRouter>
             },
             {
                 path: "/dashboard/admin/manage-user",
-                element: <MangeUser></MangeUser>
+                element: <PrivateAdminRouter><MangeUser></MangeUser></PrivateAdminRouter>
             },
             {
                 path: "/dashboard/admin/payment-manage",
-                element: <PaymentManage></PaymentManage>
+                element: <PrivateAdminRouter><PaymentManage></PaymentManage></PrivateAdminRouter>
             },
             {
                 path: "/dashboard/admin/sales-report",
-                element: <SalesReport></SalesReport>
+                element: <PrivateAdminRouter><SalesReport></SalesReport></PrivateAdminRouter>
             },
             {
                 path: "/dashboard/admin/manage-banner",
-                element: <ManageBanner></ManageBanner>
+                element: <PrivateAdminRouter><ManageBanner></ManageBanner></PrivateAdminRouter>
             },
         ]
     },
