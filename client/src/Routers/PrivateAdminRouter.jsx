@@ -6,9 +6,9 @@ import useFetchUserInfo from '../API/useFetchUserInfo';
 const PrivateAdminRouter = ({ children }) => {
     const { user, loading } = useAuthContext();
     const location = useLocation();
-    const { data: userInfo, isLoading } = useFetchUserInfo();
+    const { data: userInfo,  } = useFetchUserInfo();
     console.log(userInfo);
-    if (loading || isLoading) {
+    if (loading || !(userInfo?.role == "admin")) {
         return <div className='text-center'><span className='loading loading-bars loading-lg'></span></div>
     }
 

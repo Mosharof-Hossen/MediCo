@@ -17,13 +17,14 @@ import PaymentManage from "../Pages/Admin/PaymentManage/PaymentManage";
 import SalesReport from "../Pages/Admin/SalesReport/SalesReport";
 import ManageBanner from "../Pages/Admin/ManageBanner/ManageBanner";
 import SellerProfile from "../Pages/Seller/SellerProfile/SellerProfile";
-import ManageMedicines from "../Pages/Seller/ManageMedicines/ManageMedicines";
 import AskForAds from "../Pages/Seller/AskForAds/AskForAds";
 import Checkout from "../Pages/User/Checkout/Checkout";
 import PrivateRouter from "./PrivateRouter";
 import Dashboard from "../Layout/Dashboard";
 import PrivateAdminRouter from "./PrivateAdminRouter";
 import PrivateSellerRouter from "./PrivateSellerRouter";
+import PaymentHistorySeller from "../Pages/Seller/PaymentHistory/PaymentHistorySeller";
+import ManageMedicinesSeller from "../Pages/Seller/ManageMedicines/ManageMedicinesSeller";
 
 const router = createBrowserRouter([
     {
@@ -110,11 +111,11 @@ const router = createBrowserRouter([
             },
             {
                 path: "/dashboard/seller/manage-medicines",
-                element: <PrivateSellerRouter><ManageMedicines></ManageMedicines></PrivateSellerRouter>
+                element: <PrivateSellerRouter><ManageMedicinesSeller></ManageMedicinesSeller></PrivateSellerRouter>
             },
             {
                 path: "/dashboard/seller/payment-history",
-                element: <PrivateSellerRouter><PaymentHistory></PaymentHistory></PrivateSellerRouter>
+                element: <PrivateSellerRouter><PaymentHistorySeller></PaymentHistorySeller></PrivateSellerRouter>
             },
             {
                 path: "/dashboard/seller/ask-for-ads",

@@ -6,9 +6,8 @@ import useFetchUserInfo from '../API/useFetchUserInfo';
 const PrivateSellerRouter = ({ children }) => {
     const { user, loading } = useAuthContext();
     const location = useLocation();
-    const { data: userInfo, isLoading } = useFetchUserInfo();
-    console.log(userInfo);
-    if (loading || isLoading) {
+    const { data: userInfo, } = useFetchUserInfo();
+    if (loading || !(userInfo?.role == "seller")) {
         return <div className='text-center'><span className='loading loading-bars loading-lg'></span></div>
     }
 
