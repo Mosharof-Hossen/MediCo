@@ -14,7 +14,6 @@ const UserProfile = () => {
     if (isError) {
         return
     }
-    console.log(data);
     return (
         <div>
             <SectionTitle heading={"hi, welcome back!"}></SectionTitle>

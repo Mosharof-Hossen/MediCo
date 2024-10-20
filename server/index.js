@@ -66,7 +66,7 @@ async function run() {
             })
         }
 
-        // /////////////////////////////////////////////////////////////////////////////////////
+        // ////////////////////// Public Api///////////////////////////////////////////////////////////////
         app.get("/all-category", async (req, res) => {
             const result = await categoriesCollection.find().toArray();
             res.send(result)
@@ -142,6 +142,7 @@ async function run() {
         })
 
         // ********** User Related API ***********
+
         app.get("/user/cart", verifyToken, async (req, res) => {
             const user = req.query.user;
 
@@ -192,7 +193,6 @@ async function run() {
 
         app.get("/profile-info/:uid", verifyToken, async (req, res) => {
             const userId = req.params;
-            console.log(userId);
             const result = await paymentCollection.find({ userId: userId.uid }).toArray();
             res.send(result);
         })
@@ -204,7 +204,7 @@ async function run() {
                 itemId: data.itemId
             }
             const result = await cartCollection.updateOne(filter, { $set: { quantity: data.quantity } })
-            console.log(data);
+          
             res.send(result)
         })
 
@@ -217,6 +217,12 @@ async function run() {
             const id = req.params.id;
             const result = await cartCollection.deleteMany({ itemId: id });
             res.send({ result })
+        })
+
+        // ---------------- Seller API -----------------
+        app.get("/seller/payment-history/:uid", async (req, res) => {
+            const uid = req.params.uid;
+            const result = await paymentCollection.find()
         })
 
         // ---------------- Payment Section ------------
@@ -239,14 +245,15 @@ async function run() {
 
         app.post("/payment", verifyToken, async (req, res) => {
             const data = req.body;
-            const paymentResult = await paymentCollection.insertOne(data);
-            if (paymentResult.acknowledged == true) {
-                const query = {
-                    userId: data.userId
-                }
-                const result = await cartCollection.deleteMany(query);
-                return res.send(result)
-            }
+            console.log(data);
+            // const paymentResult = await paymentCollection.insertOne(data);
+            // if (paymentResult.acknowledged == true) {
+            //     const query = {
+            //         userId: data.userId
+            //     }
+            //     const result = await cartCollection.deleteMany(query);
+            //     return res.send(result)
+            // }
             res.send({})
         })
 

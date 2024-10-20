@@ -37,7 +37,8 @@ const Category = () => {
                 useEmail: user.email,
                 userId: user.uid,
                 itemId: item._id,
-                quantity: 1
+                quantity: 1,
+                seller: item.seller
             })
         }
     }

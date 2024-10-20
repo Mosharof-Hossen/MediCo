@@ -34,6 +34,27 @@ const CheckoutForm = () => {
         return
     }
 
+    console.log(cartItem);
+    const shortItemCartItem = cartItem?.reduce((acc, item) => {
+        const { perUnitPrice } = item.itemDetails;
+
+        const { sellerEmail } = item.seller;
+        if (!acc[sellerEmail]) {
+            acc[sellerEmail] = {
+                sellerEmail: sellerEmail,
+                sellerId: item.seller.sellerId,
+                price: 0,
+                items: []
+            }
+        }
+        acc[sellerEmail].items.push(item.itemId);
+        acc[sellerEmail].price += perUnitPrice;
+
+        return acc;
+
+    }, {})
+    const shortCart = Object.entries(shortItemCartItem)?.map(item => item[1])
+    console.log(shortCart);
     const handleSubmit = async (e) => {
         e.preventDefault();
         setButtonDisable(true)
