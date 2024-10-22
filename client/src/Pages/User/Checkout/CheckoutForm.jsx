@@ -34,7 +34,6 @@ const CheckoutForm = () => {
         return
     }
 
-    console.log(cartItem);
     const shortItemCartItem = cartItem?.reduce((acc, item) => {
         const { perUnitPrice } = item.itemDetails;
 
@@ -54,7 +53,7 @@ const CheckoutForm = () => {
 
     }, {})
     const shortCart = Object.entries(shortItemCartItem)?.map(item => item[1])
-    console.log(shortCart);
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         setButtonDisable(true)
@@ -96,16 +95,26 @@ const CheckoutForm = () => {
         } else {
             setButtonDisable(false)
             if (paymentIntent.status === "succeeded") {
-                const payment = {
-                    transactionId: paymentIntent.id,
-                    userEmail: user.email,
-                    userId: user.uid,
-                    date: new Date(),
-                    itemIds: cartItem.map(item => item.itemId),
-                    status: "Pending",
-                    totalPrice: totalPrice
-                }
-                paymentMutation.mutate(payment)
+                // const payment = {
+                //     transactionId: paymentIntent.id,
+                //     userEmail: user.email,
+                //     userId: user.uid,
+                //     date: new Date(),
+                //     itemIds: cartItem.map(item => item.itemId),
+                //     status: "Pending",
+                //     totalPrice: totalPrice
+                // }
+                const newPayment = shortCart.map(item => {
+                    item["transactionId"] = paymentIntent.id,
+                        item["userEmail"] = user.email,
+                        item["userId"] = user.uid,
+                        item["date"] = new Date(),
+                        item["status"] = "Pending",
+                        item["totalPrice"] = totalPrice
+                    return item;
+                })
+
+                paymentMutation.mutate(newPayment)
             }
         }
 

@@ -26,7 +26,6 @@ const useFetchPayment = () => {
             }).then(() => {
                 navigate("/dashboard/user/payment-history")
                 refetch();
-
             })
         }
     })

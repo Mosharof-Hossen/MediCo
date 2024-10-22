@@ -26,7 +26,7 @@ const UserProfile = () => {
                     <h2 className="text-4xl font-semibold">Your Activities</h2>
                     <p className="text-2xl flex items-center text-blue-500 gap-2 font-semibold"><AiOutlineMail  /> {user?.email}</p>
                     <p className="text-2xl flex items-center text-red-500 gap-2 font-semibold"><FaWallet /> Payment: {data?.length}</p>
-                    <p className="text-2xl flex items-center text-yellow-500 gap-2 font-semibold"><FaCartPlus /> Total Orders : {data?.reduce((a, b) => a + b.itemIds.length, 0)}</p>
+                    <p className="text-2xl flex items-center text-yellow-500 gap-2 font-semibold"><FaCartPlus /> Total Orders : {data?.reduce((a, b) => a + b.items.length, 0)}</p>
                 </div>
             </div>
         </div>

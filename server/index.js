@@ -204,7 +204,7 @@ async function run() {
                 itemId: data.itemId
             }
             const result = await cartCollection.updateOne(filter, { $set: { quantity: data.quantity } })
-          
+
             res.send(result)
         })
 
@@ -245,15 +245,14 @@ async function run() {
 
         app.post("/payment", verifyToken, async (req, res) => {
             const data = req.body;
-            console.log(data);
-            // const paymentResult = await paymentCollection.insertOne(data);
-            // if (paymentResult.acknowledged == true) {
-            //     const query = {
-            //         userId: data.userId
-            //     }
-            //     const result = await cartCollection.deleteMany(query);
-            //     return res.send(result)
-            // }
+            const paymentResult = await paymentCollection.insertMany(data);
+            if (paymentResult.acknowledged == true) {
+                const query = {
+                    userId: data[0].userId
+                }
+                const result = await cartCollection.deleteMany(query);
+                return res.send(result)
+            }
             res.send({})
         })
 
