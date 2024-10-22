@@ -170,18 +170,6 @@ async function run() {
                     {
                         $unwind: "$itemDetails"
                     },
-                    // {
-                    //     $project: {
-                    //         _id: 1,
-                    //         userEmail: 1,
-                    //         userId: 1,
-                    //         itemId: 1,
-                    //         "itemDetails.itemName": 1,
-                    //         "itemDetails.perUnitPrice": 1,
-                    //         "itemDetails.discountPercentage": 1,
-                    //         "itemDetails.company": 1,
-                    //     }
-                    // }
                 ]).toArray()
                 res.send(result)
             }
@@ -240,7 +228,31 @@ async function run() {
         app.get('/user-selected-items/:id', async (req, res) => {
             const id = req.params.id;
             const query = { _id: new ObjectId(id) };
-            const result = await paymentCollection.findOne(query);
+            const result = await paymentCollection.aggregate([
+                {
+                    $match: query
+                },
+                {
+                    $addFields: {
+                        items: {
+                            $map: {
+                                input: "$items",
+                                as: "itemId",
+                                in: { $toObjectId: "$$itemId" } 
+                            }
+                        }
+                    }
+                },
+                {
+                    $lookup: {
+                        from: 'items',  
+                        localField: 'items',  
+                        foreignField: '_id',  
+                        as: 'itemDetails'  
+                    }
+                }
+                
+            ]).toArray();
             res.send(result);
         })
 
