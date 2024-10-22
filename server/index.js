@@ -222,7 +222,8 @@ async function run() {
         // ---------------- Seller API -----------------
         app.get("/seller/payment-history/:uid", async (req, res) => {
             const uid = req.params.uid;
-            const result = await paymentCollection.find()
+            const result = await paymentCollection.find({sellerId:uid}).toArray();
+            res.send(result);
         })
 
         // ---------------- Payment Section ------------
