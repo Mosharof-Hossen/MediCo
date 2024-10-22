@@ -24,7 +24,9 @@ const PaymentHistorySeller = () => {
                                 <th>Email</th>
                                 <th>Transaction Id</th>
                                 <th>Total Price</th>
-                                <th className="rounded-tr-3xl">Status</th>
+                                <th>Payment</th>
+                                <th>Products</th>
+                                <th className="rounded-tr-3xl">Delivery</th>
                             </tr>
                         </thead>
 
@@ -36,6 +38,8 @@ const PaymentHistorySeller = () => {
                                     <th className="break-words max-w-[150px] overflow-hidden text-ellipsis">{item.userEmail}</th>
                                     <th className="break-words max-w-[150px] overflow-hidden text-ellipsis">{item.transactionId}</th>
                                     <th>${item.price}</th>
+                                    <th className="text-green-500">Done</th>
+                                    <th>List</th>
                                     <th>{item.status}</th>
                                 </tr>)
                             }

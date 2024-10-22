@@ -69,7 +69,7 @@ const Dashboard = () => {
                             {links}
                         </ul>
                     </div>
-                    <div className="flex-1 bg-slate-100  min-h-screen ">
+                    <div className="flex-1 overflow-x-auto  bg-slate-100  min-h-screen ">
                         <Outlet></Outlet>
                     </div>
                 </div>
