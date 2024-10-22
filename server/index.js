@@ -220,9 +220,20 @@ async function run() {
         })
 
         // ---------------- Seller API -----------------
-        app.get("/seller/payment-history/:uid", async (req, res) => {
+
+        const verifySeller = async (req, res, next) => {
+            const uid = req.tokenUser.uid;
+            const user = await usersCollection.findOne({ userId: uid });
+            const seller = user?.role === "seller"
+            if (!seller) {
+                return res.status(403).send({ message: "Forbidden Access" })
+            }
+            next();
+        }
+
+        app.get("/seller/payment-history/:uid", verifyToken, verifySeller, async (req, res) => {
             const uid = req.params.uid;
-            const result = await paymentCollection.find({sellerId:uid}).toArray();
+            const result = await paymentCollection.find({ sellerId: uid }).toArray();
             res.send(result);
         })
 
