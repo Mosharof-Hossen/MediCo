@@ -25,7 +25,9 @@ import PrivateAdminRouter from "./PrivateAdminRouter";
 import PrivateSellerRouter from "./PrivateSellerRouter";
 import PaymentHistorySeller from "../Pages/Seller/PaymentHistory/PaymentHistorySeller";
 import ManageMedicinesSeller from "../Pages/Seller/ManageMedicines/ManageMedicinesSeller";
+import UserSelectedItems from "../Pages/Seller/UserSelectedItems/UserSelectedItems";
 
+// const axios = axios;
 const router = createBrowserRouter([
     {
         path: "/",
@@ -116,6 +118,10 @@ const router = createBrowserRouter([
             {
                 path: "/dashboard/seller/payment-history",
                 element: <PrivateSellerRouter><PaymentHistorySeller></PaymentHistorySeller></PrivateSellerRouter>
+            },
+            {
+                path: "/dashboard/seller/user-selected-items/:id",
+                element: <PrivateSellerRouter><UserSelectedItems></UserSelectedItems></PrivateSellerRouter>,
             },
             {
                 path: "/dashboard/seller/ask-for-ads",

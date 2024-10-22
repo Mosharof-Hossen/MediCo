@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import useFetchSellerPaymentHistory from "../../../API/SellerApi/useFetchSellerPaymentHistory";
 import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
 
@@ -9,10 +10,9 @@ const PaymentHistorySeller = () => {
     if (isError) {
         return
     }
-    console.log(payments);
     return (
         <div>
-            <SectionTitle heading={"Payment History"} subHeading={"Review all past payments and transactions."}></SectionTitle>
+            <SectionTitle heading={"Payment History"} subHeading={"Review all past payments and transactions.Review all past payments and transactions."}></SectionTitle>
             <div className="bg-white p-5 rounded">
                 <div className="overflow-x-auto">
                     <table className="table">
@@ -39,7 +39,7 @@ const PaymentHistorySeller = () => {
                                     <th className="break-words max-w-[150px] overflow-hidden text-ellipsis">{item.transactionId}</th>
                                     <th>${item.price}</th>
                                     <th className="text-green-500">Done</th>
-                                    <th>List</th>
+                                    <th><Link to={`/dashboard/seller/user-selected-items/${item._id}`} className="underline text-blue-500">List</Link></th>
                                     <th>{item.status}</th>
                                 </tr>)
                             }

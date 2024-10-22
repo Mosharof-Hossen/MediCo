@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 require("dotenv").config();
-const { MongoClient, ServerApiVersion } = require('mongodb');
+const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
 const jwt = require("jsonwebtoken");
 const stripe = require('stripe')(process.env.SK_STRIPE);
 
@@ -234,6 +234,13 @@ async function run() {
         app.get("/seller/payment-history/:uid", verifyToken, verifySeller, async (req, res) => {
             const uid = req.params.uid;
             const result = await paymentCollection.find({ sellerId: uid }).toArray();
+            res.send(result);
+        })
+
+        app.get('/user-selected-items/:id', async (req, res) => {
+            const id = req.params.id;
+            const query = { _id: new ObjectId(id) };
+            const result = await paymentCollection.findOne(query);
             res.send(result);
         })
 
