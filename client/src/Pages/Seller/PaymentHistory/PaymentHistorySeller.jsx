@@ -19,7 +19,7 @@ const PaymentHistorySeller = () => {
             status: status,
             id: _id
         })
-    } 
+    }
     return (
         <div>
             <SectionTitle heading={"Payment History"} subHeading={"Review all past payments and transactions.Review all past payments and transactions."}></SectionTitle>
@@ -52,24 +52,24 @@ const PaymentHistorySeller = () => {
                                     <th><Link to={`/dashboard/seller/user-selected-items/${item._id}`} className="underline text-blue-500">List</Link></th>
                                     <th>
                                         <form>
-                                            <select defaultValue={item.status} onChange={(e) => handleChange(e, item._id)} className={item.status == "Pending" ? "select select-bordered text-red-500" : item.status == "Processing" ? "select select-bordered text-orange-500" : item.status == "Ongoing"?"select select-bordered text-blue-500":"select select-bordered text-green-500"}>
-                                            <option className="text-red-500" value="Pending">Pending</option>
-                                            <option className="text-orange-500" value="Processing">Processing</option>
-                                            <option className="text-blue-500" value="Ongoing">Ongoing</option>
-                                            <option className="text-green-500" value="Done">Done</option>
-                                        </select>
-                                    </form>
+                                            <select defaultValue={item.status} onChange={(e) => handleChange(e, item._id)} className={item.status == "Pending" ? "select select-bordered text-red-500" : item.status == "Processing" ? "select select-bordered text-orange-500" : item.status == "Ongoing" ? "select select-bordered text-blue-500" : "select select-bordered text-green-500"}>
+                                                <option className="text-red-500" value="Pending">Pending</option>
+                                                <option className="text-orange-500" value="Processing">Processing</option>
+                                                <option className="text-blue-500" value="Ongoing">Ongoing</option>
+                                                <option className="text-green-500" value="Done">Done</option>
+                                            </select>
+                                        </form>
 
-                                </th>
+                                    </th>
                                 </tr>)
                             }
-                    </tbody>
+                        </tbody>
 
 
-                </table>
+                    </table>
+                </div>
+
             </div>
-
-        </div>
         </div >
     );
 };

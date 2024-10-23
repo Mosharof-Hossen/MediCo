@@ -219,6 +219,13 @@ async function run() {
             next();
         }
 
+        app.get("/manage-medicines-seller/:id", verifyToken, verifySeller, async (req, res) => {
+            const id = req.params.id;
+            console.log(id);
+            const result = await itemsCollection.find({ "seller.sellerId": id }).toArray();
+            res.send(result)
+        })
+
         app.get("/seller/payment-history/:uid", verifyToken, verifySeller, async (req, res) => {
             const uid = req.params.uid;
             const result = await paymentCollection.find({ sellerId: uid }).toArray();
