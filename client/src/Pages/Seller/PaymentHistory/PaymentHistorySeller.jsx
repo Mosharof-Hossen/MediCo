@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom";
 import useFetchSellerPaymentHistory from "../../../API/SellerApi/useFetchSellerPaymentHistory";
 import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
+import useFetchDeliveryStatusSeller from "../../../API/SellerApi/useFetchDeliveryStatusSeller";
+
 
 const PaymentHistorySeller = () => {
+    const deliveryStatusMutation = useFetchDeliveryStatusSeller();
     const { data: payments, isLoading, isError } = useFetchSellerPaymentHistory();
     if (isLoading) {
         return <div className='text-center'><span className='loading loading-bars loading-lg'></span></div>
@@ -10,6 +13,13 @@ const PaymentHistorySeller = () => {
     if (isError) {
         return
     }
+    const handleChange = (e, _id) => {
+        const status = e.target.value;
+        deliveryStatusMutation.mutate({
+            status: status,
+            id: _id
+        })
+    } 
     return (
         <div>
             <SectionTitle heading={"Payment History"} subHeading={"Review all past payments and transactions.Review all past payments and transactions."}></SectionTitle>
@@ -40,17 +50,27 @@ const PaymentHistorySeller = () => {
                                     <th>${item.price}</th>
                                     <th className="text-green-500">Done</th>
                                     <th><Link to={`/dashboard/seller/user-selected-items/${item._id}`} className="underline text-blue-500">List</Link></th>
-                                    <th>{item.status}</th>
+                                    <th>
+                                        <form>
+                                            <select defaultValue={item.status} onChange={(e) => handleChange(e, item._id)} className={item.status == "Pending" ? "select select-bordered text-red-500" : item.status == "Processing" ? "select select-bordered text-orange-500" : item.status == "Ongoing"?"select select-bordered text-blue-500":"select select-bordered text-green-500"}>
+                                            <option className="text-red-500" value="Pending">Pending</option>
+                                            <option className="text-orange-500" value="Processing">Processing</option>
+                                            <option className="text-blue-500" value="Ongoing">Ongoing</option>
+                                            <option className="text-green-500" value="Done">Done</option>
+                                        </select>
+                                    </form>
+
+                                </th>
                                 </tr>)
                             }
-                        </tbody>
+                    </tbody>
 
 
-                    </table>
-                </div>
-
+                </table>
             </div>
+
         </div>
+        </div >
     );
 };
 

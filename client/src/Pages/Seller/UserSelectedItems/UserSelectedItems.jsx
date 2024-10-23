@@ -12,7 +12,6 @@ const UserSelectedItems = () => {
     if (isError) {
         return
     }
-    console.log(items);
     return (
         <div>
             <SectionTitle heading={'User Selected Items'} subHeading={'Analyze the preferences of users based on the items they have selected. '}></SectionTitle>

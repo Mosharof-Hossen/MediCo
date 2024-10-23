@@ -238,22 +238,34 @@ async function run() {
                             $map: {
                                 input: "$items",
                                 as: "itemId",
-                                in: { $toObjectId: "$$itemId" } 
+                                in: { $toObjectId: "$$itemId" }
                             }
                         }
                     }
                 },
                 {
                     $lookup: {
-                        from: 'items',  
-                        localField: 'items',  
-                        foreignField: '_id',  
-                        as: 'itemDetails'  
+                        from: 'items',
+                        localField: 'items',
+                        foreignField: '_id',
+                        as: 'itemDetails'
                     }
                 }
-                
+
             ]).toArray();
             res.send(result);
+        })
+
+        app.put("/delivery-status", verifyToken, verifySeller, async (req, res) => {
+            const data = req.body;
+            const query = { _id: new ObjectId(data.id) };
+            const updatedStatus = {
+                $set: {
+                    status: data.status,
+                }
+            }
+            const result = await paymentCollection.updateOne(query, updatedStatus)
+            res.send(result)
         })
 
         // ---------------- Payment Section ------------
