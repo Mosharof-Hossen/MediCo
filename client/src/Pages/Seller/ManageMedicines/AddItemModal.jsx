@@ -31,7 +31,6 @@ const AddItemModal = () => {
                     "Content-Type": "multipart/form-data"
                 }
             })
-            console.log(res.data.status);
             if (res.data.status == 200) {
                 setError("")
                 addItemSellerMutation.mutate({
@@ -39,10 +38,10 @@ const AddItemModal = () => {
                     itemName: data.itemName,
                     company: data.company,
                     itemGenericName: data.itemGenericName,
-                    itemMassUnit: data.itemMassUnit,
-                    discountPercentage: data.discountPercentage,
+                    itemMassUnit: parseInt(data.itemMassUnit),
+                    discountPercentage: parseInt(data.discountPercentage),
                     category: data.category,
-                    perUnitPrice: data.perUnitPrice,
+                    perUnitPrice: parseInt(data.perUnitPrice),
                     application: data.application,
                     shortDescription: data.shortDescription,
                     seller: {
