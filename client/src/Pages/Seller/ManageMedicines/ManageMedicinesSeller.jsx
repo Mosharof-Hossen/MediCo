@@ -3,6 +3,7 @@ import useFetchManageMedicinesSeller from "../../../API/SellerApi/useFetchManage
 import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
 import ItemModal from "../../Category/ItemModal";
 import { FaEdit, FaEye } from "react-icons/fa";
+import ItemEditModal from "./ItemEditModal";
 
 const ManageMedicinesSeller = () => {
     const [viewItem, setViewItem] = useState({});
@@ -19,9 +20,8 @@ const ManageMedicinesSeller = () => {
     }
     const handleItemEdit = (item) => {
         setViewItem(item);
-        document.getElementById('my_modal_2').showModal()
+        document.getElementById('itemEditModal').showModal()
     }
-    console.log(items);
     return (
         <div className='px-10 space-y-10'>
             <SectionTitle heading={"Manage Medicines"} subHeading={"Control your inventory, update product details, and monitor the performance of your medicines."}></SectionTitle>
@@ -66,8 +66,8 @@ const ManageMedicinesSeller = () => {
             <dialog id="my_modal_1" className="modal">
                 <ItemModal item={viewItem}></ItemModal>
             </dialog>
-            <dialog id="my_modal_2" className="modal">
-                <ItemModal item={viewItem}></ItemModal>
+            <dialog id="itemEditModal" className="modal">
+                <ItemEditModal item={viewItem}></ItemEditModal>
             </dialog>
         </div>
     );

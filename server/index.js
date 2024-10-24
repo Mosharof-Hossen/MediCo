@@ -275,6 +275,46 @@ async function run() {
             res.send(result)
         })
 
+        app.patch("/update-medicine-seller", verifyToken, verifySeller, async (req, res) => {
+            const data = req.body;
+            const query = { _id: new ObjectId(data.id) };
+            if (data.image) {
+                let updateData = {
+                    $set: {
+                        image: data.image,
+                        itemName: data.itemName,
+                        company: data.company,
+                        itemGenericName: data.itemGenericName,
+                        itemMassUnit: data.itemMassUnit,
+                        discountPercentage: data.discountPercentage,
+                        category: data.category,
+                        perUnitPrice: data.perUnitPrice,
+                        application: data.application,
+                        shortDescription: data.shortDescription,
+                        
+                    }
+                }
+                const result = await itemsCollection.updateOne(query, updateData);
+                return res.send(result);
+            }
+            let updateData = {
+                $set: {
+                    itemName: data.itemName,
+                    company: data.company,
+                    itemGenericName: data.itemGenericName,
+                    itemMassUnit: data.itemMassUnit,
+                    discountPercentage: data.discountPercentage,
+                    category: data.category,
+                    perUnitPrice: data.perUnitPrice,
+                    application: data.application,
+                    shortDescription: data.shortDescription,
+                
+                }
+            }
+            const result = await itemsCollection.updateOne(query, updateData);
+            res.send(result);
+        })
+
         // ---------------- Payment Section ------------
         app.get("/payment/:email/:uid", verifyToken, async (req, res) => {
             const info = req.params;
