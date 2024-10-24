@@ -2,8 +2,9 @@ import { useState } from "react";
 import useFetchManageMedicinesSeller from "../../../API/SellerApi/useFetchManageMedicinesSeller";
 import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
 import ItemModal from "../../Category/ItemModal";
-import { FaEdit, FaEye } from "react-icons/fa";
+import { FaEdit, FaEye, FaPlus } from "react-icons/fa";
 import ItemEditModal from "./ItemEditModal";
+import AddItemModal from "./AddItemModal";
 
 const ManageMedicinesSeller = () => {
     const [viewItem, setViewItem] = useState({});
@@ -22,10 +23,19 @@ const ManageMedicinesSeller = () => {
         setViewItem(item);
         document.getElementById('itemEditModal').showModal()
     }
+
+    const handleAddItem = ()=>{
+        document.getElementById("addItemModal").showModal();
+    }
+    console.log(items);
     return (
         <div className='px-10 space-y-10'>
             <SectionTitle heading={"Manage Medicines"} subHeading={"Control your inventory, update product details, and monitor the performance of your medicines."}></SectionTitle>
             <div className="bg-white p-5 rounded">
+                <div className="flex justify-between items-center my-5">
+                    <button onClick={handleAddItem} className="flex items-center bg-green-500 hover:bg-green-600 text-white gap-2 btn">Add Item <FaPlus></FaPlus></button>
+                    <h3 className="text-2xl font-semibold ">Total Item: {items?.length}</h3>
+                </div>
                 <div className="overflow-x-auto">
                     <table className="table table-zebra">
                         {/* head */}
@@ -56,7 +66,7 @@ const ManageMedicinesSeller = () => {
                                     <td>{item.company}</td>
                                     <td>$ {item.perUnitPrice}</td>
                                     <td><button onClick={() => handleItemView(item)} className='flex items-center '><FaEye className='text-2xl text-primary-c' /></button></td>
-                                    <td><button onClick={()=>handleItemEdit(item)}><FaEdit className="text-2xl text-primary-c"></FaEdit></button></td>
+                                    <td><button onClick={() => handleItemEdit(item)}><FaEdit className="text-2xl text-primary-c"></FaEdit></button></td>
                                 </tr>)
                             }
                         </tbody>
@@ -68,6 +78,9 @@ const ManageMedicinesSeller = () => {
             </dialog>
             <dialog id="itemEditModal" className="modal">
                 <ItemEditModal item={viewItem}></ItemEditModal>
+            </dialog>
+            <dialog id="addItemModal" className="modal">
+                <AddItemModal></AddItemModal>
             </dialog>
         </div>
     );

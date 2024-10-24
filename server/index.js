@@ -278,6 +278,7 @@ async function run() {
         app.patch("/update-medicine-seller", verifyToken, verifySeller, async (req, res) => {
             const data = req.body;
             const query = { _id: new ObjectId(data.id) };
+            console.log(data);
             if (data.image) {
                 let updateData = {
                     $set: {
@@ -285,13 +286,13 @@ async function run() {
                         itemName: data.itemName,
                         company: data.company,
                         itemGenericName: data.itemGenericName,
-                        itemMassUnit: data.itemMassUnit,
-                        discountPercentage: data.discountPercentage,
+                        itemMassUnit: parseInt(data.itemMassUnit),
+                        discountPercentage: parseInt(data.discountPercentage),
                         category: data.category,
-                        perUnitPrice: data.perUnitPrice,
+                        perUnitPrice: parseInt(data.perUnitPrice),
                         application: data.application,
                         shortDescription: data.shortDescription,
-                        
+
                     }
                 }
                 const result = await itemsCollection.updateOne(query, updateData);
@@ -302,17 +303,24 @@ async function run() {
                     itemName: data.itemName,
                     company: data.company,
                     itemGenericName: data.itemGenericName,
-                    itemMassUnit: data.itemMassUnit,
-                    discountPercentage: data.discountPercentage,
+                    itemMassUnit: parseInt(data.itemMassUnit),
+                    discountPercentage: parseInt(data.discountPercentage),
                     category: data.category,
-                    perUnitPrice: data.perUnitPrice,
+                    perUnitPrice: parseInt(data.perUnitPrice),
                     application: data.application,
                     shortDescription: data.shortDescription,
-                
+
                 }
             }
             const result = await itemsCollection.updateOne(query, updateData);
             res.send(result);
+        })
+
+        app.post("/add-item-seller", verifyToken, verifySeller, async (req, res) => {
+            const data = req.body;
+            console.log(data);
+
+            res.send({})
         })
 
         // ---------------- Payment Section ------------
