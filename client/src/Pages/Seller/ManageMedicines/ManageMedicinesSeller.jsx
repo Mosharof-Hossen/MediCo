@@ -45,7 +45,7 @@ const ManageMedicinesSeller = () => {
             }
         });
     }
-    console.log(items);
+    
     return (
         <div className='px-10 space-y-10'>
             <SectionTitle heading={"Manage Medicines"} subHeading={"Control your inventory, update product details, and monitor the performance of your medicines."}></SectionTitle>

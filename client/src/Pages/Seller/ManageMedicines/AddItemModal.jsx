@@ -22,7 +22,6 @@ const AddItemModal = () => {
     // const { _id, image, itemName, company, itemGenericName, itemMassUnit, discountPercentage, category, perUnitPrice, application, shortDescription } = item
 
     const onSubmit = async (data) => {
-        console.log(data);
         if (data.image.length > 0) {
             const imageFile = { image: data.image[0] }
             const res = await axios.post(`https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_Imgbb}`,
@@ -33,6 +32,7 @@ const AddItemModal = () => {
             })
             if (res.data.status == 200) {
                 setError("")
+
                 addItemSellerMutation.mutate({
                     image: res.data.data.display_url,
                     itemName: data.itemName,
