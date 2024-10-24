@@ -3,6 +3,7 @@ import useFetchGetAllCategories from '../../../API/useFetchGetAllCategories';
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
 import useFetchAddItemSeller from '../../../API/SellerApi/useFetchAddItemSeller';
+import useAuthContext from '../../../Hooks/useAuthContext';
 
 
 const AddItemModal = () => {
@@ -10,8 +11,9 @@ const AddItemModal = () => {
     const { register, handleSubmit, reset } = useForm();
     const addItemSellerMutation = useFetchAddItemSeller();
     const [error, setError] = useState("")
+    const { user, loading } = useAuthContext();
 
-    if (isLoading) {
+    if (isLoading || loading) {
         return <div className='text-center'><span className='loading loading-bars loading-lg'></span></div>
     }
     if (isError) {
@@ -43,7 +45,10 @@ const AddItemModal = () => {
                     perUnitPrice: data.perUnitPrice,
                     application: data.application,
                     shortDescription: data.shortDescription,
-
+                    seller: {
+                        sellerEmail: user?.email,
+                        sellerId: user?.uid,
+                    }
                 })
             }
         }
@@ -131,7 +136,7 @@ const AddItemModal = () => {
                         <input type="file" className="file-input file-input-bordered w-full max-w-xs mt-5" {...register("image")} />
 
                         <div className="form-control mt-6">
-                            <button className="btn bg-primary-c text-white text-xl font-semibold hover:bg-teal-600">Update</button>
+                            <button className="btn bg-primary-c text-white text-xl font-semibold hover:bg-teal-600">Add Item</button>
                         </div>
                         <p className='text-center text-red-500 text-sm'>{error}</p>
                     </form>

@@ -278,7 +278,6 @@ async function run() {
         app.patch("/update-medicine-seller", verifyToken, verifySeller, async (req, res) => {
             const data = req.body;
             const query = { _id: new ObjectId(data.id) };
-            console.log(data);
             if (data.image) {
                 let updateData = {
                     $set: {
@@ -318,9 +317,8 @@ async function run() {
 
         app.post("/add-item-seller", verifyToken, verifySeller, async (req, res) => {
             const data = req.body;
-            console.log(data);
-
-            res.send({})
+            const result = await itemsCollection.insertOne(data);
+            res.send(result)
         })
 
         // ---------------- Payment Section ------------
