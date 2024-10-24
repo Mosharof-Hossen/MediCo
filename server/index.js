@@ -317,8 +317,13 @@ async function run() {
 
         app.post("/add-item-seller", verifyToken, verifySeller, async (req, res) => {
             const data = req.body;
-            console.log(data);
             const result = await itemsCollection.insertOne(data);
+            res.send(result)
+        })
+
+        app.delete(`/item-delete-seller/:id`, verifyToken, verifySeller, async (req, res) => {
+            const id = req.params.id;
+            const result = await itemsCollection.deleteOne({ _id: new ObjectId(id) });
             res.send(result)
         })
 

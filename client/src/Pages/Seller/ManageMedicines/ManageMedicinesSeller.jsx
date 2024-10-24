@@ -2,13 +2,16 @@ import { useState } from "react";
 import useFetchManageMedicinesSeller from "../../../API/SellerApi/useFetchManageMedicinesSeller";
 import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
 import ItemModal from "../../Category/ItemModal";
-import { FaEdit, FaEye, FaPlus } from "react-icons/fa";
+import { FaEdit, FaEye, FaPlus, FaTrash } from "react-icons/fa";
 import ItemEditModal from "./ItemEditModal";
 import AddItemModal from "./AddItemModal";
+import Swal from 'sweetalert2'
+import useFetchItemDeleteSeller from "../../../API/SellerApi/useFetchItemDeleteSeller";
 
 const ManageMedicinesSeller = () => {
     const [viewItem, setViewItem] = useState({});
     const { data: items, isLoading, isError } = useFetchManageMedicinesSeller();
+    const itemDeleteSellerMutation = useFetchItemDeleteSeller();
     if (isLoading) {
         return <div className='text-center'><span className='loading loading-bars loading-lg'></span></div>
     }
@@ -24,8 +27,23 @@ const ManageMedicinesSeller = () => {
         document.getElementById('itemEditModal').showModal()
     }
 
-    const handleAddItem = ()=>{
+    const handleAddItem = () => {
         document.getElementById("addItemModal").showModal();
+    }
+    const handleDelete = (item) => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                itemDeleteSellerMutation.mutate(item._id)
+            }
+        });
     }
     console.log(items);
     return (
@@ -47,7 +65,8 @@ const ManageMedicinesSeller = () => {
                                 <th>Brand</th>
                                 <th>Unit Per Price</th>
                                 <th>View</th>
-                                <th className="rounded-tr-3xl">Edit</th>
+                                <th>Edit</th>
+                                <th className="rounded-tr-3xl">Delete</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -65,8 +84,9 @@ const ManageMedicinesSeller = () => {
                                     <td>{item.itemName}</td>
                                     <td>{item.company}</td>
                                     <td>$ {item.perUnitPrice}</td>
-                                    <td><button onClick={() => handleItemView(item)} className='flex items-center '><FaEye className='text-2xl text-primary-c' /></button></td>
+                                    <td><button onClick={() => handleItemView(item)} className='flex items-center '><FaEye className='text-2xl text-green-500' /></button></td>
                                     <td><button onClick={() => handleItemEdit(item)}><FaEdit className="text-2xl text-primary-c"></FaEdit></button></td>
+                                    <td><button onClick={() => handleDelete(item)}><FaTrash className="text-2xl text-red-500"></FaTrash></button></td>
                                 </tr>)
                             }
                         </tbody>
