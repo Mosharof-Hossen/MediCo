@@ -2,13 +2,15 @@ import axios from 'axios';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import useAuthContext from '../../../Hooks/useAuthContext';
+import useFetchAddAdsSeller from '../../../API/SellerApi/useFetchAddAdsSeller';
 
 const AddAdsModal = () => {
     const { register, handleSubmit, reset } = useForm();
     const [error, setError] = useState("")
-    const { user, loading ,isError} = useAuthContext();
+    const { user, loading, isError } = useAuthContext();
+    const createAdsSellerMutation = useFetchAddAdsSeller();
 
-    if ( loading) {
+    if (loading) {
         return <div className='text-center'><span className='loading loading-bars loading-lg'></span></div>
     }
     if (isError) {
@@ -26,7 +28,7 @@ const AddAdsModal = () => {
             })
             if (res.data.status == 200) {
                 setError("")
-                addItemSellerMutation.mutate({
+                createAdsSellerMutation.mutate({
                     image: res.data.data.display_url,
                     itemName: data.itemName,
                     discountPercentage: parseInt(data.discountPercentage),
@@ -34,7 +36,8 @@ const AddAdsModal = () => {
                     seller: {
                         sellerEmail: user?.email,
                         sellerId: user?.uid,
-                    }
+                    },
+                    status: "Pending"
                 })
 
             }
@@ -70,10 +73,10 @@ const AddAdsModal = () => {
                             <textarea placeholder="Short description........" {...register("shortDescription", { required: true })} className="textarea textarea-bordered textarea-lg text-justify w-full" required />
                         </div>
 
-                        <input type="file" className="file-input file-input-bordered w-full max-w-xs mt-5" {...register("image")} />
+                        <input type="file" className="file-input file-input-bordered w-full max-w-xs mt-5" {...register("image")} required />
 
                         <div className="form-control mt-6">
-                            <button className="btn bg-primary-c text-white text-xl font-semibold hover:bg-teal-600">Add Item</button>
+                            <button className="btn bg-primary-c text-white text-xl font-semibold hover:bg-teal-600">Create Ads</button>
                         </div>
                         <p className='text-center text-red-500 text-sm'>{error}</p>
                     </form>

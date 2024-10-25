@@ -39,6 +39,8 @@ async function run() {
         const itemsCollection = client.db("medicoDB").collection("items");
         const cartCollection = client.db("medicoDB").collection("cart");
         const paymentCollection = client.db("medicoDB").collection("payment");
+        const adsCollection = client.db("medicoDB").collection("ads");
+
 
         // JWT API
         app.post('/login', async (req, res) => {
@@ -50,7 +52,6 @@ async function run() {
                 res.status(403).json({ message: "Invalid Email or Password" })
             }
         })
-
 
         const verifyToken = (req, res, next) => {
             const token = req.headers.authorization && req.headers.authorization.split(" ")[1];
@@ -263,6 +264,12 @@ async function run() {
             res.send(result);
         })
 
+        app.get(`/ads-seller/:uid`, verifyToken, verifySeller, async (req, res) => {
+            const uid = req.params.uid;
+            const result = await adsCollection.find({ "seller.sellerId": uid }).toArray();
+            res.send(result);
+        })
+
         app.put("/delivery-status", verifyToken, verifySeller, async (req, res) => {
             const data = req.body;
             const query = { _id: new ObjectId(data.id) };
@@ -319,6 +326,12 @@ async function run() {
             const data = req.body;
             const result = await itemsCollection.insertOne(data);
             res.send(result)
+        })
+
+        app.post("/create-ads-seller", verifyToken, verifySeller, async (req, res) => {
+            const data = req.body;
+            const result = await adsCollection.insertOne(data);
+            res.send(result);
         })
 
         app.delete(`/item-delete-seller/:id`, verifyToken, verifySeller, async (req, res) => {
