@@ -28,7 +28,8 @@ const AskForAds = () => {
                                 <th className="rounded-tl-3xl"></th>
                                 <th>Image</th>
                                 <th>Item Name</th>
-                                <th className="rounded-tr-3xl">Delete</th>
+                                <th>Discount</th>
+                                <th className="rounded-tr-3xl">Status</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -42,6 +43,9 @@ const AskForAds = () => {
                                             </div>
                                         </div>
                                     </th>
+                                    <th>{item.itemName}</th>
+                                    <th>{item.discountPercentage} %</th>
+                                    <th className={item.status == "Pending"?"text-red-500":"text-green-500"}>{item.status}</th>
                                 </tr>)
                             }
                         </tbody>
