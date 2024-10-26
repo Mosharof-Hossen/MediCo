@@ -11,10 +11,37 @@ const PaymentManage = () => {
     if (isError) {
         return
     }
-    console.log(payments);
+    const pending = payments?.filter(item => item.status == "Pending")
+    const ongoing = payments?.filter(item => item.status == "Ongoing")
+    const processing = payments?.filter(item => item.status == "Processing")
+    const done = payments?.filter(item => item.status == "Done")
+
     return (
         <div>
             <SectionTitle heading={"Transaction Overview"} subHeading={"See an overview of all payments made through the platform, including transaction types, amounts, and statuses."}></SectionTitle>
+            <div className="px-8">
+
+                <div className="grid grid-cols-2 gap-5 ">
+                    <div className="bg-red-300 rounded p-5 space-y-2">
+                        <h2 className="text-xl text-gray-600 text-center font-semibold">Pending</h2>
+                        <h1 className="text-3xl text-center font-bold text-gray-900">{pending?.length}</h1>
+                    </div>
+
+                    <div className="bg-blue-300 rounded p-5 space-y-2">
+                        <h2 className="text-xl text-gray-600 text-center font-semibold">Ongoing</h2>
+                        <h1 className="text-3xl text-center font-bold text-gray-900">{ongoing?.length}</h1>
+                    </div>
+
+                    <div className="bg-orange-300 rounded p-5 space-y-2">
+                        <h2 className="text-xl text-gray-600 text-center font-semibold">Processing</h2>
+                        <h1 className="text-3xl text-center font-bold text-gray-900">{processing?.length}</h1>
+                    </div>
+                    <div className="bg-green-300 rounded p-5 space-y-2">
+                        <h2 className="text-xl text-gray-600 text-center font-semibold">Done</h2>
+                        <h1 className="text-3xl text-center font-bold text-gray-900">{done?.length}</h1>
+                    </div>
+                </div>
+            </div>
             <div className="bg-white p-5 rounded">
                 <div className="overflow-x-auto">
                     <table className="table">
