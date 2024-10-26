@@ -340,6 +340,24 @@ async function run() {
             res.send(result)
         })
 
+        // ---------------- Admin Section ---------------------
+
+        const verifyAdmin = async (req, res, next) => {
+            const uid = req.tokenUser.uid;
+            const user = await usersCollection.findOne({ userId: uid });
+            const admin = user?.role === "admin"
+            if (!admin) {
+                return res.status(403).send({ message: "Forbidden Access" })
+            }
+            next();
+        }
+
+        app.get("/payment-manage-admin", verifyToken, verifyAdmin, async (req, res) => {
+            const result = await paymentCollection.find().toArray();
+         
+            res.send(result);
+        })
+
         // ---------------- Payment Section ------------
         app.get("/payment/:email/:uid", verifyToken, async (req, res) => {
             const info = req.params;
