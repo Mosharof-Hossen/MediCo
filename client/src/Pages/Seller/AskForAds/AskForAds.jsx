@@ -11,14 +11,13 @@ const AskForAds = () => {
     const handleAddAds = () => {
         document.getElementById("addAdsModal").showModal();
     }
-    console.log(ads);
     return (
         <div className='px-10 space-y-10'>
             <SectionTitle heading={"Advertise Your Medicines"} subHeading={"Boost visibility and reach more customers by promoting your medicines on our platform."}></SectionTitle>
             <div className="bg-white p-5 rounded">
                 <div className="flex justify-between items-center my-5">
-                    <button onClick={handleAddAds} className="flex items-center bg-green-500 hover:bg-green-600 text-white gap-2 btn">Add Item <FaPlus></FaPlus></button>
-                    <h3 className="text-2xl font-semibold ">Total Item: {ads?.length}</h3>
+                    <button onClick={handleAddAds} className="flex items-center bg-green-500 hover:bg-green-600 text-white gap-2 btn">Create Ads <FaPlus></FaPlus></button>
+                    <h3 className="text-2xl font-semibold ">Total Ads: {ads?.length}</h3>
                 </div>
                 <div className="overflow-x-auto">
                     <table className="table table-zebra">

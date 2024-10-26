@@ -129,7 +129,7 @@ const PaymentHistory = () => {
                                     <th className="break-words max-w-[150px] overflow-hidden text-ellipsis">{item.userEmail}</th>
                                     <th className="break-words max-w-[150px] overflow-hidden text-ellipsis">{item.transactionId}</th>
                                     <th>${item.price}</th>
-                                    <th>{item.status}</th>
+                                    <th className={item.status == "Pending" ? " text-red-500" : item.status == "Processing" ? " text-orange-500" : item.status == "Ongoing" ? " text-blue-500" : " text-green-500"}>{item.status}</th>
                                 </tr>)
                             }
                         </tbody>
