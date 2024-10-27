@@ -2,10 +2,15 @@ import { useForm } from "react-hook-form";
 import useFetchPaymentManageAdmin from "../../../API/AdminApi/useFetchPaymentManageAdmin";
 import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
 import { useState } from "react";
+import { PDFViewer } from "@react-pdf/renderer";
+import logo from "../../../assets/logo.png"
+import ReportDocument from "./ReportDocument";
+
 
 const SalesReport = () => {
-    const { register, handleSubmit,  } = useForm();
+    const { register, handleSubmit, } = useForm();
     const [date, setDate] = useState({});
+    const [pdf, setPdf] = useState(false)
 
     const { data: payments, isLoading, isError } = useFetchPaymentManageAdmin(date);
     if (isLoading) {
@@ -91,6 +96,16 @@ const SalesReport = () => {
                     </table>
                 </div>
 
+            </div>
+
+            <div>
+                <button onClick={()=>setPdf(!pdf)} className="btn">PDF Generate</button>
+                {
+                    pdf &&
+                    <PDFViewer style={{ width: "100%", height: "100vh" }}>
+                        <ReportDocument data={payments} logoUrl={logo} title={"Sales Report"}  ></ReportDocument>
+                    </PDFViewer>
+                }
             </div>
         </div >
     );
