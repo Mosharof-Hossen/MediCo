@@ -108,7 +108,7 @@ const CheckoutForm = () => {
                     item["transactionId"] = paymentIntent.id,
                         item["userEmail"] = user.email,
                         item["userId"] = user.uid,
-                        item["date"] = new Date(),
+                        // item["date"] = new Date(),
                         item["status"] = "Pending",
                         item["totalPrice"] = totalPrice
                     return item;

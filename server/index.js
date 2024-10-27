@@ -353,8 +353,22 @@ async function run() {
         }
 
         app.get("/payment-manage-admin", verifyToken, verifyAdmin, async (req, res) => {
-            const result = await paymentCollection.find().toArray();
-         
+            const date = req.query.date;
+            let query = {}
+            if (date) {
+                const startDate = new Date(`${date?.startDate}T00:00:00.000Z`)
+                const endDate = new Date(`${date?.endDate}T23:59:59.999Z`)
+                query = {
+                    date: {
+                        $gte: startDate,
+                        $lte: endDate
+                    }
+                }
+
+            }
+            console.log(query);
+            const result = await paymentCollection.find(query).toArray();
+
             res.send(result);
         })
 
@@ -377,7 +391,12 @@ async function run() {
         })
 
         app.post("/payment", verifyToken, async (req, res) => {
-            const data = req.body;
+            const dataWithOutDate = req.body;
+            const data = dataWithOutDate?.map((item) => {
+                item.date = new Date();
+                console.log(item);
+                return item
+            });
             const paymentResult = await paymentCollection.insertMany(data);
             if (paymentResult.acknowledged == true) {
                 const query = {
