@@ -352,6 +352,11 @@ async function run() {
             next();
         }
 
+        app.get("/all-user-admin",verifyToken,verifyAdmin,async(req,res)=>{
+            const result = await usersCollection.find().sort({role:1}).toArray();
+            res.send(result)
+        })
+
         app.get("/payment-manage-admin", verifyToken, verifyAdmin, async (req, res) => {
             const date = req.query.date;
             let query = {}
@@ -390,6 +395,8 @@ async function run() {
         })
 
         // ---------------- Payment Section ------------
+       
+
         app.get("/payment/:email/:uid", verifyToken, async (req, res) => {
             const info = req.params;
             const result = await paymentCollection.find({ userId: info.uid }).toArray();
