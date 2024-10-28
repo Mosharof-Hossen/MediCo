@@ -372,6 +372,11 @@ async function run() {
             res.send(result);
         })
 
+        app.get(`/ads-admin`, verifyToken, verifyAdmin, async (req, res) => {
+            const result = await adsCollection.find().toArray();
+            res.send(result)
+        })
+
         // ---------------- Payment Section ------------
         app.get("/payment/:email/:uid", verifyToken, async (req, res) => {
             const info = req.params;

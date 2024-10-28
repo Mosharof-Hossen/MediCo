@@ -105,7 +105,6 @@ const SalesReport = () => {
                     <PDFDownloadLink
                         document={<ReportDocument data={payments} logoUrl={logo} title={"Sales Report"}  ></ReportDocument>}
                         fileName="Sales_Report.pdf"
-
                     >
                         {({ loading }) => (loading ? 'Preparing document...' : <button className="btn bg-primary-c text-white">Download PDF</button>)}
                     </PDFDownloadLink>
