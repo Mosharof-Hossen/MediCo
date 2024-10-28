@@ -377,6 +377,18 @@ async function run() {
             res.send(result)
         })
 
+        app.patch(`/ads-manage-admin`, verifyToken, verifyAdmin, async (req, res) => {
+            const data = req.body;
+            const query = { _id: new ObjectId(data.id) }
+            const updateData  = {
+                $set:{
+                    status: data.condition
+                }
+            }
+            const result = await adsCollection.updateOne(query,updateData);
+            res.send(result);
+        })
+
         // ---------------- Payment Section ------------
         app.get("/payment/:email/:uid", verifyToken, async (req, res) => {
             const info = req.params;

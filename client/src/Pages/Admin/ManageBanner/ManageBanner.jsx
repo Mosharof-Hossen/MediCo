@@ -1,17 +1,28 @@
 import useFetchAdsAdmin from "../../../API/AdminApi/useFetchAdsAdmin";
+import useFetchAdsManageAdmin from "../../../API/AdminApi/useFetchAdsManageAdmin";
 import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
 
 
 const ManageBanner = () => {
     // const [adsCondition, setAdsCondition] = useState(true)
     const { data: ads, isLoading } = useFetchAdsAdmin();
+    const adsManageAdminMutation = useFetchAdsManageAdmin();
     if (isLoading) {
         return <div className='text-center'><span className='loading loading-bars loading-lg'></span></div>
     }
     const pending = ads?.filter(item => item.status == "Pending")
 
-    const handleAdsCondition = (id,condition) => {
-        console.log(id,condition);
+    const handleAdsCondition = (id, condition) => {
+        console.log(id, condition);
+        if (condition === "Pending") {
+            adsManageAdminMutation.mutate({
+                id, condition: "Running"
+            })
+        } else {
+            adsManageAdminMutation.mutate({
+                id, condition: "Pending"
+            })
+        }
     }
     return (
         <div>
@@ -61,7 +72,7 @@ const ManageBanner = () => {
                                     <th className={item.status == "Pending" ? " text-red-500" : "text-green-500"}>
                                         {item.status} </th>
                                     <th>
-                                        <input onClick={() => handleAdsCondition(item._id,item.status)} type="checkbox" className="toggle toggle-success" defaultChecked={item.status == "Pending"? false:true} />
+                                        <input onClick={() => handleAdsCondition(item._id, item.status)} type="checkbox" className="toggle toggle-success" defaultChecked={item.status == "Pending" ? false : true} />
                                     </th>
                                 </tr>)
                             }
