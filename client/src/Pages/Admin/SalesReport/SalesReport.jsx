@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import useFetchPaymentManageAdmin from "../../../API/AdminApi/useFetchPaymentManageAdmin";
 import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
 import { useState } from "react";
-import { PDFViewer } from "@react-pdf/renderer";
+import { PDFDownloadLink, PDFViewer } from "@react-pdf/renderer";
 import logo from "../../../assets/logo.png"
 import ReportDocument from "./ReportDocument";
 
@@ -99,7 +99,17 @@ const SalesReport = () => {
             </div>
 
             <div>
-                <button onClick={()=>setPdf(!pdf)} className="btn">PDF Generate</button>
+                <div className="space-x-3 p-5">
+                    <button onClick={() => setPdf(!pdf)} className="btn bg-primary-c text-white">Generate PDF</button>
+
+                    <PDFDownloadLink
+                        document={<ReportDocument data={payments} logoUrl={logo} title={"Sales Report"}  ></ReportDocument>}
+                        fileName="Sales_Report.pdf"
+
+                    >
+                        {({ loading }) => (loading ? 'Preparing document...' : <button className="btn bg-primary-c text-white">Download PDF</button>)}
+                    </PDFDownloadLink>
+                </div>
                 {
                     pdf &&
                     <PDFViewer style={{ width: "100%", height: "100vh" }}>
