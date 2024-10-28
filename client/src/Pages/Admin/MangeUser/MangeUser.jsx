@@ -1,14 +1,36 @@
 import useFetchAllUser from "../../../API/AdminApi/useFetchAllUser";
+import useFetchUpdateRoleAdmin from "../../../API/AdminApi/useFetchUpdateRoleAdmin";
 import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
+import { FaEdit } from "react-icons/fa";
+import Swal from 'sweetalert2'
 
 const MangeUser = () => {
     const { data: users, isLoading } = useFetchAllUser()
+    const updateRoleAdminMutation = useFetchUpdateRoleAdmin();
     if (isLoading) {
         return <div className='text-center'><span className='loading loading-bars loading-lg'></span></div>
     }
-    const user = users.filter(i=>i.role =="user");
-    const seller = users.filter(i=>i.role =="seller");
-    console.log(users);
+    const user = users.filter(i => i.role == "user");
+    const seller = users.filter(i => i.role == "seller");
+    const handleUserRole = (id) => {
+        Swal.fire({
+            title: "To update role, type the (admin/seller/user) to confirm",
+            input: "text",
+            inputAttributes: {
+                autocapitalize: "off"
+            },
+            showCancelButton: true,
+            confirmButtonText: "Update",
+            showLoaderOnConfirm: true,
+        }).then((result) => {
+            if (result.isConfirmed) {
+                updateRoleAdminMutation.mutate({
+                    role: result.value, id
+                })
+            }
+
+        });
+    }
     return (
         <div>
             <SectionTitle heading={"Transaction Overview"} subHeading={"See an overview of all payments made through the platform, including transaction types, amounts, and statuses."}></SectionTitle>
@@ -44,7 +66,7 @@ const MangeUser = () => {
                                     <th>{item.email ? item.email : "x@x.com"}</th>
                                     <th>{item.userId}</th>
                                     <th>{item.role}</th>
-                                    <th>Edit</th>
+                                    <th><button onClick={() => handleUserRole(item._id)}><FaEdit className="text-xl text-primary-c" /></button></th>
                                 </tr>)
                             }
                         </tbody>
