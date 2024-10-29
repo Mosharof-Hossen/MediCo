@@ -13,7 +13,6 @@ import PaymentHistory from "../Pages/User/PaymentHistory/PaymentHistory";
 import UserProfile from "../Pages/User/UserProfile/UserProfile";
 import AdminProfile from "../Pages/Admin/AdminProfile/AdminProfile";
 import MangeUser from "../Pages/Admin/MangeUser/MangeUser";
-import PaymentManage from "../Pages/Admin/PaymentManage/PaymentManage";
 import SalesReport from "../Pages/Admin/SalesReport/SalesReport";
 import ManageBanner from "../Pages/Admin/ManageBanner/ManageBanner";
 import SellerProfile from "../Pages/Seller/SellerProfile/SellerProfile";
@@ -26,6 +25,7 @@ import PrivateSellerRouter from "./PrivateSellerRouter";
 import PaymentHistorySeller from "../Pages/Seller/PaymentHistory/PaymentHistorySeller";
 import ManageMedicinesSeller from "../Pages/Seller/ManageMedicines/ManageMedicinesSeller";
 import UserSelectedItems from "../Pages/Seller/UserSelectedItems/UserSelectedItems";
+import ManageCategory from "../Pages/Admin/ManageCategory/ManageCategory";
 
 // const axios = axios;
 const router = createBrowserRouter([
@@ -90,8 +90,8 @@ const router = createBrowserRouter([
                 element: <PrivateAdminRouter><MangeUser></MangeUser></PrivateAdminRouter>
             },
             {
-                path: "/dashboard/admin/payment-manage",
-                element: <PrivateAdminRouter><PaymentManage></PaymentManage></PrivateAdminRouter>
+                path: "/dashboard/admin/manage-category",
+                element: <PrivateAdminRouter><ManageCategory></ManageCategory></PrivateAdminRouter>
             },
             {
                 path: "/dashboard/admin/sales-report",

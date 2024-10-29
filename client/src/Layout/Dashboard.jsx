@@ -17,7 +17,7 @@ const Dashboard = () => {
         links = <>
             <NavLink to={"/dashboard/admin"} end className={"lg:px-2  lg:mx-1 w-fit py-1 rounded  text-xl font-semibold "}><li>Profile</li></NavLink>
             <NavLink to={"/dashboard/admin/manage-user"} className={"lg:px-2  lg:mx-1 w-fit py-1 rounded  text-xl font-semibold "}><li>Manage User</li></NavLink>
-            <NavLink to={"/dashboard/admin/payment-manage"} className={"lg:px-2  lg:mx-1 w-fit py-1 rounded  text-xl font-semibold "}><li>Payment Manage</li></NavLink>
+            <NavLink to={"/dashboard/admin/manage-category"} className={"lg:px-2  lg:mx-1 w-fit py-1 rounded  text-xl font-semibold "}><li>Manage Category</li></NavLink>
             <NavLink to={"/dashboard/admin/sales-report"} className={"lg:px-2  lg:mx-1 w-fit py-1 rounded  text-xl font-semibold "}><li>Sales Report</li></NavLink>
             <NavLink to={"/dashboard/admin/manage-banner"} className={"lg:px-2  lg:mx-1 w-fit py-1 rounded  text-xl font-semibold "}><li>Manage Banner</li></NavLink>
         </>

@@ -357,6 +357,11 @@ async function run() {
             res.send(result)
         })
 
+        app.get('/all-medicine', verifyToken, verifyAdmin, async (req, res) => {
+            const result = await itemsCollection.find().toArray();
+            res.send(result);
+        })
+
         app.get("/payment-manage-admin", verifyToken, verifyAdmin, async (req, res) => {
             const date = req.query.date;
             let query = {}
