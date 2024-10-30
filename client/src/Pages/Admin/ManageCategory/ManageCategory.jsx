@@ -5,8 +5,11 @@ import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import AddCategoryModal from "./AddCategoryModal";
 import Swal from 'sweetalert2'
 import useFetchDeleteCategory from "../../../API/AdminApi/useFetchDeleteCategory";
+import EditCategoryModal from "./EditCategoryModal";
+import { useState } from "react";
 
 const ManageCategory = () => {
+    const [viewItem, setViewItem] = useState({});
     const { data: categories, isError, isLoading, } = useFetchGetAllCategories()
     const { data: items, isLoading: itemLoading } = useFetchAllMedicinesAdmin();
     const categoryDeleteMutation = useFetchDeleteCategory();
@@ -27,6 +30,11 @@ const ManageCategory = () => {
         document.getElementById("addCategoryModal").showModal()
     }
 
+    const handleEditCategory = (category) => {
+        setViewItem(category)
+        document.getElementById("editCategoryModal").showModal()
+    }
+
     const handleDeleteCategory = (id) => {
         Swal.fire({
             title: "Are you sure?",
@@ -42,7 +50,7 @@ const ManageCategory = () => {
             }
         });
     }
-    console.log(updateCategory);
+
     return (
         <div className="p-5">
             <SectionTitle heading="Categories at a Glance" subHeading="View all available product categories, including total items listed under each and the option to edit or remove them."></SectionTitle>
@@ -78,7 +86,7 @@ const ManageCategory = () => {
                                     <th>{category.categoryName}</th>
                                     <th>{category.categoryNameId}</th>
                                     <th>{category.totalItem}</th>
-                                    <th><button><FaEdit className="text-2xl text-primary-c" /></button></th>
+                                    <th><button onClick={()=>handleEditCategory(category)}><FaEdit className="text-2xl text-primary-c" /></button></th>
                                     <th><button onClick={() => handleDeleteCategory(category._id)}><FaTrashAlt className="text-2xl text-red-500" /></button></th>
                                 </tr>)
                             }
@@ -88,6 +96,9 @@ const ManageCategory = () => {
             </div>
             <dialog id="addCategoryModal" className="modal">
                 <AddCategoryModal></AddCategoryModal>
+            </dialog>
+            <dialog id="editCategoryModal" className="modal">
+                <EditCategoryModal category={viewItem}></EditCategoryModal>
             </dialog>
         </div>
     );

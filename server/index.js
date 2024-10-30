@@ -411,6 +411,32 @@ async function run() {
             res.send(result);
         })
 
+        app.patch(`/update-category`, verifyToken, verifyAdmin, async (req, res) => {
+            const data = req.body;
+            const query = { _id: new ObjectId(data.id) };
+            if (data.categoryImage) {
+                const updatedData = {
+                    $set: {
+                        categoryName: data.categoryName,
+                        description: data.description,
+                        categoryNameId: data.categoryNameId,
+                        categoryImage: data.categoryImage,
+                    }
+                }
+                const result = await categoriesCollection.updateOne(query, updatedData);
+                return res.send(result)
+            }
+            const updatedData = {
+                $set: {
+                    categoryName: data.categoryName,
+                    description: data.description,
+                    categoryNameId: data.categoryNameId,
+                }
+            }
+            const result = await categoriesCollection.updateOne(query, updatedData);
+            res.send(result)
+        })
+
         app.delete("/delete-category/:id", verifyToken, verifyAdmin, async (req, res) => {
             const id = req.params.id;
             const query = { _id: new ObjectId(id) }
