@@ -5,7 +5,7 @@ import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import AddCategoryModal from "./AddCategoryModal";
 
 const ManageCategory = () => {
-    const { data: categories, isError, isLoading } = useFetchGetAllCategories()
+    const { data: categories, isError, isLoading,  } = useFetchGetAllCategories()
     const { data: items, isLoading: itemLoading } = useFetchAllMedicinesAdmin();
 
     if (isLoading || itemLoading) {
@@ -23,7 +23,7 @@ const ManageCategory = () => {
     const handleAddCategory = () => {
         document.getElementById("addCategoryModal").showModal()
     }
-
+    console.log(updateCategory);
     return (
         <div className="p-5">
             <SectionTitle heading="Categories at a Glance" subHeading="View all available product categories, including total items listed under each and the option to edit or remove them."></SectionTitle>

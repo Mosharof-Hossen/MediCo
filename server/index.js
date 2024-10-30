@@ -411,6 +411,12 @@ async function run() {
             res.send(result);
         })
 
+        app.post(`/create-category`, verifyToken, verifyAdmin, async (req, res) => {
+            const data = req.body;
+            const result = await categoriesCollection.insertOne(data);
+            res.send(result)
+        })
+
         // ---------------- Payment Section ------------
 
 

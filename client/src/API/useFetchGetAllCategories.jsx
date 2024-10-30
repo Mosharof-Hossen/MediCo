@@ -8,11 +8,11 @@ const useFetchGetAllCategories = () => {
         const res = await axios.get(`/all-category`);
         return res.data;
     }
-    const { data, isError, isLoading } = useQuery({
+    const { data, isError, isLoading ,refetch} = useQuery({
         queryKey: ["All-category"],
         queryFn: allCategory,
     })
-    return { data, isError, isLoading }
+    return { data, isError, isLoading,refetch }
 };
 
 export default useFetchGetAllCategories;
