@@ -42,7 +42,7 @@ async function run() {
         const adsCollection = client.db("medicoDB").collection("ads");
 
 
-        // JWT API
+        // ---------------- JWT API ------------------
         app.post('/login', async (req, res) => {
             const payload = req.body;
             if (payload.email || payload.uid) {
@@ -67,7 +67,7 @@ async function run() {
             })
         }
 
-        // ////////////////////// Public Api///////////////////////////////////////////////////////////////
+        // -------------------- Public Api-------------------------------
         app.get("/all-category", async (req, res) => {
             const result = await categoriesCollection.find().toArray();
             res.send(result)
@@ -133,7 +133,7 @@ async function run() {
             res.send(result)
         })
 
-        // Dashboard Related API
+        // ------------------------ Dashboard Related API--------------------------
         app.get('/userInfo', async (req, res) => {
             const data = req.query;
             const result = await usersCollection.findOne({
@@ -142,7 +142,7 @@ async function run() {
             res.send(result);
         })
 
-        // ********** User Related API ***********
+        // -------------------------- User Related API --------------------------
 
         app.get("/user/cart", verifyToken, async (req, res) => {
             const user = req.query.user;
@@ -408,6 +408,13 @@ async function run() {
                 }
             }
             const result = await usersCollection.updateOne(query, updateData);
+            res.send(result);
+        })
+
+        app.delete("/delete-category/:id", verifyToken, verifyAdmin, async (req, res) => {
+            const id = req.params.id;
+            const query = { _id: new ObjectId(id) }
+            const result = await categoriesCollection.deleteOne(query);
             res.send(result);
         })
 

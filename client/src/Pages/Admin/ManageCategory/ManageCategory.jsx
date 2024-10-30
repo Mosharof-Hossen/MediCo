@@ -3,10 +3,13 @@ import useFetchGetAllCategories from "../../../API/useFetchGetAllCategories";
 import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import AddCategoryModal from "./AddCategoryModal";
+import Swal from 'sweetalert2'
+import useFetchDeleteCategory from "../../../API/AdminApi/useFetchDeleteCategory";
 
 const ManageCategory = () => {
-    const { data: categories, isError, isLoading,  } = useFetchGetAllCategories()
+    const { data: categories, isError, isLoading, } = useFetchGetAllCategories()
     const { data: items, isLoading: itemLoading } = useFetchAllMedicinesAdmin();
+    const categoryDeleteMutation = useFetchDeleteCategory();
 
     if (isLoading || itemLoading) {
         return <div className='text-center'><span className='loading loading-bars loading-lg'></span></div>
@@ -22,6 +25,22 @@ const ManageCategory = () => {
 
     const handleAddCategory = () => {
         document.getElementById("addCategoryModal").showModal()
+    }
+
+    const handleDeleteCategory = (id) => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                categoryDeleteMutation.mutate(id);
+            }
+        });
     }
     console.log(updateCategory);
     return (
@@ -60,7 +79,7 @@ const ManageCategory = () => {
                                     <th>{category.categoryNameId}</th>
                                     <th>{category.totalItem}</th>
                                     <th><button><FaEdit className="text-2xl text-primary-c" /></button></th>
-                                    <th><button><FaTrashAlt className="text-2xl text-red-500" /></button></th>
+                                    <th><button onClick={() => handleDeleteCategory(category._id)}><FaTrashAlt className="text-2xl text-red-500" /></button></th>
                                 </tr>)
                             }
                         </tbody>
