@@ -73,6 +73,11 @@ async function run() {
             res.send(result)
         })
 
+        app.get("/slide-data", async (req, res) => {
+            const result = await adsCollection.find({ status: "Running" }).toArray();
+            res.send(result);
+        })
+
         app.post("/users", async (req, res) => {
             const data = req.body;
             const filter = { email: data.email };
@@ -134,6 +139,7 @@ async function run() {
         })
 
         // ------------------------ Dashboard Related API--------------------------
+
         app.get('/userInfo', async (req, res) => {
             const data = req.query;
             const result = await usersCollection.findOne({
