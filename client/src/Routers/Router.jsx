@@ -26,6 +26,7 @@ import PaymentHistorySeller from "../Pages/Seller/PaymentHistory/PaymentHistoryS
 import ManageMedicinesSeller from "../Pages/Seller/ManageMedicines/ManageMedicinesSeller";
 import UserSelectedItems from "../Pages/Seller/UserSelectedItems/UserSelectedItems";
 import ManageCategory from "../Pages/Admin/ManageCategory/ManageCategory";
+import Contact from "../Pages/Contact/Contact";
 
 // const axios = axios;
 const router = createBrowserRouter([
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
             {
                 path: '/shop',
                 element: <Shop></Shop>
+            },
+            {
+                path: '/contact',
+                element: <Contact></Contact>
             },
             {
                 path: "/sign-up",

@@ -25,6 +25,7 @@ const Navbar = () => {
     const links = <>
         <NavLink to={"/"} className={"lg:px-2  lg:mx-1 w-fit py-1 rounded  text-xl font-semibold "}><li>Home</li></NavLink>
         <NavLink to={"/shop"} className={"lg:px-2  lg:mx-1 w-fit py-1 rounded  text-xl font-semibold "}><li>Shop</li></NavLink>
+        <NavLink to={"/contact"} className={"lg:px-2  lg:mx-1 w-fit py-1 rounded  text-xl font-semibold "}><li>Contact</li></NavLink>
     </>
     const profile = <>
         {
